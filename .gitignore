@@ -1,0 +1,264 @@
+# Professor Oak Challenge - .gitignore
+
+# ========================================
+# ENVIRONNEMENT ET CONFIGURATION
+# ========================================
+
+# Variables d'environnement sensibles
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Configuration locale
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ========================================
+# NODE.JS / NPM
+# ========================================
+
+# Dépendances
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Cache npm/yarn
+.npm
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# ========================================
+# FRONTEND (React + Vite)
+# ========================================
+
+# Build de production
+frontend/dist/
+frontend/build/
+
+# Cache Vite
+frontend/.vite/
+frontend/vite.config.js.timestamp-*
+
+# ESLint cache
+frontend/.eslintcache
+
+# ========================================
+# BACKEND (Node.js + Express)
+# ========================================
+
+# Build backend si applicable
+backend/dist/
+backend/build/
+
+# Logs du serveur
+backend/logs/
+backend/*.log
+
+# ========================================
+# BASE DE DONNÉES
+# ========================================
+
+# Fichiers SQLite
+*.db
+*.sqlite
+*.sqlite3
+backend/src/*.db
+backend/*.db
+
+# Sauvegardes de base de données
+*.sql.backup
+*.dump
+
+# ========================================
+# SÉCURITÉ
+# ========================================
+
+# Clés privées et certificats
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# Fichiers de session
+sessions/
+
+# ========================================
+# SYSTÈME D'EXPLOITATION
+# ========================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# ========================================
+# DÉVELOPPEMENT
+# ========================================
+
+# Coverage reports
+coverage/
+*.lcov
+.nyc_output
+
+# Tests
+__tests__/
+**/*.test.js.snap
+
+# Temporary folders
+tmp/
+temp/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ========================================
+# DÉPLOIEMENT
+# ========================================
+
+# PM2
+.pm2
+
+# Docker
+.dockerignore
+
+# Vercel
+.vercel
+
+# Netlify
+.netlify
+
+# ========================================
+# FICHIERS TEMPORAIRES
+# ========================================
+
+# Logs généraux
+*.log
+logs/
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# Storybook build outputs
+.out
+.storybook-out
+
+# ========================================
+# SPÉCIFIQUE AU PROJET
+# ========================================
+
+# Fichiers de sauvegarde utilisateur
+backups/
+*.backup
+
+# Uploads utilisateur (si applicable)
+uploads/
+
+# Fichiers générés automatiquement
+auto-generated/
+
+# Statistiques et analytics
+stats/
+analytics/
+
+# Documentation générée
+docs/build/
+
+# ========================================
+# COMMENTAIRES POUR L'ÉQUIPE
+# ========================================
+
+# Ajoutez ici vos exclusions spécifiques :
+# - Fichiers de configuration locale
+# - Données de test sensibles
+# - Clés API de développement
+# - Certificats SSL locaux

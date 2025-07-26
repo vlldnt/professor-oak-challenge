@@ -1,0 +1,34 @@
+{
+  "name": "professor-oak-challenge",
+  "version": "1.0.0",
+  "description": "Application full-stack Professor Oak Challenge avec React et Node.js",
+  "scripts": {
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "clean": "rm -rf backend/node_modules frontend/node_modules node_modules",
+    "lint": "cd frontend && npm run lint"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "pokemon",
+    "react",
+    "nodejs",
+    "express",
+    "sqlite",
+    "tailwind"
+  ],
+  "author": "Professor Oak Challenge Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}
