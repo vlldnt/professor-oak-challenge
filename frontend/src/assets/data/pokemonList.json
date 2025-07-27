@@ -1,153 +1,1714 @@
 [
-    {"id": "001", "name_fr": "Bulbizarre", "name_en": "Bulbasaur"},
-    {"id": "002", "name_fr": "Herbizarre", "name_en": "Ivysaur"},
-    {"id": "003", "name_fr": "Florizarre", "name_en": "Venusaur"},
-    {"id": "004", "name_fr": "Salamèche", "name_en": "Charmander"},
-    {"id": "005", "name_fr": "Reptincel", "name_en": "Charmeleon"},
-    {"id": "006", "name_fr": "Dracaufeu", "name_en": "Charizard"},
-    {"id": "007", "name_fr": "Carapuce", "name_en": "Squirtle"},
-    {"id": "008", "name_fr": "Carabaffe", "name_en": "Wartortle"},
-    {"id": "009", "name_fr": "Tortank", "name_en": "Blastoise"},
-    {"id": "010", "name_fr": "Chenipan", "name_en": "Caterpie"},
-    {"id": "011", "name_fr": "Chrysacier", "name_en": "Metapod"},
-    {"id": "012", "name_fr": "Papilusion", "name_en": "Butterfree"},
-    {"id": "013", "name_fr": "Aspicot", "name_en": "Weedle"},
-    {"id": "014", "name_fr": "Coconfort", "name_en": "Kakuna"},
-    {"id": "015", "name_fr": "Dardargnan", "name_en": "Beedrill"},
-    {"id": "016", "name_fr": "Roucool", "name_en": "Pidgey"},
-    {"id": "017", "name_fr": "Roucoups", "name_en": "Pidgeotto"},
-    {"id": "018", "name_fr": "Roucarnage", "name_en": "Pidgeot"},
-    {"id": "019", "name_fr": "Rattata", "name_en": "Rattata"},
-    {"id": "020", "name_fr": "Rattatac", "name_en": "Raticate"},
-    {"id": "021", "name_fr": "Piafabec", "name_en": "Spearow"},
-    {"id": "022", "name_fr": "Rapasdepic", "name_en": "Fearow"},
-    {"id": "023", "name_fr": "Abo", "name_en": "Ekans"},
-    {"id": "024", "name_fr": "Arbok", "name_en": "Arbok"},
-    {"id": "025", "name_fr": "Pikachu", "name_en": "Pikachu"},
-    {"id": "026", "name_fr": "Raichu", "name_en": "Raichu"},
-    {"id": "027", "name_fr": "Sabelette", "name_en": "Sandshrew"},
-    {"id": "028", "name_fr": "Sablaireau", "name_en": "Sandslash"},
-    {"id": "029", "name_fr": "Nidoran♀", "name_en": "Nidoran♀"},
-    {"id": "030", "name_fr": "Nidorina", "name_en": "Nidorina"},
-    {"id": "031", "name_fr": "Nidoqueen", "name_en": "Nidoqueen"},
-    {"id": "032", "name_fr": "Nidoran♂", "name_en": "Nidoran♂"},
-    {"id": "033", "name_fr": "Nidorino", "name_en": "Nidorino"},
-    {"id": "034", "name_fr": "Nidoking", "name_en": "Nidoking"},
-    {"id": "035", "name_fr": "Mélofée", "name_en": "Clefairy"},
-    {"id": "036", "name_fr": "Mélodelfe", "name_en": "Clefable"},
-    {"id": "037", "name_fr": "Goupix", "name_en": "Vulpix"},
-    {"id": "038", "name_fr": "Feunard", "name_en": "Ninetales"},
-    {"id": "039", "name_fr": "Rondoudou", "name_en": "Jigglypuff"},
-    {"id": "040", "name_fr": "Grodoudou", "name_en": "Wigglytuff"},
-    {"id": "041", "name_fr": "Nosferapti", "name_en": "Zubat"},
-    {"id": "042", "name_fr": "Nosferalto", "name_en": "Golbat"},
-    {"id": "043", "name_fr": "Mystherbe", "name_en": "Oddish"},
-    {"id": "044", "name_fr": "Ortide", "name_en": "Gloom"},
-    {"id": "045", "name_fr": "Rafflesia", "name_en": "Vileplume"},
-    {"id": "046", "name_fr": "Paras", "name_en": "Paras"},
-    {"id": "047", "name_fr": "Parasect", "name_en": "Parasect"},
-    {"id": "048", "name_fr": "Mimitoss", "name_en": "Venonat"},
-    {"id": "049", "name_fr": "Aéromite", "name_en": "Venomoth"},
-    {"id": "050", "name_fr": "Taupiqueur", "name_en": "Diglett"},
-    {"id": "051", "name_fr": "Triopikeur", "name_en": "Dugtrio"},
-    {"id": "052", "name_fr": "Miaouss", "name_en": "Meowth"},
-    {"id": "053", "name_fr": "Persian", "name_en": "Persian"},
-    {"id": "054", "name_fr": "Psykokwak", "name_en": "Psyduck"},
-    {"id": "055", "name_fr": "Akwakwak", "name_en": "Golduck"},
-    {"id": "056", "name_fr": "Férosinge", "name_en": "Mankey"},
-    {"id": "057", "name_fr": "Colossinge", "name_en": "Primeape"},
-    {"id": "058", "name_fr": "Caninos", "name_en": "Growlithe"},
-    {"id": "059", "name_fr": "Arcanin", "name_en": "Arcanine"},
-    {"id": "060", "name_fr": "Ptitard", "name_en": "Poliwag"},
-    {"id": "061", "name_fr": "Têtarte", "name_en": "Poliwhirl"},
-    {"id": "062", "name_fr": "Tartard", "name_en": "Poliwrath"},
-    {"id": "063", "name_fr": "Abra", "name_en": "Abra"},
-    {"id": "064", "name_fr": "Kadabra", "name_en": "Kadabra"},
-    {"id": "065", "name_fr": "Alakazam", "name_en": "Alakazam"},
-    {"id": "066", "name_fr": "Machoc", "name_en": "Machop"},
-    {"id": "067", "name_fr": "Machopeur", "name_en": "Machoke"},
-    {"id": "068", "name_fr": "Mackogneur", "name_en": "Machamp"},
-    {"id": "069", "name_fr": "Chétiflor", "name_en": "Bellsprout"},
-    {"id": "070", "name_fr": "Boustiflor", "name_en": "Weepinbell"},
-    {"id": "071", "name_fr": "Empiflor", "name_en": "Victreebel"},
-    {"id": "072", "name_fr": "Tentacool", "name_en": "Tentacool"},
-    {"id": "073", "name_fr": "Tentacruel", "name_en": "Tentacruel"},
-    {"id": "074", "name_fr": "Racaillou", "name_en": "Geodude"},
-    {"id": "075", "name_fr": "Gravalanch", "name_en": "Graveler"},
-    {"id": "076", "name_fr": "Grolem", "name_en": "Golem"},
-    {"id": "077", "name_fr": "Ponyta", "name_en": "Ponyta"},
-    {"id": "078", "name_fr": "Galopa", "name_en": "Rapidash"},
-    {"id": "079", "name_fr": "Ramoloss", "name_en": "Slowpoke"},
-    {"id": "080", "name_fr": "Flagadoss", "name_en": "Slowbro"},
-    {"id": "081", "name_fr": "Magnéti", "name_en": "Magnemite"},
-    {"id": "082", "name_fr": "Magnéton", "name_en": "Magneton"},
-    {"id": "083", "name_fr": "Canarticho", "name_en": "Farfetch'd"},
-    {"id": "084", "name_fr": "Doduo", "name_en": "Doduo"},
-    {"id": "085", "name_fr": "Dodrio", "name_en": "Dodrio"},
-    {"id": "086", "name_fr": "Otaria", "name_en": "Seel"},
-    {"id": "087", "name_fr": "Lamantine", "name_en": "Dewgong"},
-    {"id": "088", "name_fr": "Tadmorv", "name_en": "Grimer"},
-    {"id": "089", "name_fr": "Grotadmorv", "name_en": "Muk"},
-    {"id": "090", "name_fr": "Kokiyas", "name_en": "Shellder"},
-    {"id": "091", "name_fr": "Crustabri", "name_en": "Cloyster"},
-    {"id": "092", "name_fr": "Fantominus", "name_en": "Gastly"},
-    {"id": "093", "name_fr": "Spectrum", "name_en": "Haunter"},
-    {"id": "094", "name_fr": "Ectoplasma", "name_en": "Gengar"},
-    {"id": "095", "name_fr": "Onix", "name_en": "Onix"},
-    {"id": "096", "name_fr": "Soporifik", "name_en": "Drowzee"},
-    {"id": "097", "name_fr": "Hypnomade", "name_en": "Hypno"},
-    {"id": "098", "name_fr": "Krabby", "name_en": "Krabby"},
-    {"id": "099", "name_fr": "Krabboss", "name_en": "Kingler"},
-    {"id": "100", "name_fr": "Voltorbe", "name_en": "Voltorb"},
-    {"id": "101", "name_fr": "Électrode", "name_en": "Electrode"},
-    {"id": "102", "name_fr": "Noeunoeuf", "name_en": "Exeggcute"},
-    {"id": "103", "name_fr": "Noadkoko", "name_en": "Exeggutor"},
-    {"id": "104", "name_fr": "Osselait", "name_en": "Cubone"},
-    {"id": "105", "name_fr": "Ossatueur", "name_en": "Marowak"},
-    {"id": "106", "name_fr": "Kicklee", "name_en": "Hitmonlee"},
-    {"id": "107", "name_fr": "Tygnon", "name_en": "Hitmonchan"},
-    {"id": "108", "name_fr": "Excelangue", "name_en": "Lickitung"},
-    {"id": "109", "name_fr": "Smogo", "name_en": "Koffing"},
-    {"id": "110", "name_fr": "Smogogo", "name_en": "Weezing"},
-    {"id": "111", "name_fr": "Rhinocorne", "name_en": "Rhyhorn"},
-    {"id": "112", "name_fr": "Rhinoféros", "name_en": "Rhydon"},
-    {"id": "113", "name_fr": "Leveinard", "name_en": "Chansey"},
-    {"id": "114", "name_fr": "Saquedeneu", "name_en": "Tangela"},
-    {"id": "115", "name_fr": "Kangourex", "name_en": "Kangaskhan"},
-    {"id": "116", "name_fr": "Hypotrempe", "name_en": "Horsea"},
-    {"id": "117", "name_fr": "Hypocéan", "name_en": "Seadra"},
-    {"id": "118", "name_fr": "Poissirène", "name_en": "Goldeen"},
-    {"id": "119", "name_fr": "Poissoroy", "name_en": "Seaking"},
-    {"id": "120", "name_fr": "Stari", "name_en": "Staryu"},
-    {"id": "121", "name_fr": "Staross", "name_en": "Starmie"},
-    {"id": "122", "name_fr": "M. Mime", "name_en": "Mr. Mime"},
-    {"id": "123", "name_fr": "Insécateur", "name_en": "Scyther"},
-    {"id": "124", "name_fr": "Lippoutou", "name_en": "Jynx"},
-    {"id": "125", "name_fr": "Élektek", "name_en": "Electabuzz"},
-    {"id": "126", "name_fr": "Magmar", "name_en": "Magmar"},
-    {"id": "127", "name_fr": "Scarabrute", "name_en": "Pinsir"},
-    {"id": "128", "name_fr": "Tauros", "name_en": "Tauros"},
-    {"id": "129", "name_fr": "Magicarpe", "name_en": "Magikarp"},
-    {"id": "130", "name_fr": "Léviator", "name_en": "Gyarados"},
-    {"id": "131", "name_fr": "Lokhlass", "name_en": "Lapras"},
-    {"id": "132", "name_fr": "Métamorph", "name_en": "Ditto"},
-    {"id": "133", "name_fr": "Évoli", "name_en": "Eevee"},
-    {"id": "134", "name_fr": "Aquali", "name_en": "Vaporeon"},
-    {"id": "135", "name_fr": "Voltali", "name_en": "Jolteon"},
-    {"id": "136", "name_fr": "Pyroli", "name_en": "Flareon"},
-    {"id": "137", "name_fr": "Porygon", "name_en": "Porygon"},
-    {"id": "138", "name_fr": "Amonita", "name_en": "Omanyte"},
-    {"id": "139", "name_fr": "Amonistar", "name_en": "Omastar"},
-    {"id": "140", "name_fr": "Kabuto", "name_en": "Kabuto"},
-    {"id": "141", "name_fr": "Kabutops", "name_en": "Kabutops"},
-    {"id": "142", "name_fr": "Ptéra", "name_en": "Aerodactyl"},
-    {"id": "143", "name_fr": "Ronflex", "name_en": "Snorlax"},
-    {"id": "144", "name_fr": "Artikodin", "name_en": "Articuno"},
-    {"id": "145", "name_fr": "Électhor", "name_en": "Zapdos"},
-    {"id": "146", "name_fr": "Sulfura", "name_en": "Moltres"},
-    {"id": "147", "name_fr": "Minidraco", "name_en": "Dratini"},
-    {"id": "148", "name_fr": "Draco", "name_en": "Dragonair"},
-    {"id": "149", "name_fr": "Dracolosse", "name_en": "Dragonite"},
-    {"id": "150", "name_fr": "Mewtwo", "name_en": "Mewtwo"},
-    {"id": "151", "name_fr": "Mew", "name_en": "Mew"}
+    {
+        "id": "001",
+        "name": {
+            "fr": "Bulbizarre",
+            "en": "Bulbasaur"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Herbizarre",
+                "en": "Ivysaur"
+            },
+            "level": 16
+        }
+    },
+    {
+        "id": "002",
+        "name": {
+            "fr": "Herbizarre",
+            "en": "Ivysaur"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Florizarre",
+                "en": "Venusaur"
+            },
+            "level": 32
+        }
+    },
+    {
+        "id": "003",
+        "name": {
+            "fr": "Florizarre",
+            "en": "Venusaur"
+        },
+        "evolution": null
+    },
+    {
+        "id": "004",
+        "name": {
+            "fr": "Salamèche",
+            "en": "Charmander"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Reptincel",
+                "en": "Charmeleon"
+            },
+            "level": 16
+        }
+    },
+    {
+        "id": "005",
+        "name": {
+            "fr": "Reptincel",
+            "en": "Charmeleon"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Dracaufeu",
+                "en": "Charizard"
+            },
+            "level": 36
+        }
+    },
+    {
+        "id": "006",
+        "name": {
+            "fr": "Dracaufeu",
+            "en": "Charizard"
+        },
+        "evolution": null
+    },
+    {
+        "id": "007",
+        "name": {
+            "fr": "Carapuce",
+            "en": "Squirtle"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Carabaffe",
+                "en": "Wartortle"
+            },
+            "level": 16
+        }
+    },
+    {
+        "id": "008",
+        "name": {
+            "fr": "Carabaffe",
+            "en": "Wartortle"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Tortank",
+                "en": "Blastoise"
+            },
+            "level": 36
+        }
+    },
+    {
+        "id": "009",
+        "name": {
+            "fr": "Tortank",
+            "en": "Blastoise"
+        },
+        "evolution": null
+    },
+    {
+        "id": "010",
+        "name": {
+            "fr": "Chenipan",
+            "en": "Caterpie"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Chrysacier",
+                "en": "Metapod"
+            },
+            "level": 7
+        }
+    },
+    {
+        "id": "011",
+        "name": {
+            "fr": "Chrysacier",
+            "en": "Metapod"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Papilusion",
+                "en": "Butterfree"
+            },
+            "level": 10
+        }
+    },
+    {
+        "id": "012",
+        "name": {
+            "fr": "Papilusion",
+            "en": "Butterfree"
+        },
+        "evolution": null
+    },
+    {
+        "id": "013",
+        "name": {
+            "fr": "Aspicot",
+            "en": "Weedle"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Coconfort",
+                "en": "Kakuna"
+            },
+            "level": 7
+        }
+    },
+    {
+        "id": "014",
+        "name": {
+            "fr": "Coconfort",
+            "en": "Kakuna"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Dardargnan",
+                "en": "Beedrill"
+            },
+            "level": 10
+        }
+    },
+    {
+        "id": "015",
+        "name": {
+            "fr": "Dardargnan",
+            "en": "Beedrill"
+        },
+        "evolution": null
+    },
+    {
+        "id": "016",
+        "name": {
+            "fr": "Roucool",
+            "en": "Pidgey"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Roucoups",
+                "en": "Pidgeotto"
+            },
+            "level": 18
+        }
+    },
+    {
+        "id": "017",
+        "name": {
+            "fr": "Roucoups",
+            "en": "Pidgeotto"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Roucarnage",
+                "en": "Pidgeot"
+            },
+            "level": 36
+        }
+    },
+    {
+        "id": "018",
+        "name": {
+            "fr": "Roucarnage",
+            "en": "Pidgeot"
+        },
+        "evolution": null
+    },
+    {
+        "id": "019",
+        "name": {
+            "fr": "Rattata",
+            "en": "Rattata"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Rattatac",
+                "en": "Raticate"
+            },
+            "level": 20
+        }
+    },
+    {
+        "id": "020",
+        "name": {
+            "fr": "Rattatac",
+            "en": "Raticate"
+        },
+        "evolution": null
+    },
+    {
+        "id": "021",
+        "name": {
+            "fr": "Piafabec",
+            "en": "Spearow"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Rapasdepic",
+                "en": "Fearow"
+            },
+            "level": 20
+        }
+    },
+    {
+        "id": "022",
+        "name": {
+            "fr": "Rapasdepic",
+            "en": "Fearow"
+        },
+        "evolution": null
+    },
+    {
+        "id": "023",
+        "name": {
+            "fr": "Abo",
+            "en": "Ekans"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Arbok",
+                "en": "Arbok"
+            },
+            "level": 22
+        }
+    },
+    {
+        "id": "024",
+        "name": {
+            "fr": "Arbok",
+            "en": "Arbok"
+        },
+        "evolution": null
+    },
+    {
+        "id": "025",
+        "name": {
+            "fr": "Pikachu",
+            "en": "Pikachu"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Raichu",
+                "en": "Raichu"
+            },
+            "level": null,
+            "stone": {
+                "fr": "Pierre Foudre",
+                "en": "Thunder Stone"
+            }
+        }
+    },
+    {
+        "id": "026",
+        "name": {
+            "fr": "Raichu",
+            "en": "Raichu"
+        },
+        "evolution": null
+    },
+    {
+        "id": "027",
+        "name": {
+            "fr": "Sabelette",
+            "en": "Sandshrew"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Sablaireau",
+                "en": "Sandslash"
+            },
+            "level": 22
+        }
+    },
+    {
+        "id": "028",
+        "name": {
+            "fr": "Sablaireau",
+            "en": "Sandslash"
+        },
+        "evolution": null
+    },
+    {
+        "id": "029",
+        "name": {
+            "fr": "Nidoran♀",
+            "en": "Nidoran♀"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Nidorina",
+                "en": "Nidorina"
+            },
+            "level": 16
+        }
+    },
+    {
+        "id": "030",
+        "name": {
+            "fr": "Nidorina",
+            "en": "Nidorina"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Nidoqueen",
+                "en": "Nidoqueen"
+            },
+            "level": null,
+            "stone": {
+                "fr": "Pierre Lune",
+                "en": "Moon Stone"
+            }
+        }
+    },
+    {
+        "id": "031",
+        "name": {
+            "fr": "Nidoqueen",
+            "en": "Nidoqueen"
+        },
+        "evolution": null
+    },
+    {
+        "id": "032",
+        "name": {
+            "fr": "Nidoran♂",
+            "en": "Nidoran♂"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Nidorino",
+                "en": "Nidorino"
+            },
+            "level": 16
+        }
+    },
+    {
+        "id": "033",
+        "name": {
+            "fr": "Nidorino",
+            "en": "Nidorino"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Nidoking",
+                "en": "Nidoking"
+            },
+            "level": null,
+            "stone": {
+                "fr": "Pierre Lune",
+                "en": "Moon Stone"
+            }
+        }
+    },
+    {
+        "id": "034",
+        "name": {
+            "fr": "Nidoking",
+            "en": "Nidoking"
+        },
+        "evolution": null
+    },
+    {
+        "id": "035",
+        "name": {
+            "fr": "Mélofée",
+            "en": "Clefairy"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Mélodelfe",
+                "en": "Clefable"
+            },
+            "level": null,
+            "stone": {
+                "fr": "Pierre Lune",
+                "en": "Moon Stone"
+            }
+        }
+    },
+    {
+        "id": "036",
+        "name": {
+            "fr": "Mélodelfe",
+            "en": "Clefable"
+        },
+        "evolution": null
+    },
+    {
+        "id": "037",
+        "name": {
+            "fr": "Goupix",
+            "en": "Vulpix"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Feunard",
+                "en": "Ninetales"
+            },
+            "level": null,
+            "stone": {
+                "fr": "Pierre Feu",
+                "en": "Fire Stone"
+            }
+        }
+    },
+    {
+        "id": "038",
+        "name": {
+            "fr": "Feunard",
+            "en": "Ninetales"
+        },
+        "evolution": null
+    },
+    {
+        "id": "039",
+        "name": {
+            "fr": "Rondoudou",
+            "en": "Jigglypuff"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Grodoudou",
+                "en": "Wigglytuff"
+            },
+            "level": null,
+            "stone": {
+                "fr": "Pierre Lune",
+                "en": "Moon Stone"
+            }
+        }
+    },
+    {
+        "id": "040",
+        "name": {
+            "fr": "Grodoudou",
+            "en": "Wigglytuff"
+        },
+        "evolution": null
+    },
+    {
+        "id": "041",
+        "name": {
+            "fr": "Nosferapti",
+            "en": "Zubat"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Nosferalto",
+                "en": "Golbat"
+            },
+            "level": 22
+        }
+    },
+    {
+        "id": "042",
+        "name": {
+            "fr": "Nosferalto",
+            "en": "Golbat"
+        },
+        "evolution": null
+    },
+    {
+        "id": "043",
+        "name": {
+            "fr": "Mystherbe",
+            "en": "Oddish"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Ortide",
+                "en": "Gloom"
+            },
+            "level": 21
+        }
+    },
+    {
+        "id": "044",
+        "name": {
+            "fr": "Ortide",
+            "en": "Gloom"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Rafflesia",
+                "en": "Vileplume"
+            },
+            "level": null,
+            "stone": {
+                "fr": "Pierre Plante",
+                "en": "Leaf Stone"
+            }
+        }
+    },
+    {
+        "id": "045",
+        "name": {
+            "fr": "Rafflesia",
+            "en": "Vileplume"
+        },
+        "evolution": null
+    },
+    {
+        "id": "046",
+        "name": {
+            "fr": "Paras",
+            "en": "Paras"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Parasect",
+                "en": "Parasect"
+            },
+            "level": 24
+        }
+    },
+    {
+        "id": "047",
+        "name": {
+            "fr": "Parasect",
+            "en": "Parasect"
+        },
+        "evolution": null
+    },
+    {
+        "id": "048",
+        "name": {
+            "fr": "Mimitoss",
+            "en": "Venonat"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Aéromite",
+                "en": "Venomoth"
+            },
+            "level": 31
+        }
+    },
+    {
+        "id": "049",
+        "name": {
+            "fr": "Aéromite",
+            "en": "Venomoth"
+        },
+        "evolution": null
+    },
+    {
+        "id": "050",
+        "name": {
+            "fr": "Taupiqueur",
+            "en": "Diglett"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Triopikeur",
+                "en": "Dugtrio"
+            },
+            "level": 26
+        }
+    },
+    {
+        "id": "051",
+        "name": {
+            "fr": "Triopikeur",
+            "en": "Dugtrio"
+        },
+        "evolution": null
+    },
+    {
+        "id": "052",
+        "name": {
+            "fr": "Miaouss",
+            "en": "Meowth"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Persian",
+                "en": "Persian"
+            },
+            "level": 28
+        }
+    },
+    {
+        "id": "053",
+        "name": {
+            "fr": "Persian",
+            "en": "Persian"
+        },
+        "evolution": null
+    },
+    {
+        "id": "054",
+        "name": {
+            "fr": "Psykokwak",
+            "en": "Psyduck"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Akwakwak",
+                "en": "Golduck"
+            },
+            "level": 33
+        }
+    },
+    {
+        "id": "055",
+        "name": {
+            "fr": "Akwakwak",
+            "en": "Golduck"
+        },
+        "evolution": null
+    },
+    {
+        "id": "056",
+        "name": {
+            "fr": "Férosinge",
+            "en": "Mankey"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Colossinge",
+                "en": "Primeape"
+            },
+            "level": 28
+        }
+    },
+    {
+        "id": "057",
+        "name": {
+            "fr": "Colossinge",
+            "en": "Primeape"
+        },
+        "evolution": null
+    },
+    {
+        "id": "058",
+        "name": {
+            "fr": "Caninos",
+            "en": "Growlithe"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Arcanin",
+                "en": "Arcanine"
+            },
+            "level": null,
+            "stone": {
+                "fr": "Pierre Feu",
+                "en": "Fire Stone"
+            }
+        }
+    },
+    {
+        "id": "059",
+        "name": {
+            "fr": "Arcanin",
+            "en": "Arcanine"
+        },
+        "evolution": null
+    },
+    {
+        "id": "060",
+        "name": {
+            "fr": "Ptitard",
+            "en": "Poliwag"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Têtarte",
+                "en": "Poliwhirl"
+            },
+            "level": 25
+        }
+    },
+    {
+        "id": "061",
+        "name": {
+            "fr": "Têtarte",
+            "en": "Poliwhirl"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Tartard",
+                "en": "Poliwrath"
+            },
+            "level": null,
+            "stone": {
+                "fr": "Pierre Eau",
+                "en": "Water Stone"
+            }
+        }
+    },
+    {
+        "id": "062",
+        "name": {
+            "fr": "Tartard",
+            "en": "Poliwrath"
+        },
+        "evolution": null
+    },
+    {
+        "id": "063",
+        "name": {
+            "fr": "Abra",
+            "en": "Abra"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Kadabra",
+                "en": "Kadabra"
+            },
+            "level": 16
+        }
+    },
+    {
+        "id": "064",
+        "name": {
+            "fr": "Kadabra",
+            "en": "Kadabra"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Alakazam",
+                "en": "Alakazam"
+            },
+            "level": null,
+            "trade": true
+        }
+    },
+    {
+        "id": "065",
+        "name": {
+            "fr": "Alakazam",
+            "en": "Alakazam"
+        },
+        "evolution": null
+    },
+    {
+        "id": "066",
+        "name": {
+            "fr": "Machoc",
+            "en": "Machop"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Machopeur",
+                "en": "Machoke"
+            },
+            "level": 28
+        }
+    },
+    {
+        "id": "067",
+        "name": {
+            "fr": "Machopeur",
+            "en": "Machoke"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Mackogneur",
+                "en": "Machamp"
+            },
+            "level": null,
+            "trade": true
+        }
+    },
+    {
+        "id": "068",
+        "name": {
+            "fr": "Mackogneur",
+            "en": "Machamp"
+        },
+        "evolution": null
+    },
+    {
+        "id": "069",
+        "name": {
+            "fr": "Chétiflor",
+            "en": "Bellsprout"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Boustiflor",
+                "en": "Weepinbell"
+            },
+            "level": 21
+        }
+    },
+    {
+        "id": "070",
+        "name": {
+            "fr": "Boustiflor",
+            "en": "Weepinbell"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Empiflor",
+                "en": "Victreebel"
+            },
+            "level": null,
+            "stone": {
+                "fr": "Pierre Plante",
+                "en": "Leaf Stone"
+            }
+        }
+    },
+    {
+        "id": "071",
+        "name": {
+            "fr": "Empiflor",
+            "en": "Victreebel"
+        },
+        "evolution": null
+    },
+    {
+        "id": "072",
+        "name": {
+            "fr": "Tentacool",
+            "en": "Tentacool"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Tentacruel",
+                "en": "Tentacruel"
+            },
+            "level": 30
+        }
+    },
+    {
+        "id": "073",
+        "name": {
+            "fr": "Tentacruel",
+            "en": "Tentacruel"
+        },
+        "evolution": null
+    },
+    {
+        "id": "074",
+        "name": {
+            "fr": "Racaillou",
+            "en": "Geodude"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Gravalanch",
+                "en": "Graveler"
+            },
+            "level": 25
+        }
+    },
+    {
+        "id": "075",
+        "name": {
+            "fr": "Gravalanch",
+            "en": "Graveler"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Grolem",
+                "en": "Golem"
+            },
+            "level": null,
+            "trade": true
+        }
+    },
+    {
+        "id": "076",
+        "name": {
+            "fr": "Grolem",
+            "en": "Golem"
+        },
+        "evolution": null
+    },
+    {
+        "id": "077",
+        "name": {
+            "fr": "Ponyta",
+            "en": "Ponyta"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Galopa",
+                "en": "Rapidash"
+            },
+            "level": 40
+        }
+    },
+    {
+        "id": "078",
+        "name": {
+            "fr": "Galopa",
+            "en": "Rapidash"
+        },
+        "evolution": null
+    },
+    {
+        "id": "079",
+        "name": {
+            "fr": "Ramoloss",
+            "en": "Slowpoke"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Flagadoss",
+                "en": "Slowbro"
+            },
+            "level": 37
+        }
+    },
+    {
+        "id": "080",
+        "name": {
+            "fr": "Flagadoss",
+            "en": "Slowbro"
+        },
+        "evolution": null
+    },
+    {
+        "id": "081",
+        "name": {
+            "fr": "Magnéti",
+            "en": "Magnemite"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Magnéton",
+                "en": "Magneton"
+            },
+            "level": 30
+        }
+    },
+    {
+        "id": "082",
+        "name": {
+            "fr": "Magnéton",
+            "en": "Magneton"
+        },
+        "evolution": null
+    },
+    {
+        "id": "083",
+        "name": {
+            "fr": "Canarticho",
+            "en": "Farfetch'd"
+        },
+        "evolution": null
+    },
+    {
+        "id": "084",
+        "name": {
+            "fr": "Doduo",
+            "en": "Doduo"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Dodrio",
+                "en": "Dodrio"
+            },
+            "level": 31
+        }
+    },
+    {
+        "id": "085",
+        "name": {
+            "fr": "Dodrio",
+            "en": "Dodrio"
+        },
+        "evolution": null
+    },
+    {
+        "id": "086",
+        "name": {
+            "fr": "Otaria",
+            "en": "Seel"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Lamantine",
+                "en": "Dewgong"
+            },
+            "level": 34
+        }
+    },
+    {
+        "id": "087",
+        "name": {
+            "fr": "Lamantine",
+            "en": "Dewgong"
+        },
+        "evolution": null
+    },
+    {
+        "id": "088",
+        "name": {
+            "fr": "Tadmorv",
+            "en": "Grimer"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Grotadmorv",
+                "en": "Muk"
+            },
+            "level": 38
+        }
+    },
+    {
+        "id": "089",
+        "name": {
+            "fr": "Grotadmorv",
+            "en": "Muk"
+        },
+        "evolution": null
+    },
+    {
+        "id": "090",
+        "name": {
+            "fr": "Kokiyas",
+            "en": "Shellder"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Crustabri",
+                "en": "Cloyster"
+            },
+            "level": null,
+            "stone": {
+                "fr": "Pierre Eau",
+                "en": "Water Stone"
+            }
+        }
+    },
+    {
+        "id": "091",
+        "name": {
+            "fr": "Crustabri",
+            "en": "Cloyster"
+        },
+        "evolution": null
+    },
+    {
+        "id": "092",
+        "name": {
+            "fr": "Fantominus",
+            "en": "Gastly"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Spectrum",
+                "en": "Haunter"
+            },
+            "level": 25
+        }
+    },
+    {
+        "id": "093",
+        "name": {
+            "fr": "Spectrum",
+            "en": "Haunter"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Ectoplasma",
+                "en": "Gengar"
+            },
+            "level": null,
+            "trade": true
+        }
+    },
+    {
+        "id": "094",
+        "name": {
+            "fr": "Ectoplasma",
+            "en": "Gengar"
+        },
+        "evolution": null
+    },
+    {
+        "id": "095",
+        "name": {
+            "fr": "Onix",
+            "en": "Onix"
+        },
+        "evolution": null
+    },
+    {
+        "id": "096",
+        "name": {
+            "fr": "Soporifik",
+            "en": "Drowzee"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Hypnomade",
+                "en": "Hypno"
+            },
+            "level": 26
+        }
+    },
+    {
+        "id": "097",
+        "name": {
+            "fr": "Hypnomade",
+            "en": "Hypno"
+        },
+        "evolution": null
+    },
+    {
+        "id": "098",
+        "name": {
+            "fr": "Krabby",
+            "en": "Krabby"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Krabboss",
+                "en": "Kingler"
+            },
+            "level": 28
+        }
+    },
+    {
+        "id": "099",
+        "name": {
+            "fr": "Krabboss",
+            "en": "Kingler"
+        },
+        "evolution": null
+    },
+    {
+        "id": "100",
+        "name": {
+            "fr": "Voltorbe",
+            "en": "Voltorb"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Électrode",
+                "en": "Electrode"
+            },
+            "level": 30
+        }
+    },
+    {
+        "id": "101",
+        "name": {
+            "fr": "Électrode",
+            "en": "Electrode"
+        },
+        "evolution": null
+    },
+    {
+        "id": "102",
+        "name": {
+            "fr": "Noeunoeuf",
+            "en": "Exeggcute"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Noadkoko",
+                "en": "Exeggutor"
+            },
+            "level": null,
+            "stone": {
+                "fr": "Pierre Plante",
+                "en": "Leaf Stone"
+            }
+        }
+    },
+    {
+        "id": "103",
+        "name": {
+            "fr": "Noadkoko",
+            "en": "Exeggutor"
+        },
+        "evolution": null
+    },
+    {
+        "id": "104",
+        "name": {
+            "fr": "Osselait",
+            "en": "Cubone"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Ossatueur",
+                "en": "Marowak"
+            },
+            "level": 28
+        }
+    },
+    {
+        "id": "105",
+        "name": {
+            "fr": "Ossatueur",
+            "en": "Marowak"
+        },
+        "evolution": null
+    },
+    {
+        "id": "106",
+        "name": {
+            "fr": "Kicklee",
+            "en": "Hitmonlee"
+        },
+        "evolution": null
+    },
+    {
+        "id": "107",
+        "name": {
+            "fr": "Tygnon",
+            "en": "Hitmonchan"
+        },
+        "evolution": null
+    },
+    {
+        "id": "108",
+        "name": {
+            "fr": "Excelangue",
+            "en": "Lickitung"
+        },
+        "evolution": null
+    },
+    {
+        "id": "109",
+        "name": {
+            "fr": "Smogo",
+            "en": "Koffing"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Smogogo",
+                "en": "Weezing"
+            },
+            "level": 35
+        }
+    },
+    {
+        "id": "110",
+        "name": {
+            "fr": "Smogogo",
+            "en": "Weezing"
+        },
+        "evolution": null
+    },
+    {
+        "id": "111",
+        "name": {
+            "fr": "Rhinocorne",
+            "en": "Rhyhorn"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Rhinoféros",
+                "en": "Rhydon"
+            },
+            "level": 42
+        }
+    },
+    {
+        "id": "112",
+        "name": {
+            "fr": "Rhinoféros",
+            "en": "Rhydon"
+        },
+        "evolution": null
+    },
+    {
+        "id": "113",
+        "name": {
+            "fr": "Leveinard",
+            "en": "Chansey"
+        },
+        "evolution": null
+    },
+    {
+        "id": "114",
+        "name": {
+            "fr": "Saquedeneu",
+            "en": "Tangela"
+        },
+        "evolution": null
+    },
+    {
+        "id": "115",
+        "name": {
+            "fr": "Kangourex",
+            "en": "Kangaskhan"
+        },
+        "evolution": null
+    },
+    {
+        "id": "116",
+        "name": {
+            "fr": "Hypotrempe",
+            "en": "Horsea"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Hypocéan",
+                "en": "Seadra"
+            },
+            "level": 32
+        }
+    },
+    {
+        "id": "117",
+        "name": {
+            "fr": "Hypocéan",
+            "en": "Seadra"
+        },
+        "evolution": null
+    },
+    {
+        "id": "118",
+        "name": {
+            "fr": "Poissirène",
+            "en": "Goldeen"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Poissoroy",
+                "en": "Seaking"
+            },
+            "level": 33
+        }
+    },
+    {
+        "id": "119",
+        "name": {
+            "fr": "Poissoroy",
+            "en": "Seaking"
+        },
+        "evolution": null
+    },
+    {
+        "id": "120",
+        "name": {
+            "fr": "Stari",
+            "en": "Staryu"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Staross",
+                "en": "Starmie"
+            },
+            "level": null,
+            "stone": {
+                "fr": "Pierre Eau",
+                "en": "Water Stone"
+            }
+        }
+    },
+    {
+        "id": "121",
+        "name": {
+            "fr": "Staross",
+            "en": "Starmie"
+        },
+        "evolution": null
+    },
+    {
+        "id": "122",
+        "name": {
+            "fr": "M. Mime",
+            "en": "Mr. Mime"
+        },
+        "evolution": null
+    },
+    {
+        "id": "123",
+        "name": {
+            "fr": "Insécateur",
+            "en": "Scyther"
+        },
+        "evolution": null
+    },
+    {
+        "id": "124",
+        "name": {
+            "fr": "Lippoutou",
+            "en": "Jynx"
+        },
+        "evolution": null
+    },
+    {
+        "id": "125",
+        "name": {
+            "fr": "Élektek",
+            "en": "Electabuzz"
+        },
+        "evolution": null
+    },
+    {
+        "id": "126",
+        "name": {
+            "fr": "Magmar",
+            "en": "Magmar"
+        },
+        "evolution": null
+    },
+    {
+        "id": "127",
+        "name": {
+            "fr": "Scarabrute",
+            "en": "Pinsir"
+        },
+        "evolution": null
+    },
+    {
+        "id": "128",
+        "name": {
+            "fr": "Tauros",
+            "en": "Tauros"
+        },
+        "evolution": null
+    },
+    {
+        "id": "129",
+        "name": {
+            "fr": "Magicarpe",
+            "en": "Magikarp"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Léviator",
+                "en": "Gyarados"
+            },
+            "level": 20
+        }
+    },
+    {
+        "id": "130",
+        "name": {
+            "fr": "Léviator",
+            "en": "Gyarados"
+        },
+        "evolution": null
+    },
+    {
+        "id": "131",
+        "name": {
+            "fr": "Lokhlass",
+            "en": "Lapras"
+        },
+        "evolution": null
+    },
+    {
+        "id": "132",
+        "name": {
+            "fr": "Métamorph",
+            "en": "Ditto"
+        },
+        "evolution": null
+    },
+    {
+        "id": "133",
+        "name": {
+            "fr": "Évoli",
+            "en": "Eevee"
+        },
+        "evolutions": [
+            {
+                "name": {
+                    "fr": "Aquali",
+                    "en": "Vaporeon"
+                },
+                "level": null,
+                "stone": {
+                    "fr": "Pierre Eau",
+                    "en": "Water Stone"
+                }
+            },
+            {
+                "name": {
+                    "fr": "Voltali",
+                    "en": "Jolteon"
+                },
+                "level": null,
+                "stone": {
+                    "fr": "Pierre Foudre",
+                    "en": "Thunder Stone"
+                }
+            },
+            {
+                "name": {
+                    "fr": "Pyroli",
+                    "en": "Flareon"
+                },
+                "level": null,
+                "stone": {
+                    "fr": "Pierre Feu",
+                    "en": "Fire Stone"
+                }
+            }
+        ]
+    },
+    {
+        "id": "134",
+        "name": {
+            "fr": "Aquali",
+            "en": "Vaporeon"
+        },
+        "evolution": null
+    },
+    {
+        "id": "135",
+        "name": {
+            "fr": "Voltali",
+            "en": "Jolteon"
+        },
+        "evolution": null
+    },
+    {
+        "id": "136",
+        "name": {
+            "fr": "Pyroli",
+            "en": "Flareon"
+        },
+        "evolution": null
+    },
+    {
+        "id": "137",
+        "name": {
+            "fr": "Porygon",
+            "en": "Porygon"
+        },
+        "evolution": null
+    },
+    {
+        "id": "138",
+        "name": {
+            "fr": "Amonita",
+            "en": "Omanyte"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Amonistar",
+                "en": "Omastar"
+            },
+            "level": 40
+        }
+    },
+    {
+        "id": "139",
+        "name": {
+            "fr": "Amonistar",
+            "en": "Omastar"
+        },
+        "evolution": null
+    },
+    {
+        "id": "140",
+        "name": {
+            "fr": "Kabuto",
+            "en": "Kabuto"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Kabutops",
+                "en": "Kabutops"
+            },
+            "level": 40
+        }
+    },
+    {
+        "id": "141",
+        "name": {
+            "fr": "Kabutops",
+            "en": "Kabutops"
+        },
+        "evolution": null
+    },
+    {
+        "id": "142",
+        "name": {
+            "fr": "Ptéra",
+            "en": "Aerodactyl"
+        },
+        "evolution": null
+    },
+    {
+        "id": "143",
+        "name": {
+            "fr": "Ronflex",
+            "en": "Snorlax"
+        },
+        "evolution": null
+    },
+    {
+        "id": "144",
+        "name": {
+            "fr": "Artikodin",
+            "en": "Articuno"
+        },
+        "evolution": null
+    },
+    {
+        "id": "145",
+        "name": {
+            "fr": "Électhor",
+            "en": "Zapdos"
+        },
+        "evolution": null
+    },
+    {
+        "id": "146",
+        "name": {
+            "fr": "Sulfura",
+            "en": "Moltres"
+        },
+        "evolution": null
+    },
+    {
+        "id": "147",
+        "name": {
+            "fr": "Minidraco",
+            "en": "Dratini"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Draco",
+                "en": "Dragonair"
+            },
+            "level": 30
+        }
+    },
+    {
+        "id": "148",
+        "name": {
+            "fr": "Draco",
+            "en": "Dragonair"
+        },
+        "evolution": {
+            "name": {
+                "fr": "Dracolosse",
+                "en": "Dragonite"
+            },
+            "level": 55
+        }
+    },
+    {
+        "id": "149",
+        "name": {
+            "fr": "Dracolosse",
+            "en": "Dragonite"
+        },
+        "evolution": null
+    },
+    {
+        "id": "150",
+        "name": {
+            "fr": "Mewtwo",
+            "en": "Mewtwo"
+        },
+        "evolution": null
+    },
+    {
+        "id": "151",
+        "name": {
+            "fr": "Mew",
+            "en": "Mew"
+        },
+        "evolution": null
+    }
 ]
