@@ -29,7 +29,7 @@ function Header({ activeTab, setActiveTab, currentUser, setCurrentUser }) {
 
   return (
     <nav className="bg-white shadow-lg">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-screen-xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg"></div>

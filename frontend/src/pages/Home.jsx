@@ -7,19 +7,19 @@ function Home() {
     {
       title: t('collectPokemon'),
       description: t('collectDescription'),
-      icon: "🔴",
+      icon: "�",
       color: "from-red-500 to-pink-500"
     },
     {
       title: t('trainBattle'),
       description: t('trainDescription'),
-      icon: "⚔️",
+      icon: "📊",
       color: "from-yellow-500 to-orange-500"
     },
     {
       title: t('becomeChampion'),
       description: t('championDescription'),
-      icon: "👑",
+      icon: "⚡",
       color: "from-purple-500 to-indigo-500"
     }
   ]
@@ -32,7 +32,7 @@ function Home() {
   ]
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-16">
+    <div className="max-w-screen-xl mx-auto px-6 py-16 lg:px-8">
       {/* Hero Section */}
       <div className="text-center">
         <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">

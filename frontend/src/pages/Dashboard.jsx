@@ -47,7 +47,7 @@ function Dashboard({ currentUser }) {
 
   if (!currentUser) {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-16">
+      <div className="max-w-screen-xl mx-auto px-6 py-16 lg:px-8">
         <div className="text-center">
           <div className="text-6xl mb-4">🔒</div>
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Accès restreint</h2>
@@ -65,7 +65,7 @@ function Dashboard({ currentUser }) {
 
   if (isLoading) {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-16">
+      <div className="max-w-screen-xl mx-auto px-6 py-16 lg:px-8">
         <div className="flex items-center justify-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
         </div>
@@ -75,7 +75,7 @@ function Dashboard({ currentUser }) {
 
   if (error) {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-16">
+      <div className="max-w-screen-xl mx-auto px-6 py-16 lg:px-8">
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
           {error}
         </div>
@@ -84,7 +84,7 @@ function Dashboard({ currentUser }) {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-16">
+    <div className="max-w-screen-xl mx-auto px-6 py-16 lg:px-8">
       {/* Header */}
       <div className="mb-8 text-center">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">

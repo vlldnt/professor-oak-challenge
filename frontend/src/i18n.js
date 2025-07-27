@@ -15,18 +15,18 @@ const resources = {
       
       // Home page
       welcomeTitle: "Welcome to the",
-      professorOakChallenge: "Professor Oak Challenges",
-      heroDescription: "Embark on an epic journey to become a Pokémon master. Discover, collect, and train your way to greatness!",
+      professorOakChallenge: "Professor Oak Challenge",
+      heroDescription: "Embark on the ultimate challenge to become a true Pokémon master. Discover, collect, and evolve every available Pokémon before each badge — no shortcuts, just pure mastery!",
       startJourney: "Start Your Journey",
       learnMore: "Learn More",
       
       // Features
-      collectPokemon: "Collect Pokémon",
-      collectDescription: "Discover and collect all 151 original Pokémon from the Kanto region.",
-      trainBattle: "Train & Battle",
-      trainDescription: "Level up your Pokémon and challenge gym leaders across the region.",
-      becomeChampion: "Become Champion",
-      championDescription: "Defeat the Elite Four and become the ultimate Pokémon Champion.",
+      collectPokemon: "Detailed Red & Blue Guide",
+      collectDescription: "Complete step-by-step guide for Pokémon Red and Blue versions with detailed strategies and locations.",
+      trainBattle: "Track Your Progress",
+      trainDescription: "Keep track of your advancement through the Professor Oak Challenge with detailed statistics and milestones.",
+      becomeChampion: "Catch Every Available Pokémon",
+      championDescription: "Capture and evolve every Pokémon available before each gym badge to complete the ultimate challenge.",
       
       // Stats
       yourProgress: "Your Progress",
@@ -106,18 +106,18 @@ const resources = {
       
       // Home page
       welcomeTitle: "Bienvenue dans le",
-      professorOakChallenge: "Professor Oak Challenges",
-      heroDescription: "Embarquez dans un voyage épique pour devenir un maître Pokémon. Découvrez, collectionnez et entraînez-vous vers la grandeur !",
+      professorOakChallenge: "Professor Oak Challenge",
+      heroDescription: "Embarquez dans le défi ultime pour devenir un vrai maître Pokémon. Découvrez, capturez et faites évoluer tous les Pokémon disponibles avant chaque badge — aucun raccourci, que de la pure maîtrise !",
       startJourney: "Commencer l'Aventure",
       learnMore: "En Savoir Plus",
       
       // Features
-      collectPokemon: "Collectionner les Pokémon",
-      collectDescription: "Découvrez et collectionnez les 151 Pokémon originaux de la région de Kanto.",
-      trainBattle: "Entraîner & Combattre",
-      trainDescription: "Montez en niveau vos Pokémon et défiez les champions d'arène de la région.",
-      becomeChampion: "Devenir Champion",
-      championDescription: "Battez le Conseil des 4 et devenez le champion Pokémon ultime.",
+      collectPokemon: "Guide Détaillé Rouge & Bleu",
+      collectDescription: "Guide complet étape par étape pour les versions Pokémon Rouge et Bleu avec stratégies détaillées et emplacements.",
+      trainBattle: "Suivez Votre Progression",
+      trainDescription: "Gardez un suivi de votre avancée dans le Professor Oak Challenge avec des statistiques détaillées et des jalons.",
+      becomeChampion: "Capturez Tous les Pokémon Disponibles",
+      championDescription: "Capturez et faites évoluer tous les Pokémon disponibles avant chaque badge d'arène pour compléter le défi ultime.",
       
       // Stats
       yourProgress: "Votre Progression",

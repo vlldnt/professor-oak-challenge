@@ -57,7 +57,7 @@ function Login({ setActiveTab, setCurrentUser }) {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-16">
+    <div className="max-w-screen-xl mx-auto px-6 py-16 lg:px-8">
       <div className="max-w-md mx-auto">
         {/* Header */}
         <div className="text-center mb-8">

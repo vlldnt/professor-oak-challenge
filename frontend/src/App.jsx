@@ -13,7 +13,6 @@ function App() {
   const [activeTab, setActiveTab] = useState('home')
   const [currentUser, setCurrentUser] = useState(null)
 
-  // Charger l'utilisateur depuis localStorage au démarrage
   useEffect(() => {
     const savedUser = apiService.getCurrentUser()
     if (savedUser && apiService.isAuthenticated()) {
@@ -47,7 +46,8 @@ function App() {
           setActiveTab={setActiveTab} 
           currentUser={currentUser} 
           setCurrentUser={setCurrentUser} 
-        />      <main>
+        />
+      <main className="max-w-screen-xl mx-auto">
         {renderPage()}
       </main>
       
