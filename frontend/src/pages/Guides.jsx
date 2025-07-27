@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 
-function Guides() {
+function Guides({ setActiveTab }) {
   const { t, i18n } = useTranslation()
 
   const gen1Guides = [
@@ -9,23 +9,32 @@ function Guides() {
       description: t('redDescription'),
       image: `/src/assets/images/guides/red-${i18n.language}.webp`,
       color: "from-red-500 to-red-600",
-      hoverColor: "hover:from-red-600 hover:to-red-700"
+      hoverColor: "hover:from-red-600 hover:to-red-700",
+      route: "gen1-guide"
     },
     {
       title: t('pokemonBlue'),
       description: t('blueDescription'),
       image: `/src/assets/images/guides/blue-${i18n.language}.webp`,
       color: "from-blue-500 to-blue-600",
-      hoverColor: "hover:from-blue-600 hover:to-blue-700"
+      hoverColor: "hover:from-blue-600 hover:to-blue-700",
+      route: "gen1-guide"
     },
     {
       title: t('pokemonYellow'),
       description: t('yellowDescription'),
       image: `/src/assets/images/guides/yellow-${i18n.language}.webp`,
       color: "from-yellow-500 to-yellow-600",
-      hoverColor: "hover:from-yellow-600 hover:to-yellow-700"
+      hoverColor: "hover:from-yellow-600 hover:to-yellow-700",
+      route: "gen1-guide"
     }
   ]
+
+  const handleGuideClick = (route) => {
+    if (setActiveTab) {
+      setActiveTab(route)
+    }
+  }
 
   return (
     <div className="max-w-screen-xl mx-auto px-6 py-16 lg:px-8">
@@ -51,7 +60,7 @@ function Guides() {
               className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all hover:scale-105 cursor-pointer"
             >
               {/* Image Container */}
-              <div className="relative h-80 overflow-hidden">
+              <div className="relative h-auto overflow-hidden">
                 <img 
                   src={guide.image}
                   alt={guide.title}
@@ -66,7 +75,10 @@ function Guides() {
                 </h3>
                 
                 {/* Action Button */}
-                <button className={`w-full bg-gradient-to-r ${guide.color} ${guide.hoverColor} text-white py-3 px-4 rounded-lg font-semibold transition-all transform hover:scale-105`}>
+                <button 
+                  onClick={() => handleGuideClick(guide.route)}
+                  className={`w-full bg-gradient-to-r ${guide.color} ${guide.hoverColor} text-white py-3 px-4 rounded-lg font-semibold transition-all transform hover:scale-105`}
+                >
                   {i18n.language === 'fr' ? 'Voir le Guide' : 'View Guide'}
                 </button>
               </div>

@@ -6,6 +6,7 @@ import Guides from './pages/Guides'
 import Contact from './pages/Contact'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
+import Gen1Guide from './pages/guides/redBlueGuide'
 import apiService from './services/apiService'
 
 function App() {
@@ -24,7 +25,9 @@ function App() {
       case 'home':
         return <Home />
       case 'guides':
-        return <Guides />
+        return <Guides setActiveTab={setActiveTab} />
+      case 'gen1-guide':
+        return <Gen1Guide setActiveTab={setActiveTab} />
       case 'contact':
         return <Contact />
       case 'login':
