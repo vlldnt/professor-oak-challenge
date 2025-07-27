@@ -13,10 +13,38 @@ function App() {
   const [activeTab, setActiveTab] = useState('home')
   const [currentUser, setCurrentUser] = useState(null)
 
+  const handleTabChange = (tab) => {
+    setActiveTab(tab)
+    window.history.pushState({ tab }, '', `#${tab}`)
+  }
+
+  useEffect(() => {
+    const handlePopState = (event) => {
+      if (event.state && event.state.tab) {
+        setActiveTab(event.state.tab)
+      } else {
+        setActiveTab('home')
+      }
+    }
+
+    window.addEventListener('popstate', handlePopState)
+
+    window.history.replaceState({ tab: activeTab }, '', `#${activeTab}`)
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState)
+    }
+  }, [activeTab])
+
   useEffect(() => {
     const savedUser = apiService.getCurrentUser()
     if (savedUser && apiService.isAuthenticated()) {
       setCurrentUser(savedUser)
+    }
+
+    const hash = window.location.hash.substring(1)
+    if (hash && ['home', 'guides', 'gen1-guide', 'contact', 'login', 'dashboard'].includes(hash)) {
+      setActiveTab(hash)
     }
   }, [])
 
@@ -25,13 +53,13 @@ function App() {
       case 'home':
         return <Home />
       case 'guides':
-        return <Guides setActiveTab={setActiveTab} />
+        return <Guides setActiveTab={handleTabChange} />
       case 'gen1-guide':
-        return <Gen1Guide setActiveTab={setActiveTab} />
+        return <Gen1Guide setActiveTab={handleTabChange} />
       case 'contact':
         return <Contact />
       case 'login':
-        return <Login setActiveTab={setActiveTab} setCurrentUser={setCurrentUser} />
+        return <Login setActiveTab={handleTabChange} setCurrentUser={setCurrentUser} />
       case 'dashboard':
         return <Dashboard currentUser={currentUser} />
       default:
@@ -43,7 +71,7 @@ function App() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
         <Header 
           activeTab={activeTab} 
-          setActiveTab={setActiveTab} 
+          setActiveTab={handleTabChange} 
           currentUser={currentUser} 
           setCurrentUser={setCurrentUser} 
         />
