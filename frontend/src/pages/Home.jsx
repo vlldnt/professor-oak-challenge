@@ -54,6 +54,55 @@ function Home() {
         </div>
       </div>
 
+      {/* About Section */}
+      <div className="mt-20 mb-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            {t('aboutTitle')}
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              {' '}{t('challenge')}
+            </span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            {t('aboutDescription')}
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">{t('ourMission')}</h3>
+            <p className="text-gray-600 mb-4">
+              {t('missionDescription1')}
+            </p>
+            <p className="text-gray-600 mb-6">
+              {t('missionDescription2')}
+            </p>
+            <ul className="space-y-2">
+              {[
+                t('completePokedex'),
+                t('battleGuides'),
+                t('communityForums'),
+                t('progressTracking')
+              ].map((item, index) => (
+                <li key={index} className="flex items-center">
+                  <span className="text-green-500 mr-2">✓</span>
+                  <span className="text-gray-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8">
+            <div className="text-center">
+              <div className="text-6xl mb-4">🎯</div>
+              <h4 className="text-xl font-semibold text-gray-900 mb-2">{t('ourGoal')}</h4>
+              <p className="text-gray-600">
+                {t('goalDescription')}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Features Grid */}
       <div className="mt-20 grid md:grid-cols-3 gap-8">
         {features.map((feature, index) => (

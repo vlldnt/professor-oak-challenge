@@ -7,7 +7,6 @@ const resources = {
     translation: {
       // Navigation
       home: "Home",
-      about: "About",
       features: "Features",
       contact: "Contact",
       dashboard: "Dashboard",
@@ -91,14 +90,27 @@ const resources = {
       totalPokemon: "Total Pokémon",
       gymBadges: "Gym Badges",
       battleMoves: "Battle Moves",
-      explorationAreas: "Exploration Areas"
+      explorationAreas: "Exploration Areas",
+      
+      // About section (integrated in Home)
+      aboutTitle: "About the",
+      challenge: "Challenge",
+      aboutDescription: "The Professor Oak Challenge is an epic quest inspired by the legendary Pokémon professor himself.",
+      ourMission: "Our Mission",
+      missionDescription1: "We believe that every trainer deserves the chance to become a Pokémon master. Our platform provides the tools, knowledge, and community needed to excel in your journey.",
+      missionDescription2: "From catching your first Pokémon to facing the Elite Four, we're here to guide you through every step of your adventure in the Kanto region.",
+      completePokedex: "Complete Pokédex tracking",
+      battleGuides: "Battle strategy guides",
+      communityForums: "Community forums",
+      progressTracking: "Progress tracking tools",
+      ourGoal: "Our Goal",
+      goalDescription: "Help 10,000+ trainers become Pokémon masters by providing the ultimate training platform and community support."
     }
   },
   fr: {
     translation: {
       // Navigation
       home: "Accueil",
-      about: "À propos",
       features: "Fonctionnalités",
       contact: "Contact",
       dashboard: "Tableau de Bord",
@@ -182,7 +194,21 @@ const resources = {
       totalPokemon: "Total Pokémon",
       gymBadges: "Badges d'Arène",
       battleMoves: "Attaques de Combat",
-      explorationAreas: "Zones d'Exploration"
+      explorationAreas: "Zones d'Exploration",
+      
+      // About section (integrated in Home)
+      aboutTitle: "À propos du",
+      challenge: "Challenge",
+      aboutDescription: "Le Professor Oak Challenge est une quête épique inspirée du légendaire professeur Pokémon lui-même.",
+      ourMission: "Notre Mission",
+      missionDescription1: "Nous croyons que chaque dresseur mérite la chance de devenir un maître Pokémon. Notre plateforme fournit les outils, connaissances et communauté nécessaires pour exceller dans votre aventure.",
+      missionDescription2: "De la capture de votre premier Pokémon à l'affrontement du Conseil des 4, nous sommes là pour vous guider à chaque étape de votre aventure dans la région de Kanto.",
+      completePokedex: "Suivi complet du Pokédex",
+      battleGuides: "Guides de stratégie de combat",
+      communityForums: "Forums communautaires",
+      progressTracking: "Outils de suivi de progression",
+      ourGoal: "Notre Objectif",
+      goalDescription: "Aider plus de 10 000 dresseurs à devenir des maîtres Pokémon en fournissant la plateforme d'entraînement ultime et le soutien communautaire."
     }
   }
 }

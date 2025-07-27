@@ -25,7 +25,7 @@ function Header({ activeTab, setActiveTab, currentUser, setCurrentUser }) {
     setActiveTab('home')
   }
 
-  const menuItems = ['home', 'about', 'features', 'contact', 'dashboard']
+  const menuItems = ['home', 'features', 'contact', 'dashboard']
 
   return (
     <nav className="bg-white shadow-lg">

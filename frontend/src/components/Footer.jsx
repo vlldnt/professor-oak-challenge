@@ -21,7 +21,6 @@ function Footer() {
             <h4 className="text-md font-semibold mb-4">Navigation</h4>
             <ul className="space-y-2 text-gray-400">
               <li><a href="#" className="hover:text-white transition-colors">Accueil</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">À propos</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Fonctionnalités</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Tableau de bord</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
