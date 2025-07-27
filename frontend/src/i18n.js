@@ -7,7 +7,7 @@ const resources = {
     translation: {
       // Navigation
       home: "Home",
-      features: "Features",
+      guides: "Guides",
       contact: "Contact",
       dashboard: "Dashboard",
       signIn: "Sign In",
@@ -60,9 +60,18 @@ const resources = {
       reddit: "Reddit",
       copyright: "Gotta catch 'em all!",
 
-      // Features page translations
-      featuresTitle: "Game Features",
-      featuresSubtitle: "Discover all the amazing features that make your Pokémon journey unforgettable",
+      // Guides page translations
+      guidesTitle: "Game Guides",
+      guidesSubtitle: "Complete guides for your Pokémon adventure through Generation 1 games",
+      
+      // Generation 1 Guides
+      generation1: "Generation 1 Guides",
+      pokemonRed: "Pokémon Red",
+      pokemonBlue: "Pokémon Blue", 
+      pokemonYellow: "Pokémon Yellow",
+      redDescription: "Master the original Pokémon Red version with our comprehensive guide covering all strategies, locations, and tips.",
+      blueDescription: "Explore Pokémon Blue with detailed walkthroughs, exclusive Pokémon locations, and battle strategies.",
+      yellowDescription: "Experience the enhanced Pokémon Yellow adventure with Pikachu as your starter and unique game features.",
       
       // Core Features
       coreFeatures: "Core Features",
@@ -111,7 +120,7 @@ const resources = {
     translation: {
       // Navigation
       home: "Accueil",
-      features: "Fonctionnalités",
+      guides: "Guides",
       contact: "Contact",
       dashboard: "Tableau de Bord",
       signIn: "Connexion",
@@ -164,9 +173,18 @@ const resources = {
       reddit: "Reddit",
       copyright: "Attrapez-les tous !",
 
-      // Features page translations
-      featuresTitle: "Fonctionnalités du Jeu",
-      featuresSubtitle: "Découvrez toutes les fonctionnalités incroyables qui rendent votre aventure Pokémon inoubliable",
+      // Guides page translations
+      guidesTitle: "Guides de Jeu",
+      guidesSubtitle: "Guides complets pour votre aventure Pokémon à travers les jeux de Génération 1",
+      
+      // Generation 1 Guides
+      generation1: "Guides Génération 1",
+      pokemonRed: "Pokémon Rouge",
+      pokemonBlue: "Pokémon Bleu",
+      pokemonYellow: "Pokémon Jaune",
+      redDescription: "Maîtrisez la version originale Pokémon Rouge avec notre guide complet couvrant toutes les stratégies, emplacements et astuces.",
+      blueDescription: "Explorez Pokémon Bleu avec des soluces détaillées, emplacements de Pokémon exclusifs et stratégies de combat.",
+      yellowDescription: "Vivez l'aventure améliorée de Pokémon Jaune avec Pikachu comme starter et des fonctionnalités de jeu uniques.",
       
       // Core Features
       coreFeatures: "Fonctionnalités Principales",

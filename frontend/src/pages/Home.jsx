@@ -103,7 +103,7 @@ function Home() {
         </div>
       </div>
 
-      {/* Features Grid */}
+      {/* Guides Overview */}
       <div className="mt-20 grid md:grid-cols-3 gap-8">
         {features.map((feature, index) => (
           <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">

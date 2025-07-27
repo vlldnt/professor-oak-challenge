@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
-import Features from './pages/Features'
+import Guides from './pages/Guides'
 import Contact from './pages/Contact'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
@@ -23,8 +23,8 @@ function App() {
     switch (activeTab) {
       case 'home':
         return <Home />
-      case 'features':
-        return <Features />
+      case 'guides':
+        return <Guides />
       case 'contact':
         return <Contact />
       case 'login':
