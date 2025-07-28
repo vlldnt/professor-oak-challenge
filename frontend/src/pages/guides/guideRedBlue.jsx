@@ -303,15 +303,31 @@ const GuideRedBlue = () => {
               const num = (i + 1).toString().padStart(3, '0');
               const poke = getPokemon(num);
               const isRedExclusive = redExclusiveIds.includes(num);
+              // Détection starters non choisis
+              const starterFamilies = [
+                ["001", "002", "003"],
+                ["004", "005", "006"],
+                ["007", "008", "009"]
+              ];
+              const allStarterIds = starterFamilies.flat();
+              const chosenStarter = caught.find((id) => ["001", "004", "007"].includes(id));
+              let isOtherStarter = false;
+              if (allStarterIds.includes(num) && chosenStarter) {
+                const thisFamily = starterFamilies.find(fam => fam.includes(num));
+                const chosenFamily = starterFamilies.find(fam => fam.includes(chosenStarter));
+                if (thisFamily !== chosenFamily) {
+                  isOtherStarter = true;
+                }
+              }
               return (
                 <div key={num} className="flex flex-col items-center relative">
                   <img
                     src={`/src/assets/images/pokemons/${num}.png`}
                     alt={`Pokemon ${num}`}
-                    className={`w-8 h-8 object-contain transition-opacity ${caught.includes(num) ? 'opacity-20' : ''} ${isRedExclusive ? 'opacity-30' : ''}`}
+                    className={`w-8 h-8 object-contain transition-opacity ${caught.includes(num) ? 'opacity-20' : ''} ${isRedExclusive || isOtherStarter ? 'opacity-30' : ''}`}
                     loading="lazy"
                   />
-                  {isRedExclusive && (
+                  {(isRedExclusive || isOtherStarter) && (
                     <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
                       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 5L23 23M23 5L5 23" stroke="#ef4444" strokeWidth="3.2" strokeLinecap="round"/>
@@ -325,7 +341,7 @@ const GuideRedBlue = () => {
           {/* Tableau des exclusifs à Rouge */}
           <div className="mt-6">
             <h3 className="text-md font-bold mb-2 text-center text-red-700">{t('redExclusive')}</h3>
-            <div className="grid grid-cols-9 gap-2 bg-red-50 border border-red-200 rounded-lg p-2">
+            <div className="grid grid-cols-6 gap-2 bg-red-50 border border-red-200 rounded-lg p-2">
               {redExclusiveIds.map(num => {
                 const poke = getPokemon(num);
                 return (
@@ -340,6 +356,43 @@ const GuideRedBlue = () => {
                 );
               })}
             </div>
+            {/* Starters non choisis (indisponibles) */}
+            {/* Détection starters non choisis */}
+            {(() => {
+              const starterFamilies = [
+                ["001", "002", "003"],
+                ["004", "005", "006"],
+                ["007", "008", "009"]
+              ];
+              const allStarterIds = starterFamilies.flat();
+              const chosenStarter = caught.find((id) => ["001", "004", "007"].includes(id));
+              let unavailableStarterIds = [];
+              if (chosenStarter) {
+                const chosenFamily = starterFamilies.find(fam => fam.includes(chosenStarter));
+                unavailableStarterIds = starterFamilies.filter(fam => fam !== chosenFamily).flat();
+              }
+              if (unavailableStarterIds.length === 0) return null;
+              return (
+                <div className="mt-5">
+                  <h4 className="text-sm font-bold text-center text-gray-700 mb-1">
+                    {i18n.language === 'fr' ? '🔒 Indisponible : choix unique.' : '🔒 Unavailable: single-choice only.'}
+                  </h4>
+                  <div className="grid grid-cols-6 gap-2 bg-gray-100 border border-gray-200 rounded-lg p-2">
+                    {unavailableStarterIds.map(num => (
+                      <div key={num} className="flex flex-col items-center relative">
+                        <img
+                          src={`/src/assets/images/pokemons/${num}.png`}
+                          alt={t(`pokemon${num}`)}
+                          className="w-10 h-10 object-contain"
+                          loading="lazy"
+                        />
+
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })()}
           </div>
         </div>
       </aside>
