@@ -31,9 +31,9 @@ function EvolutionCard({ startId }) {
     return chain;
   };
 
-  // Affichage du taux de capture stylé
+  // Affichage du taux de capture stylé (toujours sous le nom si présent)
   const renderCapture = (poke) => {
-    if (!poke.capture_percentage) return null;
+    if (poke.capture_percentage === undefined || poke.capture_percentage === null) return null;
     if (
       typeof poke.capture_percentage === "object" &&
       poke.capture_percentage.R !== undefined &&
@@ -41,7 +41,7 @@ function EvolutionCard({ startId }) {
     ) {
       if (poke.capture_percentage.R !== poke.capture_percentage.B) {
         return (
-          <div className="italic font-bold text-[14px] mt-1">
+          <div className="italic font-bold text-[14px] mt-1 text-center">
             <span className="text-red-600">R {poke.capture_percentage.R}%</span>
             <span className="mx-1">/</span>
             <span className="text-blue-600">B {poke.capture_percentage.B}%</span>
@@ -49,14 +49,14 @@ function EvolutionCard({ startId }) {
         );
       } else {
         return (
-          <div className="italic font-bold text-[14px] mt-1">
+          <div className="italic font-bold text-[14px] mt-1 text-center">
             <span>{poke.capture_percentage.R}%</span>
           </div>
         );
       }
     } else {
       return (
-        <div className="italic font-bold text-[14px] mt-1">
+        <div className="italic font-bold text-[14px] mt-1 text-center">
           <span>{poke.capture_percentage}%</span>
         </div>
       );
@@ -74,7 +74,7 @@ function EvolutionCard({ startId }) {
             alt={pikachu.name.en}
             className="w-12 h-12 mb-1"
           />
-          <span className="text-sm font-medium text-gray-800">{pikachu.name.en}</span>
+          <span className="text-sm font-medium text-gray-800 text-center">{pikachu.name.en}</span>
           {renderCapture(pikachu)}
         </div>
       </div>
@@ -102,7 +102,7 @@ function EvolutionCard({ startId }) {
             alt={poke.name.en}
             className="w-12 h-12 mb-1"
           />
-          <span className="text-sm font-medium text-gray-800">{poke.name.en}</span>
+          <span className="text-sm font-medium text-gray-800 text-center">{poke.name.en}</span>
           {renderCapture(poke)}
         </div>
       </div>
@@ -118,7 +118,7 @@ function EvolutionCard({ startId }) {
               alt={step.from.name.en}
               className="w-12 h-12 mb-1"
             />
-            <span className="text-sm font-medium text-gray-800">{step.from.name.en}</span>
+            <span className="text-sm font-medium text-gray-800 text-center">{step.from.name.en}</span>
             {renderCapture(step.from)}
           </div>
           {/* Flèche et infos seulement si ce n'est pas une évolution par Pierre Lune */}
@@ -148,7 +148,7 @@ function EvolutionCard({ startId }) {
                 alt={step.to.name.en}
                 className="w-12 h-12 mb-1"
               />
-              <span className="text-sm font-medium text-gray-800">{step.to.name.en}</span>
+              <span className="text-sm font-medium text-gray-800 text-center">{step.to.name.en}</span>
               {renderCapture(step.to)}
             </div>
           )}
