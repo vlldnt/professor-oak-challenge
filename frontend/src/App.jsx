@@ -6,7 +6,7 @@ import Guides from './pages/Guides'
 import Contact from './pages/Contact'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
-import Gen1Guide from './pages/guides/redBlueGuide'
+import Gen1Guide from './pages/guides/guideRedBlue'
 import apiService from './services/apiService'
 
 function App() {

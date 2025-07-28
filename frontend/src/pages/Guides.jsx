@@ -58,14 +58,16 @@ function Guides({ setActiveTab }) {
             <div 
               key={index} 
               className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all hover:scale-105 cursor-pointer"
+              onClick={() => handleGuideClick(guide.route)}
             >
               {/* Image Container */}
               <div className="relative h-auto overflow-hidden">
                 <img 
                   src={guide.image}
                   alt={guide.title}
-                  className="w-full h-full object-cover rounded-t-xl"
+                  className="w-full h-full object-cover rounded-t-xl hover:scale-105 transition-transform duration-300"
                 />
+                <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition-all duration-300"></div>
               </div>
               
               {/* Content */}

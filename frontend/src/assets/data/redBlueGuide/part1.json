@@ -1,0 +1,56 @@
+{
+  "sections": [
+    {
+      "id": "pallet_town",
+      "title": { "en": "Pallet Town - Starter Choices", "fr": "Bourg Palette - Starters" },
+      "text": {
+        "en": "Starting off in your hometown, you'll soon be given the chance to grab your first starter pokemon. As tempting as Bulbasaur might be because it evolves into its final stage earlier than the others, I find Bulbasaur very difficult to train in Viridian Forest since you don't have any reliable attacks other than Tackle.",
+        "fr": "Vous commencez dans votre ville natale, vous pourrez bientôt choisir votre starter. Bulbizarre évolue plus tôt mais il est difficile à entraîner dans la Forêt de Jade car il n'a que Charge."
+      },
+      "tip": {
+        "en": "There is a glitch in these games where your starter won't register if you evolve it prior to getting the pokedex. Go to Viridian City, grab the parcel from the Pokemart, deliver it to Professor Oak and grab that important pokedex and some pokeballs first!",
+        "fr": "Il y a un bug dans ces jeux où votre starter ne sera pas enregistré si vous le faites évoluer avant d'obtenir le pokédex. Allez à Jadielle, prenez le colis, ramenez-le au Prof. Chen et récupérez le pokédex avant d'évoluer !"
+      },
+      "pokemons": ["001", "004", "007"]
+    },
+    {
+      "id": "route_1",
+      "title": { "en": "Route 1", "fr": "Route 1" },
+      "text": {
+        "en": "Only two pokemon to catch and evolve here. You can of course opt to hold out a little longer to get them at slightly higher levels but it's negligible extra work that a couple of Metapod/Kakuna can't fix.",
+        "fr": "Seulement deux Pokémon à attraper et à faire évoluer ici. Vous pouvez attendre pour les avoir à un niveau plus élevé mais cela ne change pas grand-chose."
+      },
+      "mapImages": [
+        "/src/assets/images/gen_1_routes/route_1_map.png",
+        "/src/assets/images/gen_1_routes/route_1.webp"
+      ],
+      "pokemons": ["016", "019"]
+    },
+    {
+      "id": "route_22",
+      "title": { "en": "Route 22", "fr": "Route 22" },
+      "text": {
+        "en": "Pass through Viridian City and go West to Route 22 where you can catch the following Pokémon. The rarity of the Nidoran varies between versions with the male being more common in Red version but the female more commonly found in Blue version.",
+        "fr": "Traversez Jadielle et allez à l'ouest vers la Route 22 où vous pouvez attraper les Pokémon suivants. La rareté des Nidoran varie selon la version."
+      },
+      "tip": {
+        "en": "Catch another Spearow for a trade later on. You can battle your rival here for extra experience. Nidorina and Nidorino can't evolve any further just yet.",
+        "fr": "Attrapez un autre Piafabec pour un échange plus tard. Vous pouvez affronter votre rival ici pour de l'expérience. Nidorina et Nidorino ne peuvent pas encore évoluer."
+      },
+      "pokemons": ["029", "032", "021"]
+    },
+    {
+      "id": "viridian_forest",
+      "title": { "en": "Viridian Forest", "fr": "Forêt de Jade" },
+      "text": {
+        "en": "Back into Viridian City, head north this time and skip over Route 2 to Viridian Forest. Depending on your version, one of these bugs will be rarer than the others. Red will find Weedle more frequently while Blue has Caterpie as the common bug.",
+        "fr": "Retournez à Jadielle puis au nord vers la Forêt de Jade. Selon la version, Chenipan ou Aspicot sera plus fréquent."
+      },
+      "tip": {
+        "en": "You can catch Metapod and Kakuna but as they won't have any attacking moves, the better strategy is to level Caterpie/Weedle up to level 9, evolve them and then train the cocoons one more level.",
+        "fr": "Vous pouvez attraper Chrysacier et Coconfort mais ils n'ont pas d'attaques. Faites évoluer Chenipan/Aspicot au niveau 9 puis entraînez les cocons."
+      },
+      "pokemons": ["010", "013", "025"]
+    }
+  ]
+}
