@@ -275,30 +275,74 @@ const GuideRedBlue = () => {
     );
   };
 
-return (
-  <div className="flex flex-row-reverse">
-    {/* Sidebar Pokédex sticky à droite, 30% */}
-    <aside className="hidden lg:block w-[30%] flex-shrink-0 p-6">
-      <div className="sticky top-8">
-        <h2 className="text-lg font-bold mb-2 text-center">{t('pokedexTitle')}</h2>
-        <div className="grid grid-cols-9 gap-1 bg-gray-50 border border-gray-200 rounded-lg p-2">
-          {Array.from({ length: 151 }, (_, i) => {
-            const num = (i + 1).toString().padStart(3, '0');
-            const poke = getPokemon(num);
-            return (
-              <div key={num} className="flex flex-col items-center">
-                <img
-                  src={`/src/assets/images/pokemons/${num}.png`}
-                  alt={`Pokemon ${num}`}
-                  className={`w-8 h-8 object-contain transition-opacity ${caught.includes(num) ? 'opacity-20' : ''}`}
-                  loading="lazy"
-                />
-              </div>
-            );
-          })}
+  // Liste des Pokémon exclusifs à Rouge
+  const redExclusiveIds = [
+    "023", "024", "043", "044", "045", "056", "057", "058", "059", "123", "125"
+  ];
+
+  // Calcul du nombre de Pokémon attrapés (opacity-20) dans le Pokédex principal (hors exclusifs)
+  const transparentCount = Array.from({ length: 151 }, (_, i) => {
+    const num = (i + 1).toString().padStart(3, '0');
+    return caught.includes(num) && !redExclusiveIds.includes(num);
+  }).filter(Boolean).length;
+
+  return (
+    <div className="flex flex-row-reverse">
+      {/* Sidebar Pokédex sticky à droite, 30% */}
+      <aside className="hidden lg:block w-[30%] flex-shrink-0 p-6">
+        <div className="sticky top-8">
+          <h2 className="text-lg font-bold mb-2 text-center">{t('pokedexTitle')}</h2>
+          <div className="text-xs text-center text-gray-600 mb-2">
+            {t('caught')}
+            <span className="font-bold text-green-700 mx-1">{transparentCount}</span>
+            / 151
+          </div>
+          {/* Pokédex principal avec croix rouge et transparence pour les exclusifs */}
+          <div className="grid grid-cols-9 gap-1 bg-gray-50 border border-gray-200 rounded-lg p-2">
+            {Array.from({ length: 151 }, (_, i) => {
+              const num = (i + 1).toString().padStart(3, '0');
+              const poke = getPokemon(num);
+              const isRedExclusive = redExclusiveIds.includes(num);
+              return (
+                <div key={num} className="flex flex-col items-center relative">
+                  <img
+                    src={`/src/assets/images/pokemons/${num}.png`}
+                    alt={`Pokemon ${num}`}
+                    className={`w-8 h-8 object-contain transition-opacity ${caught.includes(num) ? 'opacity-20' : ''} ${isRedExclusive ? 'opacity-30' : ''}`}
+                    loading="lazy"
+                  />
+                  {isRedExclusive && (
+                    <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
+                      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 5L23 23M23 5L5 23" stroke="#ef4444" strokeWidth="3.2" strokeLinecap="round"/>
+                      </svg>
+                    </span>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+          {/* Tableau des exclusifs à Rouge */}
+          <div className="mt-6">
+            <h3 className="text-md font-bold mb-2 text-center text-red-700">{t('redExclusive')}</h3>
+            <div className="grid grid-cols-9 gap-2 bg-red-50 border border-red-200 rounded-lg p-2">
+              {redExclusiveIds.map(num => {
+                const poke = getPokemon(num);
+                return (
+                  <div key={num} className="flex flex-col items-center">
+                    <img
+                      src={`/src/assets/images/pokemons/${num}.png`}
+                      alt={t(`pokemon${num}`)}
+                      className="w-10 h-10 object-contain opacity-80"
+                      loading="lazy"
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
-      </div>
-    </aside>
+      </aside>
     {/* Contenu principal à gauche, 70% */}
     <main className="w-full lg:w-[70%] max-w-4xl mx-auto p-6 bg-white">
         <div className="bg-gradient-to-r from-red-500 to-blue-500 text-white rounded-lg p-6 mb-8">

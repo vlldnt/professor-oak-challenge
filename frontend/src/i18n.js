@@ -1,3 +1,4 @@
+
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
@@ -15,28 +16,28 @@ const resources = {
       // Home page
       welcomeTitle: "Welcome to the",
       professorOakChallenge: "Professor Oak Challenge",
-      heroDescription: "Embark on the ultimate challenge to become a true Pokémon master. Discover, collect, and evolve every available Pokémon before each badge — no shortcuts, just pure mastery!",
+      heroDescription: "Embark on the ultimate challenge to become a true Pokemon master. Discover, collect, and evolve every available Pokemon before each badge — no shortcuts, just pure mastery!",
       startJourney: "Start Your Journey",
       learnMore: "Learn More",
       
       // Home page guides overview
       collectPokemon: "Detailed Red & Blue Guide",
-      collectDescription: "Complete step-by-step guide for Pokémon Red and Blue versions with detailed strategies and locations.",
+      collectDescription: "Complete step-by-step guide for Pokemon Red and Blue versions with detailed strategies and locations.",
       trainBattle: "Track Your Progress",
       trainDescription: "Keep track of your advancement through the Professor Oak Challenge with detailed statistics and milestones.",
-      becomeChampion: "Catch Every Available Pokémon",
-      championDescription: "Capture and evolve every Pokémon available before each gym badge to complete the ultimate challenge.",
+      becomeChampion: "Catch Every Available Pokemon",
+      championDescription: "Capture and evolve every Pokemon available before each gym badge to complete the ultimate challenge.",
       
       // Stats
       yourProgress: "Your Progress",
-      pokemonCaught: "Pokémon Caught",
+      pokemonCaught: "Pokemon Caught",
       badgesEarned: "Badges Earned",
       battlesWon: "Battles Won",
       hoursPlayed: "Hours Played",
       
       // Login page
       welcomeBack: "Welcome Back, Trainer!",
-      signInDescription: "Sign in to continue your Pokémon journey",
+      signInDescription: "Sign in to continue your Pokemon journey",
       emailAddress: "Email Address",
       password: "Password",
       rememberMe: "Remember me",
@@ -46,15 +47,15 @@ const resources = {
       startJourneyHere: "Start your journey here",
       
       // Footer
-      footerDescription: "Embark on the ultimate Pokémon adventure and become a master trainer.",
+      footerDescription: "Embark on the ultimate Pokemon adventure and become a master trainer.",
       
       // Guides page
       guidesTitle: "Game Guides",
-      guidesSubtitle: "Complete guides for your Pokémon adventure through Generation 1 games",
+      guidesSubtitle: "Complete guides for your Pokemon adventure through Generation 1 games",
       generation1: "Generation 1 Guides",
-      pokemonRed: "Pokémon Red",
-      pokemonBlue: "Pokémon Blue", 
-      pokemonYellow: "Pokémon Yellow",
+      pokemonRed: "Pokemon Red",
+      pokemonBlue: "Pokemon Blue", 
+      pokemonYellow: "Pokemon Yellow",
       // Red/Blue Guide Specific
       pokedexTitle: "Pokédex (001-151)",
       part1Title: "Part 1 - Pre Badge #1 from Brock",
@@ -76,7 +77,7 @@ const resources = {
       route1Title: "Route 1",
       route1Text: "Only two pokemon to catch and evolve here. You can of course opt to hold out a little longer to get them at slightly higher levels but it's negligible extra work that a couple of Metapod/Kakuna can't fix.",
       route22Title: "Route 22",
-      route22Text: "Pass through Viridian City and go West to Route 22 where you can catch the following Pokémon. The rarity of the Nidoran varies between versions with the male being more common in Red version but the female more commonly found in Blue version.",
+      route22Text: "Pass through Viridian City and go West to Route 22 where you can catch the following Pokemon. The rarity of the Nidoran varies between versions with the male being more common in Red version but the female more commonly found in Blue version.",
       tipTitle: "Tip:",
       tipText: "Catch another Spearow for a trade later on. You can battle your rival here for extra experience. Nidorina and Nidorino can't evolve any further just yet.",
       viridianForestTitle: "Viridian Forest",
@@ -86,19 +87,21 @@ const resources = {
       endPart1: "End of Part 1",
       caught: "Caught:",
       remaining: "Remaining:",
+      redExclusive: "Red Version Exclusive Pokémon",
+      redExclusiveList: "Unavailable in Blue Version:",
       // About section (integrated in Home)
       aboutTitle: "About the",
       challenge: "Challenge",
-      aboutDescription: "The Professor Oak Challenge is an epic quest inspired by the legendary Pokémon professor himself.",
+      aboutDescription: "The Professor Oak Challenge is an epic quest inspired by the legendary Pokemon professor himself.",
       ourMission: "Our Mission",
-      missionDescription1: "We believe that every trainer deserves the chance to become a Pokémon master. Our platform provides the tools, knowledge, and community needed to excel in your journey.",
-      missionDescription2: "From catching your first Pokémon to facing the Elite Four, we're here to guide you through every step of your adventure in the Kanto region.",
+      missionDescription1: "We believe that every trainer deserves the chance to become a Pokemon master. Our platform provides the tools, knowledge, and community needed to excel in your journey.",
+      missionDescription2: "From catching your first Pokemon to facing the Elite Four, we're here to guide you through every step of your adventure in the Kanto region.",
       completePokedex: "Complete Pokédex tracking",
       battleGuides: "Battle strategy guides",
       communityForums: "Community forums",
       progressTracking: "Progress tracking tools",
       ourGoal: "Our Goal",
-      goalDescription: "Help 10,000+ trainers become Pokémon masters by providing the ultimate training platform and community support."
+      goalDescription: "Help 10,000+ trainers become Pokemon masters by providing the ultimate training platform and community support."
     }
   },
   fr: {
@@ -184,6 +187,8 @@ const resources = {
       endPart1: "Fin de la Partie 1",
       caught: "Capturés :",
       remaining: "Restants :",
+      redExclusive: "Pokémon exclusifs à la version Rouge",
+      redExclusiveList: "Indisponibles sur la version Bleue :",
       // About section (integrated in Home)
       aboutTitle: "À propos du",
       challenge: "Challenge",
