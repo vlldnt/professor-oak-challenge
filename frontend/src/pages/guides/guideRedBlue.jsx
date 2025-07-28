@@ -150,58 +150,127 @@ const GuideRedBlue = () => {
         </div>
       );
     }
+    // Détermine si le dernier Pokémon de la lignée est attrapé
+    let lastId = null;
+    if (chain.length > 0 && chain[chain.length - 1].to) {
+      lastId = chain[chain.length - 1].to.id;
+    } else if (chain.length > 0) {
+      lastId = chain[chain.length - 1].from.id;
+    } else {
+      lastId = startId;
+    }
+    const isLineComplete = caught.includes(lastId);
+
+    // Gestion starters Bourg Palette : opacifier toute la lignée des starters non choisis
+    const starterFamilies = [
+      ["001", "002", "003"],
+      ["004", "005", "006"],
+      ["007", "008", "009"]
+    ];
+    const allStarterIds = starterFamilies.flat();
+    const isPalletStarter = allStarterIds.includes(startId);
+    // Trouve le starter choisi (001, 004, 007)
+    const chosenStarter = caught.find((id) => ["001", "004", "007"].includes(id));
+    // Si on est sur une lignée starter, on détermine si c'est la lignée à opacifier
+    let shouldFade = false;
+    let shouldBlock = false;
+    if (isPalletStarter && chosenStarter) {
+      // Cherche la famille du starter courant et du starter choisi
+      const thisFamily = starterFamilies.find(fam => fam.includes(startId));
+      const chosenFamily = starterFamilies.find(fam => fam.includes(chosenStarter));
+      if (thisFamily !== chosenFamily) {
+        shouldFade = true;
+        shouldBlock = true;
+      }
+    }
+
     return (
-      <div className="flex items-center bg-blue-50 border border-blue-200 rounded-lg p-3 mb-2 overflow-x-auto w-fit ml-0 sm:p-2 sm:mb-1 max-w-full sm:max-w-[98vw]">
-        {chain.map((step, idx) => (
-          <React.Fragment key={step.from.id}>
-            <div className="flex flex-col items-center min-w-[80px] sm:min-w-[56px]">
-              <img
-                src={`/src/assets/images/pokemons/${step.from.id}.png`}
-                alt={step.from.name[i18n.language] || step.from.name.en}
-                className={`w-10 h-10 sm:w-16 sm:h-16 cursor-pointer transition-opacity ${caught.includes(step.from.id) ? 'opacity-40' : ''}`}
-                onClick={() => toggleCaught(step.from.id)}
-              />
-              <span className="text-[13px] text-gray-800 sm:text-[15px] text-center mt-1">
-                {step.from.name[i18n.language] || step.from.name.en}
-              </span>
-              {renderCapture(step.from)}
-            </div>
-            {/* Flèche et infos seulement si ce n'est pas une évolution par Pierre Lune */}
-            {step.evolution &&
-              !(
-                step.evolution.stone &&
-                (step.evolution.stone.fr === "Pierre Lune" ||
-                  step.evolution.stone.en === "Moon Stone")
-              ) && (
-                <div className="flex flex-col items-center mx-2 pr-2 pf-2 sm:mx-1 sm:pr-1">
-                  <span className="text-lg sm:text-base">→</span>
-                  <span className="text-s text-green-600 font-bold mt-1 sm:text-xs sm:mt-0.5">
-                    {step.evolution.level
-                      ? `Lv.${step.evolution.level}`
-                      : step.evolution.stone
-                      ? (step.evolution.stone[i18n.language] || step.evolution.stone.en)
-                      : step.evolution.trade
-                      ? (i18n.language === 'fr' ? 'Échange' : 'Trade')
-                      : ""}
+      <div className={`flex items-center bg-blue-50 border border-blue-200 rounded-lg p-3 mb-2 overflow-x-auto w-fit ml-0 sm:p-2 sm:mb-1 max-w-full sm:max-w-[98vw] relative ${shouldFade ? 'opacity-30 pointer-events-none' : ''}`}> 
+        {chain.map((step, idx) => {
+          // Pour chaque étape, on ne peut cliquer que sur le premier ou si le précédent est attrapé
+          const canClickFrom = shouldBlock ? false : (idx === 0 || caught.includes(chain[idx - 1].from.id) && (idx === 1 || caught.includes(chain[idx - 1].to?.id)));
+          // Pour la dernière évolution
+          let canClickTo = false;
+          if (idx === chain.length - 1 && step.to) {
+            canClickTo = shouldBlock ? false : caught.includes(step.from.id);
+          }
+          return (
+            <React.Fragment key={step.from.id}>
+              <div className="flex flex-col items-center min-w-[80px] sm:min-w-[56px] relative">
+                <img
+                  src={`/src/assets/images/pokemons/${step.from.id}.png`}
+                  alt={step.from.name[i18n.language] || step.from.name.en}
+                  className={`w-10 h-10 sm:w-16 sm:h-16 cursor-pointer transition-opacity ${caught.includes(step.from.id) ? 'opacity-40' : ''}`}
+                  style={canClickFrom ? {} : { pointerEvents: 'none' }}
+                  onClick={() => canClickFrom && toggleCaught(step.from.id)}
+                />
+                {shouldBlock && (
+                  <span className="absolute top-1 left-1">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="11" cy="11" r="10" fill="#ef4444"/>
+                      <path d="M7 7L15 15M15 7L7 15" stroke="white" strokeWidth="2.2" strokeLinecap="round"/>
+                    </svg>
                   </span>
+                )}
+                <span className="text-[13px] text-gray-800 sm:text-[15px] text-center mt-1">
+                  {step.from.name[i18n.language] || step.from.name.en}
+                </span>
+                {renderCapture(step.from)}
+              </div>
+              {/* Flèche et infos seulement si ce n'est pas une évolution par Pierre Lune */}
+              {step.evolution &&
+                !(
+                  step.evolution.stone &&
+                  (step.evolution.stone.fr === "Pierre Lune" ||
+                    step.evolution.stone.en === "Moon Stone")
+                ) && (
+                  <div className="flex flex-col items-center mx-2 pr-2 pf-2 sm:mx-1 sm:pr-1">
+                    <span className="text-lg sm:text-base">→</span>
+                    <span className="text-s text-green-600 font-bold mt-1 sm:text-xs sm:mt-0.5">
+                      {step.evolution.level
+                        ? `Lv.${step.evolution.level}`
+                        : step.evolution.stone
+                        ? (step.evolution.stone[i18n.language] || step.evolution.stone.en)
+                        : step.evolution.trade
+                        ? (i18n.language === 'fr' ? 'Échange' : 'Trade')
+                        : ""}
+                    </span>
+                  </div>
+                )}
+              {idx === chain.length - 1 && step.to && (
+                <div className="flex flex-col items-center min-w-[80px] sm:min-w-[56px] relative">
+                  <img
+                    src={`/src/assets/images/pokemons/${step.to.id}.png`}
+                    alt={step.to.name[i18n.language] || step.to.name.en}
+                    className={`w-10 h-10 sm:w-16 sm:h-16 cursor-pointer transition-opacity ${caught.includes(step.to.id) ? 'opacity-40' : ''}`}
+                    style={canClickTo ? {} : { pointerEvents: 'none' }}
+                    onClick={() => canClickTo && toggleCaught(step.to.id)}
+                  />
+                  {shouldBlock && (
+                    <span className="absolute top-1 left-1">
+                      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="11" cy="11" r="10" fill="#ef4444"/>
+                        <path d="M7 7L15 15M15 7L7 15" stroke="white" strokeWidth="2.2" strokeLinecap="round"/>
+                      </svg>
+                    </span>
+                  )}
+                  <span className="text-[13px] text-gray-800 sm:text-[15px] text-center mt-1">
+                    {step.to.name[i18n.language] || step.to.name.en}
+                  </span>
+                  {renderCapture(step.to)}
                 </div>
               )}
-            {idx === chain.length - 1 && step.to && (
-              <div className="flex flex-col items-center min-w-[80px] sm:min-w-[56px]">
-                <img
-                  src={`/src/assets/images/pokemons/${step.to.id}.png`}
-                  alt={step.to.name[i18n.language] || step.to.name.en}
-                  className={`w-10 h-10 sm:w-16 sm:h-16 cursor-pointer transition-opacity ${caught.includes(step.to.id) ? 'opacity-40' : ''}`}
-                  onClick={() => toggleCaught(step.to.id)}
-                />
-                <span className="text-[13px] text-gray-800 sm:text-[15px] text-center mt-1">
-                  {step.to.name[i18n.language] || step.to.name.en}
-                </span>
-                {renderCapture(step.to)}
-              </div>
-            )}
-          </React.Fragment>
-        ))}
+            </React.Fragment>
+          );
+        })}
+        {isLineComplete && (
+          <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="12" fill="#22c55e"/>
+              <path d="M7 13.5L11 17L17 9.5" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+        )}
       </div>
     );
   };
