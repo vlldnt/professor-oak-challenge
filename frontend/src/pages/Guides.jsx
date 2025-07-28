@@ -5,28 +5,23 @@ function Guides({ setActiveTab }) {
 
   const gen1Guides = [
     {
-      title: t('pokemonRed'),
-      description: t('redDescription'),
-      image: `/src/assets/images/guides/red-${i18n.language}.webp`,
-      color: "from-red-500 to-red-600",
-      hoverColor: "hover:from-red-600 hover:to-red-700",
-      route: "gen1-guide"
+      images: [
+        `/src/assets/images/guides/red-${i18n.language}.webp`,
+        `/src/assets/images/guides/blue-${i18n.language}.webp`
+      ],
+      color: "from-red-500 to-blue-600",
+      hoverColor: "hover:from-red-600 hover:to-blue-700",
+      route: "gen1-guide",
+      available: true
     },
     {
-      title: t('pokemonBlue'),
-      description: t('blueDescription'),
-      image: `/src/assets/images/guides/blue-${i18n.language}.webp`,
-      color: "from-blue-500 to-blue-600",
-      hoverColor: "hover:from-blue-600 hover:to-blue-700",
-      route: "gen1-guide"
-    },
-    {
-      title: t('pokemonYellow'),
-      description: t('yellowDescription'),
-      image: `/src/assets/images/guides/yellow-${i18n.language}.webp`,
+      images: [
+        `/src/assets/images/guides/yellow-${i18n.language}.webp`
+      ],
       color: "from-yellow-500 to-yellow-600",
       hoverColor: "hover:from-yellow-600 hover:to-yellow-700",
-      route: "gen1-guide"
+      route: "gen1-guide",
+      available: false
     }
   ]
 
@@ -53,36 +48,53 @@ function Guides({ setActiveTab }) {
         <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
           {t('generation1')}
         </h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           {gen1Guides.map((guide, index) => (
-            <div 
-              key={index} 
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all hover:scale-105 cursor-pointer"
+            <div
+              key={index}
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all hover:scale-105 cursor-pointer flex flex-col items-center"
               onClick={() => handleGuideClick(guide.route)}
             >
-              {/* Image Container */}
-              <div className="relative h-auto overflow-hidden">
-                <img 
-                  src={guide.image}
-                  alt={guide.title}
-                  className="w-full h-full object-cover rounded-t-xl hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition-all duration-300"></div>
+              {/* Images Container */}
+              <div className="flex flex-row justify-center items-center gap-2 pt-6 pb-2">
+                {guide.images.map((img, idx) => (
+                  <div key={idx} className="relative flex items-center justify-center">
+                    <img
+                      src={img}
+                      alt={guide.title}
+                      className="w-32 h-32 object-contain rounded-lg border-2 border-gray-200 shadow-sm bg-white hover:scale-110 transition-transform duration-300"
+                      style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.07)' }}
+                    />
+                    {/* Badge version avec nom complet */}
+                    {guide.images.length > 1 && idx === 0 && (
+                      <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded shadow">{t('pokemonRed')}</span>
+                    )}
+                    {guide.images.length > 1 && idx === 1 && (
+                      <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded shadow">{t('pokemonBlue')}</span>
+                    )}
+                    {guide.images.length === 1 && (
+                      <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded shadow">{t('pokemonYellow')}</span>
+                    )}
+                  </div>
+                ))}
               </div>
-              
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">
-                  {guide.title}
-                </h3>
-                
-                {/* Action Button */}
-                <button 
-                  onClick={() => handleGuideClick(guide.route)}
-                  className={`w-full bg-gradient-to-r ${guide.color} ${guide.hoverColor} text-white py-3 px-4 rounded-lg font-semibold transition-all transform hover:scale-105`}
-                >
-                  {i18n.language === 'fr' ? 'Voir le Guide' : 'View Guide'}
-                </button>
+              {/* Unique Action Button */}
+              <div className="p-5 pt-2 w-full flex flex-col items-center">
+                {guide.available ? (
+                  <button
+                    onClick={e => { e.stopPropagation(); handleGuideClick(guide.route); }}
+                    className={`w-full bg-gradient-to-r ${guide.color} ${guide.hoverColor} text-white py-2 px-4 rounded-lg font-semibold transition-all transform hover:scale-105 text-base`}
+                  >
+                    {i18n.language === 'fr' ? 'Voir le Guide' : 'View Guide'}
+                  </button>
+                ) : (
+                  <button
+                    disabled
+                    className="w-full bg-gradient-to-r from-gray-300 to-gray-400 text-gray-600 py-2 px-4 rounded-lg font-semibold text-base opacity-70 cursor-not-allowed"
+                  >
+                    {i18n.language === 'fr' ? 'Bientôt disponible' : 'Coming soon'}
+                  </button>
+                )}
               </div>
             </div>
           ))}
