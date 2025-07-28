@@ -45,13 +45,10 @@ const GuideRedBlue = () => {
       ) {
         if (poke.capture_percentage.R !== poke.capture_percentage.B) {
           return (
-            <div className="text-[1px] italic mt-1">
-              <span className="text-red-600 font-mono font-bold italic">
-                {poke.capture_percentage.R}% /{" "}
-              </span>{" "}
-              <span className="text-blue-600 font-mono font-bold italic">
-                {poke.capture_percentage.B}%
-              </span>
+            <div className="italic font-bold text-[12px] mt-1">
+              <span className="text-red-600">{poke.capture_percentage.R}%</span>
+              <span className="mx-1">/</span>
+              <span className="text-blue-600">{poke.capture_percentage.B}%</span>
             </div>
           );
         } else {
