@@ -159,7 +159,6 @@ const GuideRedBlue = () => {
     } else {
       lastId = startId;
     }
-    const isLineComplete = caught.includes(lastId);
 
     // Gestion starters Bourg Palette : opacifier toute la lignée des starters non choisis
     const starterFamilies = [
@@ -204,6 +203,14 @@ const GuideRedBlue = () => {
                   style={canClickFrom ? {} : { pointerEvents: 'none' }}
                   onClick={() => canClickFrom && toggleCaught(step.from.id)}
                 />
+                {caught.includes(step.from.id) && (
+                  <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="12" fill="#22c55e"/>
+                      <path d="M7 13.5L11 17L17 9.5" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                )}
                 {shouldBlock && (
                   <span className="absolute top-1 left-1">
                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -246,6 +253,14 @@ const GuideRedBlue = () => {
                     style={canClickTo ? {} : { pointerEvents: 'none' }}
                     onClick={() => canClickTo && toggleCaught(step.to.id)}
                   />
+                  {caught.includes(step.to.id) && (
+                    <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="12" fill="#22c55e"/>
+                        <path d="M7 13.5L11 17L17 9.5" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </span>
+                  )}
                   {shouldBlock && (
                     <span className="absolute top-1 left-1">
                       <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -263,14 +278,6 @@ const GuideRedBlue = () => {
             </React.Fragment>
           );
         })}
-        {isLineComplete && (
-          <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="12" fill="#22c55e"/>
-              <path d="M7 13.5L11 17L17 9.5" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-        )}
       </div>
     );
   };
