@@ -173,16 +173,39 @@ const GuideRedBlue = () => {
     );
   };
 
-  return (
-    <div className="max-w-4xl mx-auto p-6 bg-white">
-      <div className="bg-gradient-to-r from-red-500 to-blue-500 text-white rounded-lg p-6 mb-8">
-        <h1 className="text-3xl font-bold mb-2">
-          Part 1 - Pre Badge #1 from Brock
-        </h1>
-        <p className="text-lg opacity-90">Professor Oak Challenge Guide</p>
+return (
+  <div className="flex flex-row-reverse">
+    {/* Sidebar Pokédex sticky à droite, 30% */}
+    <aside className="hidden lg:block w-[30%] flex-shrink-0 pl-6">
+      <div className="sticky top-6">
+        <h2 className="text-lg font-bold mb-2 text-center">Pokédex (001-151)</h2>
+        <div className="grid grid-cols-9 gap-1 bg-gray-50 border border-gray-200 rounded-lg p-2">
+          {Array.from({ length: 151 }, (_, i) => {
+            const num = (i + 1).toString().padStart(3, '0');
+            return (
+              <div key={num} className="flex flex-col items-center">
+                <img
+                  src={`/src/assets/images/pokemons/${num}.png`}
+                  alt={`Pokemon ${num}`}
+                  className="w-8 h-8 object-contain"
+                  loading="lazy"
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
+    </aside>
+    {/* Contenu principal à gauche, 70% */}
+    <main className="w-full lg:w-[70%] max-w-4xl mx-auto p-6 bg-white">
+        <div className="bg-gradient-to-r from-red-500 to-blue-500 text-white rounded-lg p-6 mb-8">
+          <h1 className="text-3xl font-bold mb-2">
+            Part 1 - Pre Badge #1 from Brock
+          </h1>
+          <p className="text-lg opacity-90">Professor Oak Challenge Guide</p>
+        </div>
 
-      <div className="bg-amber-100 border-l-4 border-amber-500 p-4 mb-6">
+        <div className="bg-amber-100 border-l-4 border-amber-500 p-4 mb-6">
         <p className="text-amber-800 font-medium">
           This first part will cover everything you can do BEFORE you get that
           first badge from Brock. This is probably the most daunting part of the
@@ -343,6 +366,7 @@ const GuideRedBlue = () => {
           <div className="text-4xl">🎯</div>
         </div>
       </div>
+      </main>
     </div>
   );
 };
