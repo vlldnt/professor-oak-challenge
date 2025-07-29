@@ -15,27 +15,58 @@ Le **Professor Oak Challenge** consiste à compléter un Pokédex à 100 % dès 
 Cette application web vous permet de **suivre votre progression** dans ce défi légendaire avec un tableau de bord personnalisé, des statistiques détaillées et un historique complet de votre aventure.
 
 ## 🛠️ Technologies utilisées
-
-### Frontend
-- **React 18** - Bibliothèque UI moderne avec hooks
-- **Vite** - Build tool ultra-rapide pour le développement
-- **Tailwind CSS** - Framework CSS utility-first
-- **i18next** - Gestion de l'internationalisation
-
-### Backend
-- **Node.js 22** - Runtime JavaScript côté serveur
-- **Express.js 4** - Framework web minimaliste et flexible
-- **SQLite 3** - Base de données embarquée légère
-- **JWT** - Authentification par tokens JSON
-- **bcrypt** - Hachage sécurisé des mots de passe
+- React 18
+- Vite
+- Tailwind CSS
+- i18next
+- Node.js 22
+- Express.js 4
+- SQLite 3
+- JWT
+- bcrypt
 
 ---
 
-## 📄 Licence
+## 📚 Documentation des routes principales
 
-Projet sous licence **MIT** - voir [LICENSE](LICENSE) pour plus de détails.
+### 👤 users — gestion des comptes
+| Méthode | URL           | Description                  |
+|---------|---------------|------------------------------|
+| POST    | /users        | Créer un compte              |
+| GET     | /users/:id    | Récupérer un utilisateur     |
+| PUT     | /users/:id    | Mettre à jour un utilisateur |
+| DELETE  | /users/:id    | Supprimer un utilisateur     |
+
+- Création d'un user : email (regex email), username (string, 20 max), mdp (1 MAJ, 1 chiffre, min 8, bcrypt)
+- CRUD complet pour l'utilisateur connecté (un user ne peut voir que ses infos)
+
+### 🗺️ user_guides — guides suivis par l’utilisateur
+| Méthode | URL                        | Description                      |
+|---------|----------------------------|----------------------------------|
+| POST    | /users/:userId/guides      | Créer un guide pour un utilisateur|
+| GET     | /users/:userId/guides      | Lister les guides d’un utilisateur|
+| GET     | /guides/:guideId           | Récupérer un guide spécifique     |
+| DELETE  | /guides/:guideId           | Supprimer un guide               |
+
+- Un utilisateur peut créer, réinitialiser ou supprimer ses guides.
+- La base de données gère la relation entre user et guides.
+
+### 🐱‍👤 captures — pokémons capturés dans un guide
+| Méthode | URL                          | Description                      |
+|---------|------------------------------|----------------------------------|
+| POST    | /guides/:guideId/captures    | Ajouter une capture              |
+| GET     | /guides/:guideId/captures    | Voir toutes les captures d’un guide|
+| GET     | /captures/:captureId         | Récupérer une capture spécifique |
+| DELETE  | /captures/:captureId         | Supprimer une capture            |
+
+- Un guide peut contenir plusieurs pokémons capturés.
+- Un pokémon collecté peut être supprimé (erreur, correction, etc).
+- Les 3 tables sont liées à l'utilisateur connecté (user A, B, C...)
 
 ---
+
+Projet sous licence MIT — voir [`LICENSE`](LICENSE) pour plus de détails.
+
 
 <div align="center">
   <h3>🎯 Relevez le défi ultime ! 🎯</h3>

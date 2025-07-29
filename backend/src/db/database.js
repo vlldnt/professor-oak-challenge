@@ -9,76 +9,74 @@ const db = new sqlite3.Database(dbPath, (err) => {
     console.error('❌ Erreur lors de la connexion à SQLite:', err.message);
   } else {
     console.log('✅ Connexion à SQLite réussie:', dbPath);
+    db.run('PRAGMA foreign_keys = ON');
   }
 });
 
-// Fonction d'initialisation des tables
-const initDatabase = () => {
+function runAsync(sql) {
   return new Promise((resolve, reject) => {
-    db.serialize(() => {
-      // Table des utilisateurs
-      db.run(`CREATE TABLE IF NOT EXISTS users (
+    db.run(sql, function(err) {
+      if (err) reject(err);
+      else resolve(this);
+    });
+  });
+}
+
+const initDatabase = async () => {
+  try {
+    // Table users
+    await runAsync(`
+      CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         email TEXT UNIQUE NOT NULL,
         username TEXT UNIQUE NOT NULL,
         password TEXT NOT NULL,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
-      )`, (err) => {
-        if (err) console.error('Erreur table users:', err);
-        else console.log('✅ Table users créée/vérifiée');
-      });
+      )
+    `);
+    console.log('✅ Table users créée/vérifiée');
 
-      // Table des Pokémon capturés
-      db.run(`CREATE TABLE IF NOT EXISTS caught_pokemon (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+    // Trigger pour mise à jour automatique de updated_at
+    await runAsync(`
+      CREATE TRIGGER IF NOT EXISTS update_users_updated_at
+      AFTER UPDATE ON users
+      FOR EACH ROW
+      BEGIN
+        UPDATE users SET updated_at = CURRENT_TIMESTAMP WHERE id = OLD.id;
+      END;
+    `);
+    console.log('✅ Trigger update_users_updated_at créé/vérifié');
+
+    // Table user_guides
+    await runAsync(`
+      CREATE TABLE IF NOT EXISTS user_guides (
+        id TEXT PRIMARY KEY,           -- UUID
         user_id INTEGER NOT NULL,
-        pokemon_id INTEGER NOT NULL,
-        pokemon_name TEXT NOT NULL,
-        level INTEGER DEFAULT 1,
-        nickname TEXT,
-        caught_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES users (id),
-        UNIQUE(user_id, pokemon_id)
-      )`, (err) => {
-        if (err) console.error('Erreur table caught_pokemon:', err);
-        else console.log('✅ Table caught_pokemon créée/vérifiée');
-      });
+        guide_name TEXT NOT NULL,
+        started_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+      )
+    `);
+    console.log('✅ Table user_guides créée/vérifiée');
 
-      // Table des badges
-      db.run(`CREATE TABLE IF NOT EXISTS gym_badges (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id INTEGER NOT NULL,
-        badge_name TEXT NOT NULL,
-        gym_leader TEXT NOT NULL,
-        earned_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES users (id)
-      )`, (err) => {
-        if (err) console.error('Erreur table gym_badges:', err);
-        else console.log('✅ Table gym_badges créée/vérifiée');
-      });
+    // Table captures
+    await runAsync(`
+      CREATE TABLE IF NOT EXISTS captures (
+        id TEXT PRIMARY KEY,           -- UUID
+        user_guide_id TEXT NOT NULL,
+        pokemon_id TEXT NOT NULL,
+        captured_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_guide_id) REFERENCES user_guides(id) ON DELETE CASCADE
+      )
+    `);
+    console.log('✅ Table captures créée/vérifiée');
 
-      // Table des statistiques
-      db.run(`CREATE TABLE IF NOT EXISTS user_stats (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id INTEGER UNIQUE NOT NULL,
-        pokemon_caught INTEGER DEFAULT 0,
-        badges_earned INTEGER DEFAULT 0,
-        battles_won INTEGER DEFAULT 0,
-        hours_played INTEGER DEFAULT 0,
-        FOREIGN KEY (user_id) REFERENCES users (id)
-      )`, (err) => {
-        if (err) {
-          console.error('Erreur table user_stats:', err);
-          reject(err);
-        } else {
-          console.log('✅ Table user_stats créée/vérifiée');
-          console.log('🗄️  Base de données initialisée avec succès');
-          resolve();
-        }
-      });
-    });
-  });
+    console.log('🗄️  Base de données initialisée avec succès');
+  } catch (err) {
+    console.error('❌ Erreur lors de l\'initialisation de la base:', err);
+    throw err;
+  }
 };
 
 module.exports = { db, initDatabase };
