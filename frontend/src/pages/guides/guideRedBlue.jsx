@@ -101,17 +101,25 @@ const GuideRedBlue = () => {
     };
 
     // Cas spécial Pikachu : affiche juste Pikachu
-    if (startId === "025" || startId === 25) {
+        if (startId === "025" || startId === 25) {
       const pikachu = getPokemon("025");
       return (
         <div className="flex items-center bg-blue-50 border border-blue-200 rounded-lg p-3 mb-2 overflow-x-auto w-fit ml-0 sm:p-2 sm:mb-1 max-w-full sm:max-w-[98vw]">
-          <div className="flex flex-col items-center min-w-[80px] sm:min-w-[56px]">
+          <div className="flex flex-col items-center min-w-[80px] sm:min-w-[56px] relative">
             <img
               src={`/src/assets/images/pokemons/025.png`}
               alt={pikachu.name[i18n.language] || pikachu.name.en}
               className={`w-10 h-10 sm:w-16 sm:h-16 cursor-pointer transition-opacity ${caught.includes('025') ? 'opacity-40' : ''}`}
               onClick={() => toggleCaught('025')}
             />
+            {caught.includes('025') && (
+              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="12" fill="#22c55e"/>
+                  <path d="M7 13.5L11 17L17 9.5" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span>
+            )}
             <span className="text-[13px] text-gray-800 sm:text-[15px] text-center mt-1">
               {pikachu.name[i18n.language] || pikachu.name.en}
             </span>
