@@ -61,14 +61,7 @@ router.post('/register', async (req, res) => {
       
       const userId = this.lastID;
       
-      // Créer les statistiques initiales pour l'utilisateur
-      const statsStmt = db.prepare('INSERT INTO user_stats (user_id) VALUES (?)');
-      statsStmt.run(userId, function(statsErr) {
-        if (statsErr) {
-          console.error('Erreur création stats:', statsErr);
-        }
-        statsStmt.finalize();
-      });
+      // ...pas de création de user_stats...
       
       // Générer le token
       const token = generateToken({
@@ -199,6 +192,44 @@ router.get('/verify', (req, res) => {
       message: 'Token invalide' 
     });
   }
+});
+
+// Suppression d'un utilisateur via /api/user/delete/:id
+router.delete('/user/delete/:id', async (req, res) => {
+  const userId = req.params.id;
+  if (!userId) {
+    return res.status(400).json({ success: false, message: 'ID utilisateur requis' });
+  }
+  try {
+    db.run('DELETE FROM users WHERE id = ?', [userId], function(err) {
+      if (err) {
+        console.error('Erreur suppression utilisateur:', err);
+        return res.status(500).json({ success: false, message: 'Erreur serveur lors de la suppression' });
+      }
+      if (this.changes === 0) {
+        return res.status(404).json({ success: false, message: 'Utilisateur non trouvé' });
+      }
+      res.json({ success: true, message: 'Utilisateur supprimé avec succès' });
+    });
+  } catch (error) {
+    console.error('Erreur suppression:', error);
+    res.status(500).json({ success: false, message: 'Erreur serveur' });
+  }
+});
+
+// Récupérer les infos d'un utilisateur par son username
+router.get('/user/by-username/:username', (req, res) => {
+  const username = req.params.username;
+  db.get('SELECT id, email, username FROM users WHERE username = ?', [username], (err, user) => {
+    if (err) {
+      console.error('Erreur DB get user:', err);
+      return res.status(500).json({ success: false, message: 'Erreur serveur' });
+    }
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'Utilisateur non trouvé' });
+    }
+    res.json({ success: true, user });
+  });
 });
 
 module.exports = router;

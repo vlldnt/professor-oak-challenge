@@ -184,4 +184,19 @@ router.get('/caught-pokemon', authenticateToken, (req, res) => {
   );
 });
 
+// Récupérer le guide en cours d'un utilisateur
+router.get('/user/:userId/current-guide', (req, res) => {
+  const userId = req.params.userId;
+  db.get('SELECT guide_name FROM user_guides WHERE user_id = ? ORDER BY started_at DESC LIMIT 1', [userId], (err, guide) => {
+    if (err) {
+      console.error('Erreur DB get guide:', err);
+      return res.status(500).json({ success: false, message: 'Erreur serveur' });
+    }
+    if (!guide) {
+      return res.json({ success: true, guide: null });
+    }
+    res.json({ success: true, guide: guide.guide_name });
+  });
+});
+
 module.exports = router;

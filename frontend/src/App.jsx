@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Guides from './pages/Guides'
 import Contact from './pages/Contact'
 import Login from './pages/Login'
+import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import Gen1Guide from './pages/guides/guideRedBlue'
 import apiService from './services/apiService'
@@ -43,7 +44,7 @@ function App() {
     }
 
     const hash = window.location.hash.substring(1)
-    if (hash && ['home', 'guides', 'gen1-guide', 'contact', 'login', 'dashboard'].includes(hash)) {
+    if (hash && ['home', 'guides', 'gen1-guide', 'contact', 'login', 'dashboard', 'register'].includes(hash)) {
       setActiveTab(hash)
     }
   }, [])
@@ -60,6 +61,8 @@ function App() {
         return <Contact />
       case 'login':
         return <Login setActiveTab={handleTabChange} setCurrentUser={setCurrentUser} />
+      case 'register':
+        return <Register setActiveTab={handleTabChange} setCurrentUser={setCurrentUser} />
       case 'dashboard':
         return <Dashboard currentUser={currentUser} />
       default:

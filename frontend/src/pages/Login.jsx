@@ -59,7 +59,7 @@ function Login({ setActiveTab, setCurrentUser }) {
   return (
     <div className="max-w-screen-xl mx-auto px-6 py-16 lg:px-8">
       <div className="max-w-md mx-auto">
-        {/* Header */}
+        {/* Header + bouton créer un compte */}
         <div className="text-center mb-8">
           <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
             <span className="text-2xl">👤</span>
@@ -67,9 +67,19 @@ function Login({ setActiveTab, setCurrentUser }) {
           <h2 className="text-3xl font-bold text-gray-900 mb-2">
             {t('welcomeBack')}
           </h2>
-          <p className="text-gray-600">
+          <p className="text-gray-600 mb-4">
             {t('signInDescription')}
           </p>
+          <button
+            type="button"
+            className="px-6 py-2 bg-gradient-to-r from-green-500 to-blue-600 text-white rounded-lg font-semibold hover:from-blue-600 hover:to-green-700 transition-all"
+            onClick={e => {
+              e.preventDefault();
+              setActiveTab('register');
+            }}
+          >
+            Créer un compte
+          </button>
         </div>
 
         {/* Messages d'état */}
