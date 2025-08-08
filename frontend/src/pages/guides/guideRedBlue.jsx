@@ -14,6 +14,8 @@ import palletTownMap from '../../assets/images/gen_1_routes/pallet_town_map.png'
 import palletTown from '../../assets/images/gen_1_routes/pallet_town.png';
 
 const GuideRedBlue = () => {
+  // State pour la version choisie
+  const [version, setVersion] = useState('red'); // 'red' ou 'blue'
   const { t, i18n } = useTranslation();
   // State for caught/evolved Pokémon (array of string IDs)
   const [caught, setCaught] = useState(() => {
@@ -290,19 +292,39 @@ const GuideRedBlue = () => {
     );
   };
 
-  // Liste des Pokémon exclusifs à Rouge
+  // Liste des Pokémon exclusifs Rouge et Bleu
   const redExclusiveIds = [
     "023", "024", "043", "044", "045", "056", "057", "058", "059", "123", "125"
   ];
+  const blueExclusiveIds = [
+    "027", "028", "037", "038", "054", "055", "069", "070", "071", "124", "126"
+  ];
+
 
   // Calcul du nombre de Pokémon attrapés (opacity-20) dans le Pokédex principal (hors exclusifs)
+  const exclusiveIds = version === 'red' ? redExclusiveIds : blueExclusiveIds;
   const transparentCount = Array.from({ length: 151 }, (_, i) => {
     const num = (i + 1).toString().padStart(3, '0');
-    return caught.includes(num) && !redExclusiveIds.includes(num);
+    return caught.includes(num) && !exclusiveIds.includes(num);
   }).filter(Boolean).length;
 
   return (
     <div className="flex flex-row-reverse">
+      {/* Choix de la version */}
+      <div className="fixed top-4 right-4 z-50 flex gap-2">
+        <button
+          className={`px-4 py-2 rounded font-bold border-2 ${version === 'red' ? 'bg-red-500 text-white border-red-600' : 'bg-white text-red-600 border-red-300'}`}
+          onClick={() => setVersion('red')}
+        >
+          Rouge
+        </button>
+        <button
+          className={`px-4 py-2 rounded font-bold border-2 ${version === 'blue' ? 'bg-blue-500 text-white border-blue-600' : 'bg-white text-blue-600 border-blue-300'}`}
+          onClick={() => setVersion('blue')}
+        >
+          Bleu
+        </button>
+      </div>
       {/* Sidebar Pokédex sticky à droite, 30% */}
       <aside className="hidden lg:block w-[30%] flex-shrink-0 p-6">
         <div className="sticky top-8">
@@ -312,12 +334,12 @@ const GuideRedBlue = () => {
             <span className="font-bold text-green-700 mx-1">{transparentCount}</span>
             / 151
           </div>
-          {/* Pokédex principal avec croix rouge et transparence pour les exclusifs */}
-          <div className="grid grid-cols-9 gap-1 bg-gray-50 border border-gray-200 rounded-lg p-2">
+          {/* Pokédex principal avec croix et transparence pour les exclusifs */}
+          <div className={`grid grid-cols-9 gap-1 border border-gray-200 rounded-lg p-2 ${version === 'red' ? 'bg-red-50' : 'bg-blue-50'}`}>
             {Array.from({ length: 151 }, (_, i) => {
               const num = (i + 1).toString().padStart(3, '0');
               const poke = getPokemon(num);
-              const isRedExclusive = redExclusiveIds.includes(num);
+              const isExclusive = exclusiveIds.includes(num);
               // Détection starters non choisis
               const starterFamilies = [
                 ["001", "002", "003"],
@@ -339,13 +361,13 @@ const GuideRedBlue = () => {
                   <img
                     src={`/src/assets/images/pokemons/${num}.png`}
                     alt={`Pokemon ${num}`}
-                    className={`w-8 h-8 object-contain transition-opacity ${caught.includes(num) ? 'opacity-20' : ''} ${isRedExclusive || isOtherStarter ? 'opacity-30' : ''}`}
+                    className={`w-8 h-8 object-contain transition-opacity ${caught.includes(num) ? 'opacity-20' : ''} ${isExclusive || isOtherStarter ? 'opacity-30' : ''}`}
                     loading="lazy"
                   />
-                  {(isRedExclusive || isOtherStarter) && (
+                  {(isExclusive || isOtherStarter) && (
                     <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
                       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 5L23 23M23 5L5 23" stroke="#ef4444" strokeWidth="3.2" strokeLinecap="round"/>
+                        <path d="M5 5L23 23M23 5L5 23" stroke={version === 'red' ? '#ef4444' : '#2563eb'} strokeWidth="3.2" strokeLinecap="round"/>
                       </svg>
                     </span>
                   )}
@@ -353,11 +375,11 @@ const GuideRedBlue = () => {
               );
             })}
           </div>
-          {/* Tableau des exclusifs à Rouge */}
+          {/* Tableau des exclusifs à la version choisie */}
           <div className="mt-6">
-            <h3 className="text-md font-bold mb-2 text-center text-red-700">{t('redExclusive')}</h3>
-            <div className="grid grid-cols-6 gap-2 bg-red-50 border border-red-200 rounded-lg p-2">
-              {redExclusiveIds.map(num => {
+            <h3 className={`text-md font-bold mb-2 text-center ${version === 'red' ? 'text-blue-700' : 'text-red-700'}`}>{version === 'red' ? t('blueExclusive') : t('redExclusive')}</h3>
+            <div className={`grid grid-cols-6 gap-2 ${version === 'red' ? 'bg-blue-50 border border-blue-200' : 'bg-red-50 border border-red-200'} rounded-lg p-2`}>
+              {(version === 'red' ? blueExclusiveIds : redExclusiveIds).map(num => {
                 const poke = getPokemon(num);
                 return (
                   <div key={num} className="flex flex-col items-center">
@@ -372,7 +394,6 @@ const GuideRedBlue = () => {
               })}
             </div>
             {/* Starters non choisis (indisponibles) */}
-            {/* Détection starters non choisis */}
             {(() => {
               const starterFamilies = [
                 ["001", "002", "003"],
@@ -401,7 +422,6 @@ const GuideRedBlue = () => {
                           className="w-10 h-10 object-contain"
                           loading="lazy"
                         />
-
                       </div>
                     ))}
                   </div>

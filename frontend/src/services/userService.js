@@ -16,3 +16,19 @@ class UserService {
 }
 
 export default new UserService();
+
+export async function updateUser(id, data) {
+  const response = await fetch(`http://localhost:3001/api/auth/user/${id}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  return response.json();
+}
+
+export async function deleteUser(id) {
+  const response = await fetch(`http://localhost:3001/api/auth/user/delete/${id}`, {
+    method: 'DELETE',
+  });
+  return response.ok;
+}

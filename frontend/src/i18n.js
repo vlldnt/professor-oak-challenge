@@ -87,8 +87,10 @@ const resources = {
       endPart1: "End of Part 1",
       caught: "Caught:",
       remaining: "Remaining:",
-      redExclusive: "Red Version Exclusive Pokémon",
+      redExclusive: "Red Version Exclusive Pokemon",
       redExclusiveList: "Unavailable in Blue Version:",
+      blueExclusive: "Blue Version Exclusive Pokemon",
+      bleuEsclusiveList: "Unavailable in Red Version:",
       // About section (integrated in Home)
       aboutTitle: "About the",
       challenge: "Challenge",
@@ -189,6 +191,8 @@ const resources = {
       remaining: "Restants :",
       redExclusive: "Pokémon exclusifs à la version Rouge",
       redExclusiveList: "Indisponibles sur la version Bleue :",
+      blueExclusive: "Pokémon exclusifs à la version Bleu",
+      blueExclusiveList: "Indisponibles sur la version Rouge :",
       // About section (integrated in Home)
       aboutTitle: "À propos du",
       challenge: "Challenge",

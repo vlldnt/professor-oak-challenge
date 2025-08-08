@@ -1,6 +1,7 @@
 require('dotenv').config();
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
+const { randomUUID } = require('crypto');
 
 const dbPath = path.join(__dirname, '..', process.env.DB_NAME || 'professor_oak_challenge.db');
 
@@ -27,7 +28,7 @@ const initDatabase = async () => {
     // Table users
     await runAsync(`
       CREATE TABLE IF NOT EXISTS users (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        id TEXT PRIMARY KEY,
         email TEXT UNIQUE NOT NULL,
         username TEXT UNIQUE NOT NULL,
         password TEXT NOT NULL,
@@ -47,6 +48,30 @@ const initDatabase = async () => {
       END;
     `);
     console.log('✅ Trigger update_users_updated_at créé/vérifié');
+
+    // Table guides_list
+    await runAsync(`
+      CREATE TABLE IF NOT EXISTS guides_list (
+        id TEXT PRIMARY KEY,
+        guide_name_fr TEXT NOT NULL,
+        guide_name_en TEXT NOT NULL
+      )
+    `);
+    console.log('✅ Table guides_list créée/vérifiée');
+
+    // Ajout des guides si la table est vide
+    db.get('SELECT COUNT(*) as count FROM guides_list', (err, row) => {
+      if (!err && row.count === 0) {
+        db.run(
+          `INSERT INTO guides_list (id, guide_name_fr, guide_name_en) VALUES (?, ?, ?)`,
+          [randomUUID(), 'Pokémon Jaune', 'Pokemon Yellow']
+        );
+        db.run(
+          `INSERT INTO guides_list (id, guide_name_fr, guide_name_en) VALUES (?, ?, ?)`,
+          [randomUUID(), 'Pokémon Rouge et Bleu', 'Pokemon Red and Blue']
+        );
+      }
+    });
 
     // Table user_guides
     await runAsync(`

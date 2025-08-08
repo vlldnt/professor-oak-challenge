@@ -3,8 +3,46 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const { db } = require('../db/database');
 const { generateToken } = require('../middleware/auth');
+const { randomUUID } = require('crypto');
 
 const router = express.Router();
+
+// Mise à jour des infos utilisateur
+router.patch('/user/:id', async (req, res) => {
+  const userId = req.params.id;
+  const { email, username, password } = req.body;
+  if (!email && !username && !password) {
+    return res.status(400).json({ success: false, message: 'Aucune donnée à mettre à jour' });
+  }
+  let fields = [];
+  let values = [];
+  if (email) {
+    fields.push('email = ?');
+    values.push(email);
+  }
+  if (username) {
+    fields.push('username = ?');
+    values.push(username);
+  }
+  if (password) {
+    const bcrypt = require('bcrypt');
+    const BCRYPT_ROUNDS = parseInt(process.env.BCRYPT_ROUNDS) || 12;
+    const hashedPassword = await bcrypt.hash(password, BCRYPT_ROUNDS);
+    fields.push('password = ?');
+    values.push(hashedPassword);
+  }
+  values.push(userId);
+  const sql = `UPDATE users SET ${fields.join(', ')} WHERE id = ?`;
+  db.run(sql, values, function(err) {
+    if (err) {
+      return res.status(500).json({ success: false, message: 'Erreur lors de la mise à jour' });
+    }
+    if (this.changes === 0) {
+      return res.status(404).json({ success: false, message: 'Utilisateur non trouvé' });
+    }
+    res.json({ success: true, message: 'Informations mises à jour' });
+  });
+});
 
 // Configuration depuis .env
 const BCRYPT_ROUNDS = parseInt(process.env.BCRYPT_ROUNDS) || 12;
@@ -41,10 +79,13 @@ router.post('/register', async (req, res) => {
     
     // Hash du mot de passe
     const hashedPassword = await bcrypt.hash(password, BCRYPT_ROUNDS);
-    
+
+    // Générer l'UUID pour l'utilisateur
+    const userId = randomUUID();
+
     // Insertion en base
-    const stmt = db.prepare('INSERT INTO users (email, username, password) VALUES (?, ?, ?)');
-    stmt.run(email, username, hashedPassword, function(err) {
+    const stmt = db.prepare('INSERT INTO users (id, email, username, password) VALUES (?, ?, ?, ?)');
+    stmt.run(userId, email, username, hashedPassword, function(err) {
       if (err) {
         if (err.message.includes('UNIQUE constraint failed')) {
           return res.status(409).json({ 
@@ -58,18 +99,14 @@ router.post('/register', async (req, res) => {
           message: 'Erreur serveur lors de l\'inscription' 
         });
       }
-      
-      const userId = this.lastID;
-      
-      // ...pas de création de user_stats...
-      
+
       // Générer le token
       const token = generateToken({
         id: userId,
         email,
         username
       });
-      
+
       res.status(201).json({ 
         success: true,
         message: 'Utilisateur créé avec succès', 
