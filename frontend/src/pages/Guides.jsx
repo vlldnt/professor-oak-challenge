@@ -1,7 +1,11 @@
-import { useTranslation } from 'react-i18next'
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function Guides({ setActiveTab }) {
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation();
+
+  const [pendingVersion, setPendingVersion] = useState(null);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const gen1GuideImages = [
     {
@@ -28,17 +32,65 @@ function Guides({ setActiveTab }) {
   ];
 
   const handleGuideClick = (version) => {
-    window.localStorage.setItem('oak-guide-version', version);
+    setPendingVersion(version);
+    setShowConfirm(true);
+  }
+
+  const handleConfirm = () => {
+    window.localStorage.setItem('oak-guide-version', pendingVersion);
     if (typeof window.setVersion === 'function') {
-      window.setVersion(version);
+      window.setVersion(pendingVersion);
     }
     if (setActiveTab) {
       setActiveTab('gen1-guide');
     }
-  }
+    setShowConfirm(false);
+    setPendingVersion(null);
+  };
+
+  const handleCancel = () => {
+    setShowConfirm(false);
+    setPendingVersion(null);
+  };
 
   return (
-    <div className="max-w-screen-xl mx-auto px-6 py-16 lg:px-8">
+    <div className="max-w-screen-xl mx-auto px-6 py-16 lg:px-8 relative">
+      {/* Confirmation Modal */}
+      {showConfirm && pendingVersion && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+          <div className="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full flex flex-col items-center border-4 border-yellow-200 relative">
+            <img
+              src={`/src/assets/images/guides/${pendingVersion}-${i18n.language}.webp`}
+              alt={pendingVersion === 'red' ? t('pokemonRed') : t('pokemonBlue')}
+              className="w-[180px] h-[180px] object-contain rounded-lg border-2 border-gray-200 shadow mb-4"
+            />
+            <h2 className="text-2xl font-bold mb-2 text-center">
+              {pendingVersion === 'red'
+                ? (i18n.language === 'fr' ? 'Guide Pokémon Rouge' : 'Pokémon Red Guide')
+                : (i18n.language === 'fr' ? 'Guide Pokémon Bleu' : 'Pokémon Blue Guide')}
+            </h2>
+            <p className="text-base text-gray-700 mb-4 text-center">
+              {i18n.language === 'fr'
+                ? "Cliquez sur les images des Pokémon pour compléter votre Pokédex. Lisez bien les tips, les points importants, les astuces et stratégies. Consultez aussi les conseils de leveling !"
+                : "Click on Pokémon images to complete your Pokédex. Be sure to read the tips, important notes, strategies, and leveling advice!"}
+            </p>
+            <div className="flex gap-4 mt-2">
+              <button
+                className="bg-green-600 text-white font-bold px-6 py-2 rounded-lg shadow hover:bg-green-700 transition"
+                onClick={handleConfirm}
+              >
+                {i18n.language === 'fr' ? 'Accepter et commencer' : 'Accept and Start'}
+              </button>
+              <button
+                className="bg-gray-300 text-gray-800 font-bold px-6 py-2 rounded-lg shadow hover:bg-gray-400 transition"
+                onClick={handleCancel}
+              >
+                {i18n.language === 'fr' ? 'Annuler' : 'Cancel'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       {/* Hero Section */}
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">

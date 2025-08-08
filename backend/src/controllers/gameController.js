@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const { db } = require('../db/database');
 const { authenticateToken } = require('../middleware/auth');
+const { randomUUID } = require('crypto');
 
 const router = express.Router();
 
@@ -197,6 +198,30 @@ router.get('/user/:userId/current-guide', (req, res) => {
     }
     res.json({ success: true, guide: guide.guide_name });
   });
+});
+
+// Créer un guide pour un utilisateur
+router.post('/user/:userId/guides', authenticateToken, (req, res) => {
+  const userId = parseInt(req.params.userId);
+  const { guide_name } = req.body;
+  const guideId = randomUUID();
+
+  // Only allow the logged-in user to create their own guide
+  if (req.user.id !== userId) {
+    return res.status(403).json({ success: false, message: 'Accès non autorisé' });
+  }
+
+  db.run(
+    `INSERT INTO user_guides (id, user_id, guide_name) VALUES (?, ?, ?)`,
+    [guideId, userId, guide_name],
+    function(err) {
+      if (err) {
+        console.error('Erreur création guide:', err);
+        return res.status(500).json({ success: false, message: 'Erreur serveur' });
+      }
+      res.status(201).json({ success: true, guideId });
+    }
+  );
 });
 
 module.exports = router;
