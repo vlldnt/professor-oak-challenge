@@ -3,31 +3,37 @@ import { useTranslation } from 'react-i18next'
 function Guides({ setActiveTab }) {
   const { t, i18n } = useTranslation()
 
-  const gen1Guides = [
+  const gen1GuideImages = [
     {
-      images: [
-        `/src/assets/images/guides/red-${i18n.language}.webp`,
-        `/src/assets/images/guides/blue-${i18n.language}.webp`
-      ],
-      color: "from-red-500 to-blue-600",
-      hoverColor: "hover:from-red-600 hover:to-blue-700",
-      route: "gen1-guide",
+      src: `/src/assets/images/guides/red-${i18n.language}.webp`,
+      label: t('pokemonRed'),
+      color: 'bg-red-500',
+      version: 'red',
       available: true
     },
     {
-      images: [
-        `/src/assets/images/guides/yellow-${i18n.language}.webp`
-      ],
-      color: "from-yellow-500 to-yellow-600",
-      hoverColor: "hover:from-yellow-600 hover:to-yellow-700",
-      route: "gen1-guide",
+      src: `/src/assets/images/guides/blue-${i18n.language}.webp`,
+      label: t('pokemonBlue'),
+      color: 'bg-blue-500',
+      version: 'blue',
+      available: true
+    },
+    {
+      src: `/src/assets/images/guides/yellow-${i18n.language}.webp`,
+      label: t('pokemonYellow'),
+      color: 'bg-yellow-400',
+      version: 'yellow',
       available: false
     }
-  ]
+  ];
 
-  const handleGuideClick = (route) => {
+  const handleGuideClick = (version) => {
+    window.localStorage.setItem('oak-guide-version', version);
+    if (typeof window.setVersion === 'function') {
+      window.setVersion(version);
+    }
     if (setActiveTab) {
-      setActiveTab(route)
+      setActiveTab('gen1-guide');
     }
   }
 
@@ -48,56 +54,34 @@ function Guides({ setActiveTab }) {
         <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
           {t('generation1')}
         </h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          {gen1Guides.map((guide, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all hover:scale-105 cursor-pointer flex flex-col items-center"
-              onClick={() => handleGuideClick(guide.route)}
-            >
-              {/* Images Container */}
-              <div className="flex flex-row justify-center items-center gap-2 pt-6 pb-2">
-                {guide.images.map((img, idx) => (
-                  <div key={idx} className="relative flex items-center justify-center">
-                    <img
-                      src={img}
-                      alt={guide.title}
-                      className="w-32 h-32 object-contain rounded-lg border-2 border-gray-200 shadow-sm bg-white hover:scale-110 transition-transform duration-300"
-                      style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.07)' }}
-                    />
-                    {/* Badge version avec nom complet */}
-                    {guide.images.length > 1 && idx === 0 && (
-                      <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded shadow">{t('pokemonRed')}</span>
-                    )}
-                    {guide.images.length > 1 && idx === 1 && (
-                      <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded shadow">{t('pokemonBlue')}</span>
-                    )}
-                    {guide.images.length === 1 && (
-                      <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded shadow">{t('pokemonYellow')}</span>
-                    )}
-                  </div>
-                ))}
-              </div>
-              {/* Unique Action Button */}
-              <div className="p-5 pt-2 w-full flex flex-col items-center">
-                {guide.available ? (
-                  <button
-                    onClick={e => { e.stopPropagation(); handleGuideClick(guide.route); }}
-                    className={`w-full bg-gradient-to-r ${guide.color} ${guide.hoverColor} text-white py-2 px-4 rounded-lg font-semibold transition-all transform hover:scale-105 text-base`}
-                  >
-                    {i18n.language === 'fr' ? 'Voir le Guide' : 'View Guide'}
-                  </button>
-                ) : (
-                  <button
-                    disabled
-                    className="w-full bg-gradient-to-r from-gray-300 to-gray-400 text-gray-600 py-2 px-4 rounded-lg font-semibold text-base opacity-70 cursor-not-allowed"
-                  >
-                    {i18n.language === 'fr' ? 'Bientôt disponible' : 'Coming soon'}
-                  </button>
-                )}
-              </div>
+        <div className="grid md:grid-cols-1 gap-8">
+          <div className="bg-gradient-to-br from-red-100 via-blue-100 to-yellow-100 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:scale-105 flex flex-col items-center border-4 border-yellow-200">
+            <div className="flex flex-row justify-center items-center gap-8 pt-8 pb-6">
+              {gen1GuideImages.map((imgObj, idx) => (
+                <div
+                  key={idx}
+                  className={`relative flex flex-col items-center justify-center group ${imgObj.available ? 'cursor-pointer' : 'opacity-60'}`}
+                  onClick={() => {
+                    if (imgObj.available) {
+                      handleGuideClick(imgObj.version);
+                    }
+                  }}
+                >
+                  <img
+                    src={imgObj.src}
+                    alt={imgObj.label}
+                    className="w-[200px] h-[200px] object-contain rounded-lg border-2 border-gray-200 shadow-sm bg-white group-hover:scale-110 transition-transform duration-300"
+                    style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.07)' }}
+                  />
+                  {!imgObj.available && (
+                    <span className="absolute bottom-2 right-2 bg-gray-300 text-gray-700 text-lg font-extrabold px-5 py-2 rounded shadow transition-transform duration-300 group-hover:scale-110">
+                      {i18n.language === 'fr' ? 'Indisponible' : 'Unavailable'}
+                    </span>
+                  )}
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
 
@@ -107,25 +91,21 @@ function Guides({ setActiveTab }) {
           {i18n.language === 'fr' ? 'Plus de Guides Bientôt !' : 'More Guides Coming Soon!'}
         </h2>
         <p className="text-xl mb-6 opacity-90">
-          {i18n.language === 'fr' 
+          {i18n.language === 'fr'
             ? 'Nous travaillons sur des guides pour les générations suivantes et des contenus spécialisés.'
             : 'We are working on guides for future generations and specialized content.'
           }
         </p>
         <div className="flex flex-wrap justify-center gap-4 text-sm">
-          <span className="bg-white bg-opacity-20 px-3 py-1 rounded-full">
-            {i18n.language === 'fr' ? 'Génération 2' : 'Generation 2'}
-          </span>
-          <span className="bg-white bg-opacity-20 px-3 py-1 rounded-full">
-            {i18n.language === 'fr' ? 'Génération 3' : 'Generation 3'}
-          </span>
-          <span className="bg-white bg-opacity-20 px-3 py-1 rounded-full">
-            {i18n.language === 'fr' ? 'Génération 4' : 'Generation 4'}
-          </span>
+          {['2', '3', '4'].map((gen) => (
+            <span key={gen} className="bg-white bg-opacity-20 px-3 py-1 rounded-full">
+              {i18n.language === 'fr' ? `Génération ${gen}` : `Generation ${gen}`}
+            </span>
+          ))}
         </div>
       </div>
     </div>
   )
 }
 
-export default Guides
+export default Guides;

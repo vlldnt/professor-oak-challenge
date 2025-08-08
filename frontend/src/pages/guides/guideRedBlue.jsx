@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import '../../i18n';
 import pokemonList from "../../assets/data/pokemonList.json";
 import mapIcon from '../../assets/icons/map.png';
+import redImg from '../../assets/images/guides/red-en.webp';
+import blueImg from '../../assets/images/guides/blue-en.webp';
 import route1Map from '../../assets/images/gen_1_routes/route_1_map.png';
 import route1 from '../../assets/images/gen_1_routes/route_1.png';
 import route22Map from '../../assets/images/gen_1_routes/route_22_map.png';
@@ -310,24 +312,28 @@ const GuideRedBlue = () => {
 
   return (
     <div className="flex flex-row-reverse">
-      {/* Choix de la version */}
-      <div className="fixed top-4 right-4 z-50 flex gap-2">
-        <button
-          className={`px-4 py-2 rounded font-bold border-2 ${version === 'red' ? 'bg-red-500 text-white border-red-600' : 'bg-white text-red-600 border-red-300'}`}
-          onClick={() => setVersion('red')}
-        >
-          Rouge
-        </button>
-        <button
-          className={`px-4 py-2 rounded font-bold border-2 ${version === 'blue' ? 'bg-blue-500 text-white border-blue-600' : 'bg-white text-blue-600 border-blue-300'}`}
-          onClick={() => setVersion('blue')}
-        >
-          Bleu
-        </button>
-      </div>
+
       {/* Sidebar Pokédex sticky à droite, 30% */}
       <aside className="hidden lg:block w-[30%] flex-shrink-0 p-6">
         <div className="sticky top-8">
+          <div className="flex justify-center gap-2 mb-2">
+            <button
+              className={`flex items-center gap-1 px-2 py-1 rounded border-2 text-xs font-bold ${version === 'red' ? 'bg-red-500 text-white border-red-600' : 'bg-white text-red-600 border-red-300'}`}
+              onClick={() => setVersion('red')}
+              title="Version Rouge"
+            >
+              <img src={redImg} alt="Red" className="w-6 h-6 rounded" />
+              Rouge
+            </button>
+            <button
+              className={`flex items-center gap-1 px-2 py-1 rounded border-2 text-xs font-bold ${version === 'blue' ? 'bg-blue-500 text-white border-blue-600' : 'bg-white text-blue-600 border-blue-300'}`}
+              onClick={() => setVersion('blue')}
+              title="Version Bleu"
+            >
+              <img src={blueImg} alt="Blue" className="w-6 h-6 rounded" />
+              Bleu
+            </button>
+          </div>
           <h2 className="text-lg font-bold mb-2 text-center">{t('pokedexTitle')}</h2>
           <div className="text-xs text-center text-gray-600 mb-2">
             {t('caught')}
