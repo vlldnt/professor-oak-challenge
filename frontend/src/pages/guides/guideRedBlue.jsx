@@ -299,7 +299,7 @@ const GuideRedBlue = () => {
                     <span className="text-lg sm:text-base">→</span>
                     <span className="text-s text-green-600 font-bold mt-1 sm:text-xs sm:mt-0.5">
                       {step.evolution.level
-                        ? `Lv.${step.evolution.level}`
+                        ? (i18n.language === 'fr' ? ` Niv. ${step.evolution.level}` : ` Lv. ${step.evolution.level}`)
                         : step.evolution.stone
                         ? (step.evolution.stone[i18n.language] || step.evolution.stone.en)
                         : step.evolution.trade
