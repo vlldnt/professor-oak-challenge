@@ -2,21 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "../../i18n";
 import pokemonList from "../../assets/data/pokemonList.json";
-
-import mapIcon from "../../assets/icons/map.png";
-import redImg from "../../assets/images/guides/red-en.webp";
-import blueImg from "../../assets/images/guides/blue-en.webp";
-import route1Map from "../../assets/images/gen_1_routes/route_1_map.png";
-import route1 from "../../assets/images/gen_1_routes/route_1.png";
-import route22Map from "../../assets/images/gen_1_routes/route_22_map.png";
-import route22 from "../../assets/images/gen_1_routes/route_22.png";
-import viridianForestMap from "../../assets/images/gen_1_routes/viridian_forest_map.png";
-import viridianForest from "../../assets/images/gen_1_routes/viridian_forest.png";
-import palletTownMap from "../../assets/images/gen_1_routes/pallet_town_map.png";
-import palletTown from "../../assets/images/gen_1_routes/pallet_town.png";
-import gameboyImg from "../../assets/images/gameboys/gameboy.png";
-import gameboyColorImg from "../../assets/images/gameboys/gameboy-color.png";
-import chenImg from "../../assets/images/gameboys/chen.png";
+import mapIcon from '../../assets/icons/map.png';
+import redImg from '../../assets/images/guides/red-en.webp';
+import blueImg from '../../assets/images/guides/blue-en.webp';
+import route1Map from '../../assets/images/gen_1_routes/route_1_map.png';
+import route1 from '../../assets/images/gen_1_routes/route_1.png';
+import route22Map from '../../assets/images/gen_1_routes/route_22_map.png';
+import route22 from '../../assets/images/gen_1_routes/route_22.png';
+import viridianForestMap from '../../assets/images/gen_1_routes/viridian_forest_map.png';
+import viridianForest from '../../assets/images/gen_1_routes/viridian_forest.png';
+import palletTownMap from '../../assets/images/gen_1_routes/pallet_town_map.png';
+import palletTown from '../../assets/images/gen_1_routes/pallet_town.png';
 
 const GuideRedBlue = () => {
   // State pour la version choisie
@@ -132,10 +128,8 @@ const GuideRedBlue = () => {
             <img
               src={getSpritePath("025")}
               alt={pikachu.name[i18n.language] || pikachu.name.en}
-              className={`h-10 sm:h-16 w-auto cursor-pointer object-contain transition-opacity ${
-                caught.includes("025") ? "opacity-40" : ""
-              }`}
-              onClick={() => toggleCaught("025")}
+              className={`w-10 h-10 sm:w-16 sm:h-16 cursor-pointer transition-opacity ${caught.includes('025') ? 'opacity-40' : ''}`}
+              onClick={() => toggleCaught('025')}
             />
             {caught.includes("025") && (
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
@@ -184,9 +178,7 @@ const GuideRedBlue = () => {
             <img
               src={getSpritePath(poke.id)}
               alt={poke.name[i18n.language] || poke.name.en}
-              className={`h-10 sm:h-16 w-auto cursor-pointer object-contain transition-opacity ${
-                caught.includes(poke.id) ? "opacity-40" : ""
-              }`}
+              className={`w-10 h-10 sm:w-16 sm:h-16 cursor-pointer transition-opacity ${caught.includes(poke.id) ? 'opacity-40' : ''}`}
               onClick={() => toggleCaught(poke.id)}
             />
             <span className="text-[13px] text-gray-800 sm:text-[15px] text-center mt-1">
@@ -307,13 +299,9 @@ const GuideRedBlue = () => {
                 <img
                   src={getSpritePath(step.from.id)}
                   alt={step.from.name[i18n.language] || step.from.name.en}
-                  className={`h-10 sm:h-16 w-auto cursor-pointer object-contain transition-opacity ${
-                    caught.includes(step.from.id) ? "opacity-40" : ""
-                  }`}
-                  style={canClickFrom ? {} : { pointerEvents: "none" }}
-                  onClick={() =>
-                    canClickFrom && toggleChainCaught(step.from.id, idx, false)
-                  }
+                  className={`w-10 h-10 sm:w-16 sm:h-16 cursor-pointer transition-opacity ${caught.includes(step.from.id) ? 'opacity-40' : ''}`}
+                  style={canClickFrom ? {} : { pointerEvents: 'none' }}
+                  onClick={() => canClickFrom && toggleChainCaught(step.from.id, idx, false)}
                 />
                 {caught.includes(step.from.id) && (
                   <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
@@ -389,13 +377,9 @@ const GuideRedBlue = () => {
                   <img
                     src={getSpritePath(step.to.id)}
                     alt={step.to.name[i18n.language] || step.to.name.en}
-                    className={`h-10 sm:h-16 w-auto cursor-pointer object-contain transition-opacity ${
-                      caught.includes(step.to.id) ? "opacity-40" : ""
-                    }`}
-                    style={canClickTo ? {} : { pointerEvents: "none" }}
-                    onClick={() =>
-                      canClickTo && toggleChainCaught(step.to.id, idx, true)
-                    }
+                    className={`w-10 h-10 sm:w-16 sm:h-16 cursor-pointer transition-opacity ${caught.includes(step.to.id) ? 'opacity-40' : ''}`}
+                    style={canClickTo ? {} : { pointerEvents: 'none' }}
+                    onClick={() => canClickTo && toggleChainCaught(step.to.id, idx, true)}
                   />
                   {caught.includes(step.to.id) && (
                     <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
@@ -491,85 +475,48 @@ const GuideRedBlue = () => {
         <div className="sticky top-8">
           <div className="flex justify-center gap-2 mb-2">
             <button
-              className={`p-0 m-0 bg-transparent focus:outline-none`}
-              onClick={() => setVersion("red")}
+              className={`flex items-center gap-1 px-2 py-1 rounded border-2 text-xs font-bold ${version === 'red' ? 'bg-red-500 text-white border-red-600' : 'bg-white text-red-600 border-red-300'}`}
+              onClick={() => setVersion('red')}
               title="Version Rouge"
             >
-              <img
-                src={redImg}
-                alt="Red"
-                className={`w-32 h-32 rounded shadow ${
-                  version === "red" ? "" : "opacity-40"
-                }`}
-              />
+              <img src={redImg} alt="Red" className="w-6 h-6 rounded" />
+              Rouge
             </button>
             <button
-              className={`p-0 m-0 bg-transparent focus:outline-none`}
-              onClick={() => setVersion("blue")}
+              className={`flex items-center gap-1 px-2 py-1 rounded border-2 text-xs font-bold ${version === 'blue' ? 'bg-white0 text-white border-blue-600' : 'bg-white text-blue-600 border-blue-300'}`}
+              onClick={() => setVersion('blue')}
               title="Version Bleu"
             >
-              <img
-                src={blueImg}
-                alt="Blue"
-                className={`w-32 h-32 rounded shadow ${
-                  version === "blue" ? "" : "opacity-40"
-                }`}
-              />
+              <img src={blueImg} alt="Blue" className="w-6 h-6 rounded" />
+              Bleu
             </button>
-            {/* Choix du style de sprite par images */}
-            <div className="flex items-center gap-6 ml-4">
-              {/* Gen1 */}
-              <div
-                className="flex flex-col items-center cursor-pointer"
-                onClick={() => setSpriteStyle("gen1")}
+            {/* Choix du style de sprite */}
+            <div className="flex items-center gap-1 ml-4">
+              <span className="text-xs font-bold text-gray-700">Sprites:</span>
+              <button
+                className={`px-2 py-1 rounded border text-xs font-bold ${spriteStyle === 'gen1' ? 'bg-gray-900 text-white border-gray-900' : 'bg-white text-gray-900 border-gray-300'}`}
+                onClick={() => setSpriteStyle('gen1')}
+                title="Gen 1 Noir & Blanc"
               >
-                <img
-                  src={gameboyImg}
-                  alt="Game Boy"
-                  className={`w-16 h-16  transition-opacity ${
-                    spriteStyle === "gen1" ? "" : "opacity-30"
-                  }`}
-                  style={{ objectFit: "contain" }}
-                />
-                <span className="text-[11px] text-gray-700 mt-1">
-                  Noir et blanc
-                </span>
-              </div>
-              {/* Gen1-color */}
-              <div
-                className="flex flex-col items-center cursor-pointer"
-                onClick={() => setSpriteStyle("gen1-colored")}
+                Gen1
+              </button>
+              <button
+                className={`px-2 py-1 rounded border text-xs font-bold ${spriteStyle === 'gen1-colored' ? 'bg-yellow-400 text-white border-yellow-500' : 'bg-white text-yellow-700 border-yellow-300'}`}
+                onClick={() => setSpriteStyle('gen1-colored')}
+                title="Gen 1 Colorisé"
               >
-                <img
-                  src={gameboyColorImg}
-                  alt="Game Boy Color"
-                  className={`w-16 h-16 transition-opacity ${
-                    spriteStyle === "gen1-colored" ? "" : "opacity-30"
-                  }`}
-                  style={{ objectFit: "contain" }}
-                />
-                <span className="text-[11px] text-gray-700 mt-1">Couleurs</span>
-              </div>
-              {/* Gen3 */}
-              <div
-                className="flex flex-col items-center cursor-pointer"
-                onClick={() => setSpriteStyle("gen3")}
+                Gen1-color
+              </button>
+              <button
+                className={`px-2 py-1 rounded border text-xs font-bold ${spriteStyle === 'gen3' ? 'bg-green-600 text-white border-green-700' : 'bg-white text-green-700 border-green-300'}`}
+                onClick={() => setSpriteStyle('gen3')}
+                title="Gen 3"
               >
-                <img
-                  src={chenImg}
-                  alt="Chen"
-                  className={`w-16 h-16  transition-opacity ${
-                    spriteStyle === "gen3" ? "" : "opacity-30"
-                  }`}
-                  style={{ objectFit: "contain" }}
-                />
-                <span className="text-[11px] text-gray-700 mt-1">Artworks</span>
-              </div>
+                Gen3
+              </button>
             </div>
           </div>
-          <h2 className="text-lg font-bold mb-2 text-center">
-            {t("pokedexTitle")}
-          </h2>
+          <h2 className="text-lg font-bold mb-2 text-center">{t('pokedexTitle')}</h2>
           <div className="text-xs text-center text-gray-600 mb-2">
             {t("caught")}
             <span className="font-bold text-green-700 mx-1">
@@ -578,40 +525,25 @@ const GuideRedBlue = () => {
             / 151
           </div>
           {/* Pokédex principal avec croix et transparence pour les exclusifs */}
-          <div
-            className={`grid [grid-template-columns:repeat(12,minmax(0,1fr))] gap-1 border border-gray-200 rounded-lg p-2 bg-white`}
-          >
+          <div className={`grid [grid-template-columns:repeat(15,minmax(0,1fr))] gap-1 border border-gray-200 rounded-lg p-2 bg-white`}>
             {Array.from({ length: 151 }, (_, i) => {
-              const num = (i + 1).toString().padStart(3, "0");
-              // Hide Mew (#151)
-              if (num === "151") return null;
-              // Hide exclusives for the opposite version
-              if (
-                (version === "red" && blueExclusiveIds.includes(num)) ||
-                (version === "blue" && redExclusiveIds.includes(num))
-              )
-                return null;
-              // Hide unavailable starters
+              const num = (i + 1).toString().padStart(3, '0');
+              const poke = getPokemon(num);
+              const isExclusive = exclusiveIds.includes(num);
+              // Détection starters non choisis
               const starterFamilies = [
                 ["001", "002", "003"],
                 ["004", "005", "006"],
                 ["007", "008", "009"],
               ];
-              const chosenStarter = caught.find((id) =>
-                ["001", "004", "007"].includes(id)
-              );
-              let isUnavailableStarter = false;
-              if (chosenStarter) {
-                const chosenFamily = starterFamilies.find((fam) =>
-                  fam.includes(chosenStarter)
-                );
-                if (
-                  starterFamilies
-                    .filter((fam) => fam !== chosenFamily)
-                    .flat()
-                    .includes(num)
-                ) {
-                  isUnavailableStarter = true;
+              const allStarterIds = starterFamilies.flat();
+              const chosenStarter = caught.find((id) => ["001", "004", "007"].includes(id));
+              let isOtherStarter = false;
+              if (allStarterIds.includes(num) && chosenStarter) {
+                const thisFamily = starterFamilies.find(fam => fam.includes(num));
+                const chosenFamily = starterFamilies.find(fam => fam.includes(chosenStarter));
+                if (thisFamily !== chosenFamily) {
+                  isOtherStarter = true;
                 }
               }
               if (isUnavailableStarter) return null;
@@ -622,9 +554,7 @@ const GuideRedBlue = () => {
                     src={getSpritePath(num)}
                     alt={poke.name[i18n.language] || poke.name.en}
                     title={poke.name[i18n.language] || poke.name.en}
-                    className={`h-12 w-auto object-contain transition-opacity ${
-                      caught.includes(num) ? "opacity-100" : "opacity-20"
-                    }`}
+                    className={`w-8 h-8 object-contain transition-opacity ${caught.includes(num) ? 'opacity-20' : ''} ${isExclusive || isOtherStarter ? 'opacity-30' : ''}`}
                     loading="lazy"
                   />
                 </div>
@@ -636,131 +566,62 @@ const GuideRedBlue = () => {
             {i18n.language === "fr" ? "Qui manquent ?" : "Who's missing ?"}
           </h4>
           <div className="mt-6">
-            <div
-              className={`bg-white border ${
-                version === "red" ? "border-blue-200" : "border-red-200"
-              } rounded-lg p-2`}
-            >
-              {/* Exclusives */}
-              <h4
-                className={`text-sm font-bold  ${
-                  version === "red" ? "text-blue-700" : "text-red-700"
-                } mb-1`}
-              >
-                {version === "red"
-                  ? i18n.language === "fr"
-                    ? "Exclusif à la version Bleu :"
-                    : "Blue Version Exclusive:"
-                  : i18n.language === "fr"
-                  ? "Exclusif à la version Rouge :"
-                  : "Red Version Exclusive:"}
-              </h4>
-              <div className="grid grid-cols-6 gap-2 mb-2">
-                {(version === "red" ? blueExclusiveIds : redExclusiveIds).map(
-                  (num) => {
-                    const poke = getPokemon(num);
-                    return (
-                      <div key={num} className="flex flex-col items-center">
+            <h3 className={`text-md font-bold mb-2 text-center ${version === 'red' ? 'text-blue-700' : 'text-red-700'}`}>{version === 'red' ? t('blueExclusive') : t('redExclusive')}</h3>
+            <div className={`grid grid-cols-6 gap-2 bg-white border ${version === 'red' ? 'border-blue-200' : 'border-red-200'} rounded-lg p-2`}>
+              {(version === 'red' ? blueExclusiveIds : redExclusiveIds).map(num => {
+                const poke = getPokemon(num);
+                return (
+                  <div key={num} className="flex flex-col items-center">
+                    <img
+                      src={getSpritePath(num)}
+                      alt={t(`pokemon${num}`)}
+                      className="w-10 h-10 object-contain opacity-80"
+                      loading="lazy"
+                    />
+                  </div>
+                );
+              })}
+            </div>
+            {/* Starters non choisis (indisponibles) */}
+            {(() => {
+              const starterFamilies = [
+                ["001", "002", "003"],
+                ["004", "005", "006"],
+                ["007", "008", "009"]
+              ];
+              const allStarterIds = starterFamilies.flat();
+              const chosenStarter = caught.find((id) => ["001", "004", "007"].includes(id));
+              let unavailableStarterIds = [];
+              if (chosenStarter) {
+                const chosenFamily = starterFamilies.find(fam => fam.includes(chosenStarter));
+                unavailableStarterIds = starterFamilies.filter(fam => fam !== chosenFamily).flat();
+              }
+              if (unavailableStarterIds.length === 0) return null;
+              return (
+                <div className="mt-5">
+                  <h4 className="text-sm font-bold text-center text-gray-700 mb-1">
+                    {i18n.language === 'fr' ? '🔒 Indisponible : choix unique.' : '🔒 Unavailable: single-choice only.'}
+                  </h4>
+                  <div className="grid grid-cols-6 gap-2 bg-white border border-gray-200 rounded-lg p-2">
+                    {unavailableStarterIds.map(num => (
+                      <div key={num} className="flex flex-col items-center relative">
                         <img
                           src={getSpritePath(num)}
                           alt={t(`pokemon${num}`)}
-                          className="h-10 w-auto object-contain opacity-80"
+                          className="w-10 h-10 object-contain"
                           loading="lazy"
                         />
                       </div>
-                    );
-                  }
-                )}
-              </div>
-              {/* Separator and single-choice unavailable starters */}
-              {(() => {
-                const starterFamilies = [
-                  ["001", "002", "003"],
-                  ["004", "005", "006"],
-                  ["007", "008", "009"],
-                ];
-                const chosenStarter = caught.find((id) =>
-                  ["001", "004", "007"].includes(id)
-                );
-                let unavailableStarterIds = [];
-                if (chosenStarter) {
-                  const chosenFamily = starterFamilies.find((fam) =>
-                    fam.includes(chosenStarter)
-                  );
-                  unavailableStarterIds = starterFamilies
-                    .filter((fam) => fam !== chosenFamily)
-                    .flat();
-                }
-                return (
-                  <>
-                    {unavailableStarterIds.length > 0 && (
-                      <>
-                        <hr className="my-3 border-gray-300" />
-                        <h4 className="text-sm font-bold text-gray-700 mb-1">
-                          {i18n.language === "fr"
-                            ? "Indisponible : choix unique."
-                            : "Unavailable: single-choice only."}
-                        </h4>
-                        <div className="grid grid-cols-6 gap-2 mb-2">
-                          {unavailableStarterIds.map((num) => (
-                            <div
-                              key={num}
-                              className="flex flex-col items-center relative"
-                            >
-                              <img
-                                src={getSpritePath(num)}
-                                alt={t(`pokemon${num}`)}
-                                className="h-10 w-auto object-contain"
-                                loading="lazy"
-                              />
-                            </div>
-                          ))}
-                        </div>
-                      </>
-                    )}
-                    {/* Separator and Mew (#151) always shown */}
-                    <hr className="my-3 border-gray-300" />
-                    <h4 className="text-sm font-bold text-red-500 mb-1">
-                      {i18n.language === "fr"
-                        ? "Indisponible :"
-                        : "Unavailable:"}
-                    </h4>
-                    <div className="flex flex-row justify-center gap-2">
-                      {(() => {
-                        const poke = getPokemon("151");
-                        return (
-                          <div
-                            key={"151"}
-                            className="flex flex-row items-center gap-2"
-                          >
-                            <img
-                              src={getSpritePath("151")}
-                              alt={
-                                poke
-                                  ? poke.name[i18n.language] || poke.name.en
-                                  : "Mew"
-                              }
-                              className="h-10 w-auto object-contain opacity-60"
-                              loading="lazy"
-                            />
-                            <span className="text-[13px] text-gray-600 text-center font-bold">
-                              {poke
-                                ? poke.name[i18n.language] || poke.name.en
-                                : "Mew"}
-                            </span>
-                          </div>
-                        );
-                      })()}
-                    </div>
-                  </>
-                );
-              })()}
-            </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })()}
           </div>
         </div>
-      </div>
-      {/* Contenu principal à gauche, 55% */}
-      <main className="w-full lg:w-[55%] max-w-4xl mx-auto p-6 bg-white">
+      </aside>
+    {/* Contenu principal à gauche, 55% */}
+    <main className="w-full lg:w-[55%] max-w-4xl mx-auto p-6 bg-white">
         <div className="bg-gradient-to-r from-red-500 to-blue-500 text-white rounded-lg p-6 mb-8">
           <h1 className="text-3xl font-bold mb-2">{t("part1Title")}</h1>
           <p className="text-lg opacity-90">{t("oakChallengeGuide")}</p>
@@ -976,31 +837,27 @@ const GuideRedBlue = () => {
           <EvolutionCard startId="025" />
         </section>
 
-        {/* Pokédex mobile en bas de page */}
-        <div className="block lg:hidden mt-8 mb-8">
-          <h2 className="text-lg font-bold mb-2 text-center">
-            {t("pokedexTitle")}
-          </h2>
-          <div className="grid grid-cols-6 gap-1 bg-white border border-gray-200 rounded-lg p-2">
-            {Array.from({ length: 151 }, (_, i) => {
-              const num = (i + 1).toString().padStart(3, "0");
-              const poke = getPokemon(num);
-              return (
-                <div key={num} className="flex flex-col items-center">
-                  <img
-                    src={getSpritePath(num)}
-                    alt={poke.name[i18n.language] || poke.name.en}
-                    title={poke.name[i18n.language] || poke.name.en}
-                    className={`h-8 w-auto object-contain transition-opacity ${
-                      caught.includes(num) ? "opacity-20" : ""
-                    }`}
-                    loading="lazy"
-                  />
-                </div>
-              );
-            })}
-          </div>
+      {/* Pokédex mobile en bas de page */}
+      <div className="block lg:hidden mt-8 mb-8">
+        <h2 className="text-lg font-bold mb-2 text-center">{t('pokedexTitle')}</h2>
+        <div className="grid grid-cols-6 gap-1 bg-white border border-gray-200 rounded-lg p-2">
+          {Array.from({ length: 151 }, (_, i) => {
+            const num = (i + 1).toString().padStart(3, '0');
+            const poke = getPokemon(num);
+            return (
+              <div key={num} className="flex flex-col items-center">
+                <img
+                  src={getSpritePath(num)}
+                  alt={poke.name[i18n.language] || poke.name.en}
+                  title={poke.name[i18n.language] || poke.name.en}
+                  className={`w-8 h-8 object-contain transition-opacity ${caught.includes(num) ? 'opacity-20' : ''}`}
+                  loading="lazy"
+                />
+              </div>
+            );
+          })}
         </div>
+      </div>
 
         {/* Summary */}
         <div className="bg-gradient-to-r from-green-500 to-blue-600 text-white rounded-lg p-6">
