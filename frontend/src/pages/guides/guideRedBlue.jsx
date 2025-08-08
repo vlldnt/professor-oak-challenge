@@ -121,7 +121,7 @@ const GuideRedBlue = () => {
     if (startId === "025" || startId === 25) {
       const pikachu = getPokemon("025");
       return (
-        <div className="flex items-center bg-blue-50 border border-blue-200 rounded-lg p-3 mb-2 overflow-x-auto w-fit ml-0 sm:p-2 sm:mb-1 max-w-full sm:max-w-[98vw]">
+        <div className="flex items-center bg-white rounded-lg p-3 mb-2 overflow-x-auto w-fit ml-0 sm:p-2 sm:mb-1 max-w-full sm:max-w-[98vw]">
           <div className="flex flex-col items-center min-w-[80px] sm:min-w-[56px] relative">
             <img
               src={getSpritePath("025")}
@@ -159,7 +159,7 @@ const GuideRedBlue = () => {
       // Affiche juste le Pokémon de départ si aucune évolution à afficher
       const poke = getPokemon(startId);
       return (
-        <div className="flex items-center bg-blue-50 border border-blue-200 rounded-lg p-3 mb-2 overflow-x-auto w-fit ml-0 sm:p-2 sm:mb-1 max-w-full sm:max-w-[98vw]">
+        <div className="flex items-center bg-white border border-blue-200 rounded-lg p-3 mb-2 overflow-x-auto w-fit ml-0 sm:p-2 sm:mb-1 max-w-full sm:max-w-[98vw]">
           <div className="flex flex-col items-center min-w-[80px] sm:min-w-[56px]">
             <img
               src={getSpritePath(poke.id)}
@@ -209,7 +209,7 @@ const GuideRedBlue = () => {
     }
 
     return (
-      <div className={`flex items-center bg-blue-50 border border-blue-200 rounded-lg p-3 mb-2 overflow-x-auto w-fit ml-0 sm:p-2 sm:mb-1 max-w-full sm:max-w-[98vw] relative ${shouldFade ? 'opacity-30 pointer-events-none' : ''}`}> 
+      <div className={`flex items-center bg-white rounded-lg p-3 mb-2 overflow-x-auto w-fit ml-0 sm:p-2 sm:mb-1 max-w-full sm:max-w-[98vw] relative ${shouldFade ? 'opacity-30 pointer-events-none' : ''}`}> 
         {chain.map((step, idx) => {
           // Pour chaque étape, on ne peut cliquer que sur le premier ou si le précédent est attrapé
           const canClickFrom = shouldBlock ? false : (idx === 0 || caught.includes(chain[idx - 1].from.id) && (idx === 1 || caught.includes(chain[idx - 1].to?.id)));
@@ -339,7 +339,7 @@ const GuideRedBlue = () => {
               Rouge
             </button>
             <button
-              className={`flex items-center gap-1 px-2 py-1 rounded border-2 text-xs font-bold ${version === 'blue' ? 'bg-blue-500 text-white border-blue-600' : 'bg-white text-blue-600 border-blue-300'}`}
+              className={`flex items-center gap-1 px-2 py-1 rounded border-2 text-xs font-bold ${version === 'blue' ? 'bg-white0 text-white border-blue-600' : 'bg-white text-blue-600 border-blue-300'}`}
               onClick={() => setVersion('blue')}
               title="Version Bleu"
             >
@@ -404,7 +404,8 @@ const GuideRedBlue = () => {
                 <div key={num} className="flex flex-col items-center relative">
                   <img
                     src={getSpritePath(num)}
-                    alt={`Pokemon ${num}`}
+                    alt={poke.name[i18n.language] || poke.name.en}
+                    title={poke.name[i18n.language] || poke.name.en}
                     className={`w-8 h-8 object-contain transition-opacity ${caught.includes(num) ? 'opacity-20' : ''} ${isExclusive || isOtherStarter ? 'opacity-30' : ''}`}
                     loading="lazy"
                   />
@@ -634,7 +635,8 @@ const GuideRedBlue = () => {
               <div key={num} className="flex flex-col items-center">
                 <img
                   src={getSpritePath(num)}
-                  alt={`Pokemon ${num}`}
+                  alt={poke.name[i18n.language] || poke.name.en}
+                  title={poke.name[i18n.language] || poke.name.en}
                   className={`w-8 h-8 object-contain transition-opacity ${caught.includes(num) ? 'opacity-20' : ''}`}
                   loading="lazy"
                 />
