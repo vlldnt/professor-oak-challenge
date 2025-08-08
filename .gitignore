@@ -1,5 +1,6 @@
 # Professor Oak Challenge - .gitignore
-
+z-images*
+venv
 # ========================================
 # ENVIRONNEMENT ET CONFIGURATION
 # ========================================

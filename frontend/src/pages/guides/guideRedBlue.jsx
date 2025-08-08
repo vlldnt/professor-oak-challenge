@@ -18,6 +18,8 @@ import palletTown from '../../assets/images/gen_1_routes/pallet_town.png';
 const GuideRedBlue = () => {
   // State pour la version choisie
   const [version, setVersion] = useState('red'); // 'red' ou 'blue'
+  // State pour le style de sprite
+  const [spriteStyle, setSpriteStyle] = useState('gen3'); // 'gen1', 'gen1-colored', 'gen3'
   const { t, i18n } = useTranslation();
   // State for caught/evolved Pokémon (array of string IDs)
   const [caught, setCaught] = useState(() => {
@@ -42,6 +44,17 @@ const GuideRedBlue = () => {
   };
   // Helper to get a Pokémon by id
   const getPokemon = (id) => pokemonList.find((p) => p.id === id);
+
+  // Helper pour obtenir le chemin du sprite selon le style choisi
+  const getSpritePath = (num) => {
+    if (spriteStyle === 'gen1') {
+      return `/src/assets/images/pokemons/black_and_white/${num}.png`;
+    } else if (spriteStyle === 'gen1-colored') {
+      return `/src/assets/images/pokemons/colored/${num}.png`;
+    }
+    // gen3 par défaut
+    return `/src/assets/images/pokemons/${num}.png`;
+  };
 
   // Helper to build evolution chain for a given Pokémon (including only evolutions, not pre-evolutions)
   const buildEvolutionChain = (startId) => {
@@ -105,13 +118,13 @@ const GuideRedBlue = () => {
     };
 
     // Cas spécial Pikachu : affiche juste Pikachu
-        if (startId === "025" || startId === 25) {
+    if (startId === "025" || startId === 25) {
       const pikachu = getPokemon("025");
       return (
         <div className="flex items-center bg-blue-50 border border-blue-200 rounded-lg p-3 mb-2 overflow-x-auto w-fit ml-0 sm:p-2 sm:mb-1 max-w-full sm:max-w-[98vw]">
           <div className="flex flex-col items-center min-w-[80px] sm:min-w-[56px] relative">
             <img
-              src={`/src/assets/images/pokemons/025.png`}
+              src={getSpritePath("025")}
               alt={pikachu.name[i18n.language] || pikachu.name.en}
               className={`w-10 h-10 sm:w-16 sm:h-16 cursor-pointer transition-opacity ${caught.includes('025') ? 'opacity-40' : ''}`}
               onClick={() => toggleCaught('025')}
@@ -149,7 +162,7 @@ const GuideRedBlue = () => {
         <div className="flex items-center bg-blue-50 border border-blue-200 rounded-lg p-3 mb-2 overflow-x-auto w-fit ml-0 sm:p-2 sm:mb-1 max-w-full sm:max-w-[98vw]">
           <div className="flex flex-col items-center min-w-[80px] sm:min-w-[56px]">
             <img
-              src={`/src/assets/images/pokemons/${poke.id}.png`}
+              src={getSpritePath(poke.id)}
               alt={poke.name[i18n.language] || poke.name.en}
               className={`w-10 h-10 sm:w-16 sm:h-16 cursor-pointer transition-opacity ${caught.includes(poke.id) ? 'opacity-40' : ''}`}
               onClick={() => toggleCaught(poke.id)}
@@ -209,7 +222,7 @@ const GuideRedBlue = () => {
             <React.Fragment key={step.from.id}>
               <div className="flex flex-col items-center min-w-[80px] sm:min-w-[56px] relative">
                 <img
-                  src={`/src/assets/images/pokemons/${step.from.id}.png`}
+                  src={getSpritePath(step.from.id)}
                   alt={step.from.name[i18n.language] || step.from.name.en}
                   className={`w-10 h-10 sm:w-16 sm:h-16 cursor-pointer transition-opacity ${caught.includes(step.from.id) ? 'opacity-40' : ''}`}
                   style={canClickFrom ? {} : { pointerEvents: 'none' }}
@@ -259,7 +272,7 @@ const GuideRedBlue = () => {
               {idx === chain.length - 1 && step.to && (
                 <div className="flex flex-col items-center min-w-[80px] sm:min-w-[56px] relative">
                   <img
-                    src={`/src/assets/images/pokemons/${step.to.id}.png`}
+                    src={getSpritePath(step.to.id)}
                     alt={step.to.name[i18n.language] || step.to.name.en}
                     className={`w-10 h-10 sm:w-16 sm:h-16 cursor-pointer transition-opacity ${caught.includes(step.to.id) ? 'opacity-40' : ''}`}
                     style={canClickTo ? {} : { pointerEvents: 'none' }}
@@ -313,8 +326,8 @@ const GuideRedBlue = () => {
   return (
     <div className="flex flex-row-reverse">
 
-      {/* Sidebar Pokédex sticky à droite, 30% */}
-      <aside className="hidden lg:block w-[30%] flex-shrink-0 p-6">
+      {/* Sidebar Pokédex sticky à droite, 45% */}
+      <aside className="hidden lg:block w-[45%] flex-shrink-0 p-6">
         <div className="sticky top-8">
           <div className="flex justify-center gap-2 mb-2">
             <button
@@ -333,6 +346,31 @@ const GuideRedBlue = () => {
               <img src={blueImg} alt="Blue" className="w-6 h-6 rounded" />
               Bleu
             </button>
+            {/* Choix du style de sprite */}
+            <div className="flex items-center gap-1 ml-4">
+              <span className="text-xs font-bold text-gray-700">Sprites:</span>
+              <button
+                className={`px-2 py-1 rounded border text-xs font-bold ${spriteStyle === 'gen1' ? 'bg-gray-900 text-white border-gray-900' : 'bg-white text-gray-900 border-gray-300'}`}
+                onClick={() => setSpriteStyle('gen1')}
+                title="Gen 1 Noir & Blanc"
+              >
+                Gen1
+              </button>
+              <button
+                className={`px-2 py-1 rounded border text-xs font-bold ${spriteStyle === 'gen1-colored' ? 'bg-yellow-400 text-white border-yellow-500' : 'bg-white text-yellow-700 border-yellow-300'}`}
+                onClick={() => setSpriteStyle('gen1-colored')}
+                title="Gen 1 Colorisé"
+              >
+                Gen1-color
+              </button>
+              <button
+                className={`px-2 py-1 rounded border text-xs font-bold ${spriteStyle === 'gen3' ? 'bg-green-600 text-white border-green-700' : 'bg-white text-green-700 border-green-300'}`}
+                onClick={() => setSpriteStyle('gen3')}
+                title="Gen 3"
+              >
+                Gen3
+              </button>
+            </div>
           </div>
           <h2 className="text-lg font-bold mb-2 text-center">{t('pokedexTitle')}</h2>
           <div className="text-xs text-center text-gray-600 mb-2">
@@ -341,7 +379,7 @@ const GuideRedBlue = () => {
             / 151
           </div>
           {/* Pokédex principal avec croix et transparence pour les exclusifs */}
-          <div className={`grid grid-cols-9 gap-1 border border-gray-200 rounded-lg p-2 ${version === 'red' ? 'bg-red-50' : 'bg-blue-50'}`}>
+          <div className={`grid [grid-template-columns:repeat(15,minmax(0,1fr))] gap-1 border border-gray-200 rounded-lg p-2 bg-white`}>
             {Array.from({ length: 151 }, (_, i) => {
               const num = (i + 1).toString().padStart(3, '0');
               const poke = getPokemon(num);
@@ -365,7 +403,7 @@ const GuideRedBlue = () => {
               return (
                 <div key={num} className="flex flex-col items-center relative">
                   <img
-                    src={`/src/assets/images/pokemons/${num}.png`}
+                    src={getSpritePath(num)}
                     alt={`Pokemon ${num}`}
                     className={`w-8 h-8 object-contain transition-opacity ${caught.includes(num) ? 'opacity-20' : ''} ${isExclusive || isOtherStarter ? 'opacity-30' : ''}`}
                     loading="lazy"
@@ -384,13 +422,13 @@ const GuideRedBlue = () => {
           {/* Tableau des exclusifs à la version choisie */}
           <div className="mt-6">
             <h3 className={`text-md font-bold mb-2 text-center ${version === 'red' ? 'text-blue-700' : 'text-red-700'}`}>{version === 'red' ? t('blueExclusive') : t('redExclusive')}</h3>
-            <div className={`grid grid-cols-6 gap-2 ${version === 'red' ? 'bg-blue-50 border border-blue-200' : 'bg-red-50 border border-red-200'} rounded-lg p-2`}>
+            <div className={`grid grid-cols-6 gap-2 bg-white border ${version === 'red' ? 'border-blue-200' : 'border-red-200'} rounded-lg p-2`}>
               {(version === 'red' ? blueExclusiveIds : redExclusiveIds).map(num => {
                 const poke = getPokemon(num);
                 return (
                   <div key={num} className="flex flex-col items-center">
                     <img
-                      src={`/src/assets/images/pokemons/${num}.png`}
+                      src={getSpritePath(num)}
                       alt={t(`pokemon${num}`)}
                       className="w-10 h-10 object-contain opacity-80"
                       loading="lazy"
@@ -419,11 +457,11 @@ const GuideRedBlue = () => {
                   <h4 className="text-sm font-bold text-center text-gray-700 mb-1">
                     {i18n.language === 'fr' ? '🔒 Indisponible : choix unique.' : '🔒 Unavailable: single-choice only.'}
                   </h4>
-                  <div className="grid grid-cols-6 gap-2 bg-gray-100 border border-gray-200 rounded-lg p-2">
+                  <div className="grid grid-cols-6 gap-2 bg-white border border-gray-200 rounded-lg p-2">
                     {unavailableStarterIds.map(num => (
                       <div key={num} className="flex flex-col items-center relative">
                         <img
-                          src={`/src/assets/images/pokemons/${num}.png`}
+                          src={getSpritePath(num)}
                           alt={t(`pokemon${num}`)}
                           className="w-10 h-10 object-contain"
                           loading="lazy"
@@ -437,8 +475,8 @@ const GuideRedBlue = () => {
           </div>
         </div>
       </aside>
-    {/* Contenu principal à gauche, 70% */}
-    <main className="w-full lg:w-[70%] max-w-4xl mx-auto p-6 bg-white">
+    {/* Contenu principal à gauche, 55% */}
+    <main className="w-full lg:w-[55%] max-w-4xl mx-auto p-6 bg-white">
         <div className="bg-gradient-to-r from-red-500 to-blue-500 text-white rounded-lg p-6 mb-8">
           <h1 className="text-3xl font-bold mb-2">{t('part1Title')}</h1>
           <p className="text-lg opacity-90">{t('oakChallengeGuide')}</p>
@@ -588,14 +626,14 @@ const GuideRedBlue = () => {
       {/* Pokédex mobile en bas de page */}
       <div className="block lg:hidden mt-8 mb-8">
         <h2 className="text-lg font-bold mb-2 text-center">{t('pokedexTitle')}</h2>
-        <div className="grid grid-cols-6 gap-1 bg-gray-50 border border-gray-200 rounded-lg p-2">
+        <div className="grid grid-cols-6 gap-1 bg-white border border-gray-200 rounded-lg p-2">
           {Array.from({ length: 151 }, (_, i) => {
             const num = (i + 1).toString().padStart(3, '0');
             const poke = getPokemon(num);
             return (
               <div key={num} className="flex flex-col items-center">
                 <img
-                  src={`/src/assets/images/pokemons/${num}.png`}
+                  src={getSpritePath(num)}
                   alt={`Pokemon ${num}`}
                   className={`w-8 h-8 object-contain transition-opacity ${caught.includes(num) ? 'opacity-20' : ''}`}
                   loading="lazy"
