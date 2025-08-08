@@ -208,6 +208,45 @@ const GuideRedBlue = () => {
       }
     }
 
+    // Nouvelle logique pour empêcher de dévalider une étape si la suivante est validée
+    // Helper pour savoir si toute la chaîne est validée
+    const allChainIds = chain.map(step => step.from.id).concat(chain.length > 0 && chain[chain.length - 1].to ? chain[chain.length - 1].to.id : []).filter(Boolean);
+    const isFullChainCaught = allChainIds.every(id => caught.includes(id));
+
+    // Custom toggle pour la chaîne d'évolution
+    const toggleChainCaught = (id, idx, isTo) => {
+      // Si on veut dévalider (retirer) un Pokémon
+      if (caught.includes(id)) {
+        // Si toute la chaîne est validée
+        if (isFullChainCaught) {
+          // On ne peut dévalider que la dernière étape
+          if (isTo) {
+            // Dernier to
+            if (idx === chain.length - 1) toggleCaught(id);
+          } else {
+            // Dernier from
+            if (idx === chain.length - 1 && !chain[chain.length - 1].to) toggleCaught(id);
+          }
+        } else {
+          // Si la suivante n'est pas validée, on peut dévalider
+          if (isTo) {
+            // Pour le dernier to, pas de suivante
+            toggleCaught(id);
+          } else {
+            // Si la suivante (to) n'est pas validée
+            if (chain[idx].to && !caught.includes(chain[idx].to.id)) toggleCaught(id);
+            // Si la suivante (from) n'est pas validée (pour les étapes intermédiaires)
+            else if (chain[idx + 1] && !caught.includes(chain[idx + 1].from.id)) toggleCaught(id);
+            // Si pas de suivante, on peut dévalider
+            else if (!chain[idx].to && !chain[idx + 1]) toggleCaught(id);
+          }
+        }
+      } else {
+        // Ajout classique
+        toggleCaught(id);
+      }
+    };
+
     return (
       <div className={`flex items-center bg-white rounded-lg p-3 mb-2 overflow-x-auto w-fit ml-0 sm:p-2 sm:mb-1 max-w-full sm:max-w-[98vw] relative ${shouldFade ? 'opacity-30 pointer-events-none' : ''}`}> 
         {chain.map((step, idx) => {
@@ -226,7 +265,7 @@ const GuideRedBlue = () => {
                   alt={step.from.name[i18n.language] || step.from.name.en}
                   className={`w-10 h-10 sm:w-16 sm:h-16 cursor-pointer transition-opacity ${caught.includes(step.from.id) ? 'opacity-40' : ''}`}
                   style={canClickFrom ? {} : { pointerEvents: 'none' }}
-                  onClick={() => canClickFrom && toggleCaught(step.from.id)}
+                  onClick={() => canClickFrom && toggleChainCaught(step.from.id, idx, false)}
                 />
                 {caught.includes(step.from.id) && (
                   <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
@@ -276,7 +315,7 @@ const GuideRedBlue = () => {
                     alt={step.to.name[i18n.language] || step.to.name.en}
                     className={`w-10 h-10 sm:w-16 sm:h-16 cursor-pointer transition-opacity ${caught.includes(step.to.id) ? 'opacity-40' : ''}`}
                     style={canClickTo ? {} : { pointerEvents: 'none' }}
-                    onClick={() => canClickTo && toggleCaught(step.to.id)}
+                    onClick={() => canClickTo && toggleChainCaught(step.to.id, idx, true)}
                   />
                   {caught.includes(step.to.id) && (
                     <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
