@@ -200,9 +200,51 @@ router.get('/user/:userId/current-guide', (req, res) => {
   });
 });
 
+/**
+ * @swagger
+ * /api/game/user/{userId}/guides:
+ *   post:
+ *     summary: Créer un nouveau guide pour un utilisateur
+ *     tags: [Guides]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: UUID de l'utilisateur
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - guide_name
+ *             properties:
+ *               guide_name:
+ *                 type: string
+ *                 example: "Nuzlocke"
+ *     responses:
+ *       201:
+ *         description: Guide créé avec succès
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 guideId:
+ *                   type: string
+ *       403:
+ *         description: Accès non autorisé
+ */
 // Créer un guide pour un utilisateur
 router.post('/user/:userId/guides', authenticateToken, (req, res) => {
-  const userId = parseInt(req.params.userId);
+  const userId = req.params.userId;
   const { guide_name } = req.body;
   const guideId = randomUUID();
 

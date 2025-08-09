@@ -47,6 +47,77 @@ router.patch('/user/:id', async (req, res) => {
 // Configuration depuis .env
 const BCRYPT_ROUNDS = parseInt(process.env.BCRYPT_ROUNDS) || 12;
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     User:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *           description: UUID de l'utilisateur
+ *         email:
+ *           type: string
+ *           format: email
+ *         username:
+ *           type: string
+ *         created_at:
+ *           type: string
+ *           format: date-time
+ *     AuthResponse:
+ *       type: object
+ *       properties:
+ *         success:
+ *           type: boolean
+ *         message:
+ *           type: string
+ *         token:
+ *           type: string
+ *         user:
+ *           $ref: '#/components/schemas/User'
+ */
+
+/**
+ * @swagger
+ * /api/auth/register:
+ *   post:
+ *     summary: Inscription d'un nouvel utilisateur
+ *     tags: [Authentification]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *               - username
+ *               - password
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 example: "user@example.com"
+ *               username:
+ *                 type: string
+ *                 example: "john_doe"
+ *               password:
+ *                 type: string
+ *                 minLength: 6
+ *                 example: "password123"
+ *     responses:
+ *       201:
+ *         description: Inscription réussie
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/AuthResponse'
+ *       400:
+ *         description: Données invalides
+ *       409:
+ *         description: Email ou nom d'utilisateur déjà utilisé
+ */
 // Inscription
 router.post('/register', async (req, res) => {
   try {
@@ -130,6 +201,41 @@ router.post('/register', async (req, res) => {
 });
 
 // Connexion
+/**
+ * @swagger
+ * /api/auth/login:
+ *   post:
+ *     summary: Connexion d'un utilisateur
+ *     tags: [Authentification]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - identifier
+ *               - password
+ *             properties:
+ *               identifier:
+ *                 type: string
+ *                 description: Email ou nom d'utilisateur
+ *                 example: "user@example.com"
+ *               password:
+ *                 type: string
+ *                 example: "password123"
+ *     responses:
+ *       200:
+ *         description: Connexion réussie
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/AuthResponse'
+ *       401:
+ *         description: Identifiants incorrects
+ *       400:
+ *         description: Données manquantes
+ */
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -203,6 +309,33 @@ router.post('/login', async (req, res) => {
 });
 
 // Vérification du token
+/**
+ * @swagger
+ * /api/auth/verify:
+ *   get:
+ *     summary: Vérifier la validité d'un token JWT
+ *     tags: [Authentification]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Token valide
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *                 user:
+ *                   $ref: '#/components/schemas/User'
+ *       401:
+ *         description: Token manquant
+ *       403:
+ *         description: Token invalide ou expiré
+ */
 router.get('/verify', (req, res) => {
   const token = req.headers.authorization?.split(' ')[1];
   

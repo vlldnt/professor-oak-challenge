@@ -1,6 +1,8 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsdoc = require('swagger-jsdoc');
 const { initDatabase } = require('./src/db/database');
 
 // Import des contrôleurs
@@ -9,6 +11,36 @@ const gameController = require('./src/controllers/gameController');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// Configuration Swagger
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Professor Oak Challenge API',
+      version: '1.0.0',
+      description: 'API REST pour Professor Oak Challenge - Pokémon',
+    },
+    servers: [
+      {
+        url: `http://localhost:${PORT}`,
+        description: 'Serveur de développement',
+      },
+    ],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
+  },
+  apis: ['./src/controllers/*.js'], // Chemin vers les fichiers avec les annotations
+};
+
+const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
 // Middleware global
 app.use(cors({
@@ -42,12 +74,6 @@ app.get('/', (req, res) => {
         register: 'POST /api/auth/register',
         login: 'POST /api/auth/login',
         verify: 'GET /api/auth/verify'
-      },
-      game: {
-        stats: 'GET /api/game/user/:userId',
-        updateStats: 'PUT /api/game/user/:userId',
-        catchPokemon: 'POST /api/game/catch-pokemon',
-        caughtPokemon: 'GET /api/game/caught-pokemon'
       }
     },
     environment: process.env.NODE_ENV || 'development'
@@ -57,6 +83,9 @@ app.get('/', (req, res) => {
 // Montage des routes
 app.use('/api/auth', authController);
 app.use('/api/game', gameController);
+
+// Documentation Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Middleware de gestion d'erreur globale
 app.use((err, req, res, next) => {
@@ -87,7 +116,7 @@ async function startServer() {
     await initDatabase();
     
     // Démarrer le serveur
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
       console.log(`✅ Serveur démarré avec succès`);
       console.log(`🌐 URL: http://localhost:${PORT}`);
       console.log(`🗄️  Base de données: ${process.env.DB_NAME}`);
@@ -98,9 +127,7 @@ async function startServer() {
       console.log('   📝 POST /api/auth/register - Inscription');
       console.log('   🔐 POST /api/auth/login - Connexion');
       console.log('   ✅ GET  /api/auth/verify - Vérifier token');
-      console.log('   📊 GET  /api/game/user/:id - Stats utilisateur');
-      console.log('   🔄 PUT  /api/game/user/:id - Maj stats');
-      console.log('   🔴 POST /api/game/catch-pokemon - Capturer');
+      console.log('   📚 GET  /api-docs - Documentation Swagger');
       console.log('');
     });
     
