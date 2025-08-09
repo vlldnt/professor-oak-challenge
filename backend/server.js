@@ -8,6 +8,7 @@ const { initDatabase } = require('./src/db/database');
 // Import des contrôleurs
 const authController = require('./src/controllers/authController');
 const gameController = require('./src/controllers/gameController');
+const userController = require('./src/controllers/userController');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -50,7 +51,7 @@ app.use(cors({
     'http://127.0.0.1:5173'
   ],
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
@@ -74,6 +75,13 @@ app.get('/', (req, res) => {
         register: 'POST /api/auth/register',
         login: 'POST /api/auth/login',
         verify: 'GET /api/auth/verify'
+      },
+      users: {
+        getAllUsers: 'GET /api/users',
+        getUser: 'GET /api/users/:id',
+        updateUser: 'PATCH /api/users/:id',
+        deleteUser: 'DELETE /api/users/:id',
+        getUserByUsername: 'GET /api/users/by-username/:username'
       }
     },
     environment: process.env.NODE_ENV || 'development'
@@ -83,6 +91,7 @@ app.get('/', (req, res) => {
 // Montage des routes
 app.use('/api/auth', authController);
 app.use('/api/game', gameController);
+app.use('/api/users', userController);
 
 // Documentation Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
@@ -102,7 +111,7 @@ app.use('*', (req, res) => {
   res.status(404).json({ 
     success: false,
     message: `Route ${req.method} ${req.originalUrl} non trouvée`,
-    availableRoutes: ['/api/auth', '/api/game']
+    availableRoutes: ['/api/auth', '/api/game', '/api/users']
   });
 });
 
@@ -127,7 +136,10 @@ async function startServer() {
       console.log('   📝 POST /api/auth/register - Inscription');
       console.log('   🔐 POST /api/auth/login - Connexion');
       console.log('   ✅ GET  /api/auth/verify - Vérifier token');
-      console.log('   📚 GET  /api-docs - Documentation Swagger');
+      console.log('   � GET  /api/users/:id - Infos utilisateur');
+      console.log('   ✏️  PATCH /api/users/:id - Modifier utilisateur');
+      console.log('   🗑️  DELETE /api/users/:id - Supprimer utilisateur');
+      console.log('   �📚 GET  /api-docs - Documentation Swagger');
       console.log('');
     });
     

@@ -7,43 +7,6 @@ const { randomUUID } = require('crypto');
 
 const router = express.Router();
 
-// Mise à jour des infos utilisateur
-router.patch('/user/:id', async (req, res) => {
-  const userId = req.params.id;
-  const { email, username, password } = req.body;
-  if (!email && !username && !password) {
-    return res.status(400).json({ success: false, message: 'Aucune donnée à mettre à jour' });
-  }
-  let fields = [];
-  let values = [];
-  if (email) {
-    fields.push('email = ?');
-    values.push(email);
-  }
-  if (username) {
-    fields.push('username = ?');
-    values.push(username);
-  }
-  if (password) {
-    const bcrypt = require('bcrypt');
-    const BCRYPT_ROUNDS = parseInt(process.env.BCRYPT_ROUNDS) || 12;
-    const hashedPassword = await bcrypt.hash(password, BCRYPT_ROUNDS);
-    fields.push('password = ?');
-    values.push(hashedPassword);
-  }
-  values.push(userId);
-  const sql = `UPDATE users SET ${fields.join(', ')} WHERE id = ?`;
-  db.run(sql, values, function(err) {
-    if (err) {
-      return res.status(500).json({ success: false, message: 'Erreur lors de la mise à jour' });
-    }
-    if (this.changes === 0) {
-      return res.status(404).json({ success: false, message: 'Utilisateur non trouvé' });
-    }
-    res.json({ success: true, message: 'Informations mises à jour' });
-  });
-});
-
 // Configuration depuis .env
 const BCRYPT_ROUNDS = parseInt(process.env.BCRYPT_ROUNDS) || 12;
 
@@ -362,44 +325,6 @@ router.get('/verify', (req, res) => {
       message: 'Token invalide' 
     });
   }
-});
-
-// Suppression d'un utilisateur via /api/user/delete/:id
-router.delete('/user/delete/:id', async (req, res) => {
-  const userId = req.params.id;
-  if (!userId) {
-    return res.status(400).json({ success: false, message: 'ID utilisateur requis' });
-  }
-  try {
-    db.run('DELETE FROM users WHERE id = ?', [userId], function(err) {
-      if (err) {
-        console.error('Erreur suppression utilisateur:', err);
-        return res.status(500).json({ success: false, message: 'Erreur serveur lors de la suppression' });
-      }
-      if (this.changes === 0) {
-        return res.status(404).json({ success: false, message: 'Utilisateur non trouvé' });
-      }
-      res.json({ success: true, message: 'Utilisateur supprimé avec succès' });
-    });
-  } catch (error) {
-    console.error('Erreur suppression:', error);
-    res.status(500).json({ success: false, message: 'Erreur serveur' });
-  }
-});
-
-// Récupérer les infos d'un utilisateur par son username
-router.get('/user/by-username/:username', (req, res) => {
-  const username = req.params.username;
-  db.get('SELECT id, email, username FROM users WHERE username = ?', [username], (err, user) => {
-    if (err) {
-      console.error('Erreur DB get user:', err);
-      return res.status(500).json({ success: false, message: 'Erreur serveur' });
-    }
-    if (!user) {
-      return res.status(404).json({ success: false, message: 'Utilisateur non trouvé' });
-    }
-    res.json({ success: true, user });
-  });
 });
 
 module.exports = router;
