@@ -96,6 +96,9 @@ app.use('/api/users', userController);
 // Documentation Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+// Documentation Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 // Middleware de gestion d'erreur globale
 app.use((err, req, res, next) => {
   console.error('❌ Erreur serveur:', err.stack);
