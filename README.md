@@ -12,7 +12,7 @@
 
 Le **Professor Oak Challenge** consiste à compléter un Pokédex à 100 % dès que possible, en attrapant et en faisant évoluer tous les Pokémon disponibles avant de battre le premier champion d'arène. Cela demande une connaissance approfondie du jeu et beaucoup de patience. C'est un défi de complétion extrême pour les fans hardcore.
 
-Cette application web vous permet de **suivre votre progression** dans ce défi légendaire avec un tableau de bord personnalisé, des statistiques détaillées et un historique complet de votre aventure.
+Cette application web vous permet de **suivre votre progression** dans ce défi légendaire avec un tableau de bord personnalisé.
 
 ### 📚 Crédits des guides
 
