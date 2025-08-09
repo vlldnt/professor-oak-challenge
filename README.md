@@ -12,7 +12,17 @@
 
 Le **Professor Oak Challenge** consiste à compléter un Pokédex à 100 % dès que possible, en attrapant et en faisant évoluer tous les Pokémon disponibles avant de battre le premier champion d'arène. Cela demande une connaissance approfondie du jeu et beaucoup de patience. C'est un défi de complétion extrême pour les fans hardcore.
 
-Cette application web vous permet de **suivre votre progression** dans ce défi légendaire avec un tableau de bord personnalisé.
+Cette application web vous permet de **suivre votre progression** dans ce défi légendaire avec un tableau de bord personnalisé, des statistiques détaillées et un historique complet de votre aventure.
+
+### 📚 Crédits des guides
+
+Les guides Pokémon intégrés dans cette application sont basés sur le travail exceptionnel de **Mewlax* :
+
+- **Instagram**: [@pokemewlax](https://instagram.com/pokemewlax) 
+- **Twitter**: [@Mewlax1](https://twitter.com/Mewlax1)
+- **Reddit**: [u/mewlax84](https://reddit.com/u/mewlax84)
+
+Un grand merci pour ces ressources détaillées qui rendent le Professor Oak Challenge accessible à tous ! 🙏
 
 ## 🛠️ Technologies utilisées
 
@@ -128,6 +138,86 @@ captures (SQLite) [En développement]
 - Vite HMR : rechargement instantané en développement
 - JWT stateless : pas de sessions serveur à gérer
 - Tailwind purge : CSS optimisé en production
+
+## 🚀 Installation et démarrage local
+
+### Prérequis
+- **Node.js** 22.x ou supérieur
+- **npm** ou **yarn**
+- **Git**
+
+### 📥 Cloner le projet
+```bash
+git clone https://github.com/vlldnt/professor-oak-challenge.git
+cd professor-oak-challenge
+```
+
+### ⚙️ Installation des dépendances
+
+**Installation complète (backend + frontend) :**
+```bash
+npm run install:all
+# Installe les dépendances du projet root, backend et frontend
+```
+
+### 🔧 Configuration
+
+1. **Créer le fichier `.env` dans le dossier `backend/` :**
+```bash
+# backend/.env
+DB_NAME=professor_oak_challenge.db
+JWT_SECRET=your-super-secret-jwt-key-here
+TOKEN_EXPIRY=24h
+BCRYPT_ROUNDS=12
+NODE_ENV=development
+```
+
+2. **La base de données SQLite sera créée automatiquement au premier démarrage**
+
+### 🎯 Démarrage en développement
+
+**Une seule commande pour tout démarrer :**
+```bash
+npm run dev
+# Lance automatiquement backend (port 3001) + frontend (port 5173)
+```
+
+> **✨ Magic !** Cette commande démarre les deux serveurs en parallèle grâce à `concurrently`
+
+**Ou séparément si besoin :**
+```bash
+# Backend uniquement
+npm run dev:backend
+
+# Frontend uniquement  
+npm run dev:frontend
+```
+
+### 🌐 Accès à l'application
+
+- **Frontend** : [http://localhost:5173](http://localhost:5173)
+- **API Backend** : [http://localhost:3001](http://localhost:3001)
+- **Documentation API** : [http://localhost:3001/api-docs](http://localhost:3001/api-docs)
+
+### 🔍 Scripts utiles
+
+```bash
+# Développement
+npm run dev           # Démarre backend + frontend
+npm run dev:backend   # Backend seul (nodemon)
+npm run dev:frontend  # Frontend seul (Vite)
+
+# Production
+npm start             # Démarre backend + frontend (production)
+npm run build         # Build frontend pour production
+
+# Maintenance
+npm run install:all   # Installe toutes les dépendances
+npm run clean         # Supprime tous les node_modules
+npm run lint          # Vérifie le code frontend
+```
+
+> **Note** : Le projet n'est pas encore déployé. Cette installation locale est nécessaire pour tester l'application.
 
 ---
 
