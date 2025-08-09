@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 function Guides({ setActiveTab }) {
   const { t, i18n } = useTranslation();
@@ -10,39 +10,39 @@ function Guides({ setActiveTab }) {
   const gen1GuideImages = [
     {
       src: `/src/assets/images/guides/red-${i18n.language}.webp`,
-      label: t('pokemonRed'),
-      color: 'bg-red-500',
-      version: 'red',
-      available: true
+      label: t("pokemonRed"),
+      color: "bg-red-500",
+      version: "red",
+      available: true,
     },
     {
       src: `/src/assets/images/guides/blue-${i18n.language}.webp`,
-      label: t('pokemonBlue'),
-      color: 'bg-blue-500',
-      version: 'blue',
-      available: true
+      label: t("pokemonBlue"),
+      color: "bg-blue-500",
+      version: "blue",
+      available: true,
     },
     {
       src: `/src/assets/images/guides/yellow-${i18n.language}.webp`,
-      label: t('pokemonYellow'),
-      color: 'bg-yellow-400',
-      version: 'yellow',
-      available: false
-    }
+      label: t("pokemonYellow"),
+      color: "bg-yellow-400",
+      version: "yellow",
+      available: false,
+    },
   ];
 
   const handleGuideClick = (version) => {
     setPendingVersion(version);
     setShowConfirm(true);
-  }
+  };
 
   const handleConfirm = () => {
-    window.localStorage.setItem('oak-guide-version', pendingVersion);
-    if (typeof window.setVersion === 'function') {
+    window.localStorage.setItem("oak-guide-version", pendingVersion);
+    if (typeof window.setVersion === "function") {
       window.setVersion(pendingVersion);
     }
     if (setActiveTab) {
-      setActiveTab('gen1-guide');
+      setActiveTab("gen1-guide");
     }
     setShowConfirm(false);
     setPendingVersion(null);
@@ -61,16 +61,22 @@ function Guides({ setActiveTab }) {
           <div className="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full flex flex-col items-center border-4 border-yellow-200 relative">
             <img
               src={`/src/assets/images/guides/${pendingVersion}-${i18n.language}.webp`}
-              alt={pendingVersion === 'red' ? t('pokemonRed') : t('pokemonBlue')}
+              alt={
+                pendingVersion === "red" ? t("pokemonRed") : t("pokemonBlue")
+              }
               className="w-[180px] h-[180px] object-contain rounded-lg border-2 border-gray-200 shadow mb-4"
             />
             <h2 className="text-2xl font-bold mb-2 text-center">
-              {pendingVersion === 'red'
-                ? (i18n.language === 'fr' ? 'Guide Pokémon Rouge' : 'Pokémon Red Guide')
-                : (i18n.language === 'fr' ? 'Guide Pokémon Bleu' : 'Pokémon Blue Guide')}
+              {pendingVersion === "red"
+                ? i18n.language === "fr"
+                  ? "Guide Pokémon Rouge"
+                  : "Pokémon Red Guide"
+                : i18n.language === "fr"
+                ? "Guide Pokémon Bleu"
+                : "Pokémon Blue Guide"}
             </h2>
             <p className="text-base text-gray-700 mb-4 text-center">
-              {i18n.language === 'fr'
+              {i18n.language === "fr"
                 ? "Cliquez sur les images des Pokémon pour compléter votre Pokédex. Lisez bien les tips, les points importants, les astuces et stratégies. Consultez aussi les conseils de leveling !"
                 : "Click on Pokémon images to complete your Pokédex. Be sure to read the tips, important notes, strategies, and leveling advice!"}
             </p>
@@ -79,13 +85,15 @@ function Guides({ setActiveTab }) {
                 className="bg-green-600 text-white font-bold px-6 py-2 rounded-lg shadow hover:bg-green-700 transition"
                 onClick={handleConfirm}
               >
-                {i18n.language === 'fr' ? 'Accepter et commencer' : 'Accept and Start'}
+                {i18n.language === "fr"
+                  ? "Accepter et commencer"
+                  : "Accept and Start"}
               </button>
               <button
                 className="bg-gray-300 text-gray-800 font-bold px-6 py-2 rounded-lg shadow hover:bg-gray-400 transition"
                 onClick={handleCancel}
               >
-                {i18n.language === 'fr' ? 'Annuler' : 'Cancel'}
+                {i18n.language === "fr" ? "Annuler" : "Cancel"}
               </button>
             </div>
           </div>
@@ -94,17 +102,17 @@ function Guides({ setActiveTab }) {
       {/* Hero Section */}
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-          {t('guidesTitle')}
+          {t("guidesTitle")}
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          {t('guidesSubtitle')}
+          {t("guidesSubtitle")}
         </p>
       </div>
 
       {/* Generation 1 Guides */}
       <div className="mb-16">
         <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-          {t('generation1')}
+          {t("generation1")}
         </h2>
         <div className="grid md:grid-cols-1 gap-8">
           <div className="bg-gradient-to-br from-red-100 via-blue-100 to-yellow-100 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:scale-105 flex flex-col items-center border-4 border-yellow-200">
@@ -112,7 +120,9 @@ function Guides({ setActiveTab }) {
               {gen1GuideImages.map((imgObj, idx) => (
                 <div
                   key={idx}
-                  className={`relative flex flex-col items-center justify-center group ${imgObj.available ? 'cursor-pointer' : 'opacity-60'}`}
+                  className={`relative flex flex-col items-center justify-center group ${
+                    imgObj.available ? "cursor-pointer" : "opacity-60"
+                  }`}
                   onClick={() => {
                     if (imgObj.available) {
                       handleGuideClick(imgObj.version);
@@ -123,11 +133,11 @@ function Guides({ setActiveTab }) {
                     src={imgObj.src}
                     alt={imgObj.label}
                     className="w-[200px] h-[200px] object-contain rounded-lg border-2 border-gray-200 shadow-sm bg-white group-hover:scale-110 transition-transform duration-300"
-                    style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.07)' }}
+                    style={{ boxShadow: "0 2px 8px 0 rgba(0,0,0,0.07)" }}
                   />
                   {!imgObj.available && (
                     <span className="absolute bottom-2 right-2 bg-gray-300 text-gray-700 text-lg font-extrabold px-5 py-2 rounded shadow transition-transform duration-300 group-hover:scale-110">
-                      {i18n.language === 'fr' ? 'Indisponible' : 'Unavailable'}
+                      {i18n.language === "fr" ? "Indisponible" : "Unavailable"}
                     </span>
                   )}
                 </div>
@@ -140,24 +150,30 @@ function Guides({ setActiveTab }) {
       {/* Coming Soon Section */}
       <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl p-8 text-center text-white">
         <h2 className="text-3xl font-bold mb-4">
-          {i18n.language === 'fr' ? 'Plus de Guides Bientôt !' : 'More Guides Coming Soon!'}
+          {i18n.language === "fr"
+            ? "Plus de Guides Bientôt !"
+            : "More Guides Coming Soon!"}
         </h2>
         <p className="text-xl mb-6 opacity-90">
-          {i18n.language === 'fr'
-            ? 'Nous travaillons sur des guides pour les générations suivantes et des contenus spécialisés.'
-            : 'We are working on guides for future generations and specialized content.'
-          }
+          {i18n.language === "fr"
+            ? "Nous travaillons sur des guides pour les générations suivantes et des contenus spécialisés."
+            : "We are working on guides for future generations and specialized content."}
         </p>
         <div className="flex flex-wrap justify-center gap-4 text-sm">
-          {['2', '3', '4'].map((gen) => (
-            <span key={gen} className="bg-white bg-opacity-20 px-3 py-1 rounded-full">
-              {i18n.language === 'fr' ? `Génération ${gen}` : `Generation ${gen}`}
+          {["2", "3", "4"].map((gen) => (
+            <span
+              key={gen}
+              className="bg-white bg-opacity-20 px-3 py-1 rounded-full"
+            >
+              {i18n.language === "fr"
+                ? `Génération ${gen}`
+                : `Generation ${gen}`}
             </span>
           ))}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Guides;
