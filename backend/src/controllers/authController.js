@@ -214,10 +214,10 @@ router.post('/register', async (req, res) => {
  *           schema:
  *             type: object
  *             required:
- *               - identifier
+ *               - email
  *               - password
  *             properties:
- *               identifier:
+ *               email:
  *                 type: string
  *                 description: Email ou nom d'utilisateur
  *                 example: "user@example.com"
